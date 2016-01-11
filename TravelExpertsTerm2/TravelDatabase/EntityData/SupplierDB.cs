@@ -6,7 +6,31 @@ using System.Threading.Tasks;
 
 namespace TravelDatabase.EntityData
 {
-    class SupplierDB
+    public class SupplierDB : IDataOperations<Supplier>
     {
+        public bool AddEntity(Supplier entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteEntity(Supplier entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Supplier> GetEntities()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Supplier GetEntityByID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateEntity(Supplier entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

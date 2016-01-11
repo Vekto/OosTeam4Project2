@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TravelDatabase.EntityData
+namespace TravelDatabase
 {
-    class ProductsSuppliersDB
+    public class ProductSupplier
     {
     }
 }

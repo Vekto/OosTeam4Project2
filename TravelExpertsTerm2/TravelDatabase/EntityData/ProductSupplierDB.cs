@@ -6,29 +6,25 @@ using System.Threading.Tasks;
 
 namespace TravelDatabase.EntityData
 {
-    public class ProductDB : IDataOperations<Product>
+    public class ProductSupplierDB : IDataOperations<ProductSupplier>
     {
-        public bool AddEntity(Product entity)
+        public List<ProductSupplier> GetEntities()
         {
             throw new NotImplementedException();
         }
-
-        public bool DeleteEntity(Product entity)
+        public bool DeleteEntity(ProductSupplier productSupplier)
         {
             throw new NotImplementedException();
         }
-
-        public List<Product> GetEntities()
+        public bool AddEntity(ProductSupplier entity)
         {
             throw new NotImplementedException();
         }
-
-        public Product GetEntityByID(int id)
+        public bool UpdateEntity(ProductSupplier entity)
         {
             throw new NotImplementedException();
         }
-
-        public bool UpdateEntity(Product entity)
+        public ProductSupplier GetEntityByID(int id)
         {
             throw new NotImplementedException();
         }
