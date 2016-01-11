@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TravelDatabase.EntityData
 {
-    interface IDataOperations<TEntity> where TEntity : class, new() //constraint makes it so that the type that TEntity is a class with a default constructor
+    public interface IDataOperations<TEntity> where TEntity : class, new() //constraint makes it so that the type that TEntity is a class with a default constructor
     {
         //defines signatures that the DB classes must implement
         List<TEntity> GetEntities();
