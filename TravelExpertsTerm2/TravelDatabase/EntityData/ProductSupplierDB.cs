@@ -24,7 +24,7 @@ namespace TravelDatabase.EntityData
         {
             throw new NotImplementedException();
         }
-        public ProductSupplier GetEntityByID(int id)
+        public ProductSupplier GetEntityById(int id)
         {
             throw new NotImplementedException();
         }

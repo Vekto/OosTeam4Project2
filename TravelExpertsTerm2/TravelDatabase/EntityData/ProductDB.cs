@@ -23,7 +23,7 @@ namespace TravelDatabase.EntityData
             throw new NotImplementedException();
         }
 
-        public Product GetEntityByID(int id)
+        public Product GetEntityById(int id)
         {
             throw new NotImplementedException();
         }
