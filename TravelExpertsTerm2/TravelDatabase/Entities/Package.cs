@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TravelDatabase
 {
-    class Package
+    public class Package
     {
     }
 }
