@@ -1,6 +1,11 @@
-﻿using System.IO;
+﻿// Author: Team 5 (See Annotations)
+// Project: TravelExpertsTerm2
+// Date: 2016-01
+
+using System.IO;
 using System.Linq;
 using JetBrains.Annotations;
+using TravelDatabase.EntityProviders;
 
 namespace TravelDatabase
 {
@@ -23,5 +28,33 @@ namespace TravelDatabase
             File.Exists(ConnectionStringFilePath)
                 ? File.ReadLines(ConnectionStringFilePath).FirstOrDefault()
                 : null;
+
+        /// <summary>
+        /// Provides database operations for <see cref="Package"/> entities
+        /// </summary>
+        [ProvidesContext]
+        public static PackageEntityProvider PackageProvider { get; } 
+            = new PackageEntityProvider();
+
+        /// <summary>
+        /// Provides database operations for <see cref="Product"/> entities
+        /// </summary>
+        [ProvidesContext]
+        public static ProductEntityProvider ProductProvider { get; }
+            = new ProductEntityProvider();
+
+        /// <summary>
+        /// Provides database operations for <see cref="ProductSupplier"/> entities
+        /// </summary>
+        [ProvidesContext]
+        public static ProductSupplierEntityProvider ProductSupplierProvider { get; }
+            = new ProductSupplierEntityProvider();
+
+        /// <summary>
+        /// Provides database operations for <see cref="Supplier"/> entities
+        /// </summary>
+        [ProvidesContext]
+        public static SupplierEntityProvider SupplierProvider { get; }
+            = new SupplierEntityProvider();
     }
 }

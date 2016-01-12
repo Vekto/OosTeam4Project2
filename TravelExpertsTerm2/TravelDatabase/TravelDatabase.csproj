@@ -52,11 +52,12 @@
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ProductSupplier.cs" />
     <Compile Include="Entities\Supplier.cs" />
-    <Compile Include="EntityData\IDataOperations.cs" />
-    <Compile Include="EntityData\PackageDB.cs" />
-    <Compile Include="EntityData\ProductDB.cs" />
-    <Compile Include="EntityData\ProductSupplierDB.cs" />
-    <Compile Include="EntityData\SupplierDB.cs" />
+    <Compile Include="EntityProviders\EntityProviderBase.cs" />
+    <Compile Include="EntityProviders\IDataOperations.cs" />
+    <Compile Include="EntityProviders\PackageEntityProvider.cs" />
+    <Compile Include="EntityProviders\ProductEntityProvider.cs" />
+    <Compile Include="EntityProviders\ProductSupplierEntityProvider.cs" />
+    <Compile Include="EntityProviders\SupplierEntityProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Database.cs" />
   </ItemGroup>
