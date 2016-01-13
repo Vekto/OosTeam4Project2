@@ -20,7 +20,8 @@ namespace TravelDatabase.EntityProviders
     public abstract class EntityProviderBase<TEntity> : IDataOperations<TEntity>
         where TEntity : class, new()
     {
-        protected abstract string GetAllSql();
+        protected abstract string TableName { get; }
+        protected virtual string GetAllSql() => $"SELECT * FROM {TableName}";
         protected abstract string GetByIdSql(int id);
         protected abstract TEntity ReadSingleEntity(SqlDataReader reader);
         protected abstract string DeleteEntitySql(TEntity entity);
@@ -42,6 +43,7 @@ namespace TravelDatabase.EntityProviders
 
             using (var conn = new SqlConnection(Database.ConnectionString))
             {
+                conn.Open();
                 using (var reader = new SqlCommand(GetAllSql(), conn).ExecuteReader())
                 {
                     while (reader.Read()) yield return ReadSingleEntity(reader);
@@ -49,6 +51,7 @@ namespace TravelDatabase.EntityProviders
             }
         }
 
+        [CanBeNull]
         public TEntity GetEntityById(int id)
         {
             if (Database.ConnectionString == null)
@@ -56,10 +59,10 @@ namespace TravelDatabase.EntityProviders
 
             using (var conn = new SqlConnection(Database.ConnectionString))
             {
+                conn.Open();
                 using (var reader = new SqlCommand(GetByIdSql(id), conn).ExecuteReader())
                 {
-                    reader.Read();
-                    return ReadSingleEntity(reader);
+                    return reader.Read() ? ReadSingleEntity(reader) : null;
                 }
             }
         }
@@ -71,20 +74,23 @@ namespace TravelDatabase.EntityProviders
 
             using (var conn = new SqlConnection(Database.ConnectionString))
             {
+                conn.Open();
                 // On success, one row is affected. Therefore, we return 'rowsAffected == 1'
                 return new SqlCommand(DeleteEntitySql(entity), conn).ExecuteNonQuery() == 1;
             }
         }
 
-        public bool AddEntity(TEntity entity)
+        public int AddEntity(TEntity entity)
         {
             if (Database.ConnectionString == null)
                 throw new InvalidOperationException(NullConnectionStringExceptionMessage);
 
             using (var conn = new SqlConnection(Database.ConnectionString))
             {
+                conn.Open();
                 // On success, one row is affected. Therefore, we return 'rowsAffected == 1'
-                return new SqlCommand(AddEntitySql(entity), conn).ExecuteNonQuery() == 1;
+                if (new SqlCommand(AddEntitySql(entity), conn).ExecuteNonQuery() != 1) return -1;
+                return Convert.ToInt32(new SqlCommand($"SELECT IDENT_CURRENT('{TableName}')", conn).ExecuteScalar());
             }
         }
 
@@ -95,6 +101,7 @@ namespace TravelDatabase.EntityProviders
 
             using (var conn = new SqlConnection(Database.ConnectionString))
             {
+                conn.Open();
                 // On success, one row is affected. Therefore, we return 'rowsAffected == 1'
                 return new SqlCommand(UpdateEntitySql(entity), conn).ExecuteNonQuery() == 1;
             }

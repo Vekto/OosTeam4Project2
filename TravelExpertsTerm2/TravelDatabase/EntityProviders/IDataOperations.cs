@@ -20,7 +20,7 @@ namespace TravelDatabase.EntityProviders
         IEnumerable<TEntity> GetEntities();
         TEntity GetEntityById(int id);
         bool DeleteEntity(TEntity entity);
-        bool AddEntity(TEntity entity);
+        int AddEntity(TEntity entity);
         bool UpdateEntity(TEntity entity);
     }
 }

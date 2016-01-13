@@ -11,6 +11,8 @@ namespace TravelDatabase.EntityProviders
     [PublicAPI]
     public sealed class SupplierEntityProvider : EntityProviderBase<Supplier>
     {
+        protected override string TableName { get; }
+
         protected override string GetAllSql()
         {
             throw new NotImplementedException();

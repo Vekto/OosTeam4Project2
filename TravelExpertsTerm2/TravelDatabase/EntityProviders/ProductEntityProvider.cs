@@ -11,34 +11,30 @@ namespace TravelDatabase.EntityProviders
     [PublicAPI]
     public sealed class ProductEntityProvider : EntityProviderBase<Product>
     {
-        protected override string GetAllSql()
-        {
-            throw new NotImplementedException();
-        }
+        protected override string TableName => "Products";
+
+        //protected override string GetAllSql() 
+        //    => "SELECT * FROM Products";
 
         protected override string GetByIdSql(int id)
-        {
-            throw new NotImplementedException();
-        }
+            => $"SELECT * FROM Products WHERE ProductId={id}";
 
         protected override Product ReadSingleEntity(SqlDataReader reader)
         {
-            throw new NotImplementedException();
+            return new Product
+            {
+                ProductId = reader.GetInt32(0),
+                ProductName = reader.GetString(1)
+            };
         }
 
         protected override string DeleteEntitySql(Product entity)
-        {
-            throw new NotImplementedException();
-        }
+            => $"DELETE FROM Products WHERE ProductId={entity.ProductId}";
 
         protected override string AddEntitySql(Product entity)
-        {
-            throw new NotImplementedException();
-        }
+            => $"INSERT INTO Products VALUES('{entity.ProductName}')";
 
         protected override string UpdateEntitySql(Product entity)
-        {
-            throw new NotImplementedException();
-        }
+            => $"UPDATE Products SET ProdName='{entity.ProductName}' WHERE ProductId={entity.ProductId}";
     }
 }
