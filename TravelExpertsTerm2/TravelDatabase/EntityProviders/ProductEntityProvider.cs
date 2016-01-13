@@ -13,9 +13,6 @@ namespace TravelDatabase.EntityProviders
     {
         protected override string TableName => "Products";
 
-        //protected override string GetAllSql() 
-        //    => "SELECT * FROM Products";
-
         protected override string GetByIdSql(int id)
             => $"SELECT * FROM Products WHERE ProductId={id}";
 
@@ -24,7 +21,7 @@ namespace TravelDatabase.EntityProviders
             return new Product
             {
                 ProductId = reader.GetInt32(0),
-                ProductName = reader.GetString(1)
+                Name = reader.GetString(1)
             };
         }
 
@@ -32,9 +29,9 @@ namespace TravelDatabase.EntityProviders
             => $"DELETE FROM Products WHERE ProductId={entity.ProductId}";
 
         protected override string AddEntitySql(Product entity)
-            => $"INSERT INTO Products VALUES('{entity.ProductName}')";
+            => $"INSERT INTO Products VALUES('{entity.Name}')";
 
         protected override string UpdateEntitySql(Product entity)
-            => $"UPDATE Products SET ProdName='{entity.ProductName}' WHERE ProductId={entity.ProductId}";
+            => $"UPDATE Products SET ProdName='{entity.Name}' WHERE ProductId={entity.ProductId}";
     }
 }
