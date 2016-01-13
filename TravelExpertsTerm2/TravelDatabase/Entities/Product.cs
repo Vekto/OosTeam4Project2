@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// Author: Team 5 (See Annotations)
+// Project: TravelExpertsTerm2
+// Date: 2016-01
+
+using JetBrains.Annotations;
 
 namespace TravelDatabase
 {
+    [Devin]
     public class Product
     {
         public int ProductId { get; set; }
-        public string ProductName { get; set; }
+        public string Name { get; set; }
     }
 }
