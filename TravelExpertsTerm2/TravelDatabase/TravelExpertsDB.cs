@@ -14,7 +14,7 @@ namespace TravelDatabase
     ///     Global database functions like creating connections.
     /// </summary>
     [Chad]
-    public static class TravelExpertsDb
+    public static class TravelExpertsDB
     {
         [Devin]
         private const string ConnectionStringFilePath = "Data Source=localhost\\sait;Initial Catalog=TravelExperts;Integrated Security=True";

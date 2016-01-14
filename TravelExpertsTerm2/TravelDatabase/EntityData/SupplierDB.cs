@@ -36,14 +36,39 @@ namespace TravelDatabase.EntityData
         }
         #endregion
 
-        public static SqlConnection GetConnection()
+        #region Methods
+        //GetSuppliers()
+        public static List<Supplier> GetSuppliers()
         {
-            string connectionString = "Data Source=localhost\\sait;Initial Catalog=TravelExperts;Integrated Security=True";
-            SqlConnection connection = new SqlConnection(connectionString);  //calls the connection
-            return connection;
-        }
+            List<Supplier> suppliersList = new List<Supplier>; //create emtpy list
+            SqlConnection connection = TravelExpertsDB.GetConnection(); //create database connection
 
-        static SqlConnection connection = GetConnection();
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                while (reader.Read())  //while there is data
+                {
+                    Supplier supplier = new Supplier();
+                    supplier.SupplierID = (int)reader["SupplierID"];
+                    supplier.SupName = (string)reader["SupName"];
+                    suppliersList.Add(supplier); //add supplier object to list
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return suppliersList;
+        } //END OF GetSuppliers()
+
+
 
         static string selectStatement = "SELECT * FROM Suppliers";
         SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
