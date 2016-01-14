@@ -8,7 +8,5 @@ namespace TravelDatabase
 {
     public class Supplier
     {
-        public int SupplierID { get; set; }
-        public string SupName { get; set; }
     }
 }
