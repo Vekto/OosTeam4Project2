@@ -15,7 +15,7 @@ namespace TravelDatabase
     public static class TravelExpertsDb
     {
         [Devin]
-        private const string ConnectionStringFilePath = @"ConnectionString.txt";
+        private const string ConnectionStringFilePath = "Data Source=localhost\\sait;Initial Catalog=TravelExperts;Integrated Security=True";
 
         /// <summary>
         ///     Connection string used by all the database functions. Defaults to the first line 
