@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace TravelDatabase.EntityData
 {
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/Supplier
     // This is an interface, https://msdn.microsoft.com/en-us/library/ms173156.aspx
     // Two important ones you'll see are IEnumerable<T> & INotifyPropertyChanged.
     public interface IDataOperations<TEntity>
