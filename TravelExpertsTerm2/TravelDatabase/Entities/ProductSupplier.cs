@@ -1,12 +1,18 @@
-﻿using System;
+﻿// Author: Team 5 (See Annotations)
+// Project: TravelExpertsTerm2
+// Date: 2016-01
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace TravelDatabase
 {
+    [Devin]
     public class ProductSupplier
     {
+        public Package Package { get; set; }
+        public Product Product { get; set; }
+        public Supplier Supplier { get; set; }
+        public int ProductSupplierId { get; set; }
     }
 }

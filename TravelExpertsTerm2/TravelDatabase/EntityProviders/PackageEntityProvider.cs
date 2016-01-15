@@ -11,12 +11,10 @@ namespace TravelDatabase.EntityProviders
     [PublicAPI]
     public sealed class PackageEntityProvider : EntityProviderBase<Package>
     {
-        protected override string TableName { get; }
+        protected override string TableName => "Packages";
 
-        protected override string GetAllSql()
-        {
-            throw new NotImplementedException();
-        }
+        protected override string GetAllSql() =>
+            "SELECT pack.PackageId,pack.PkgName,pack.PkgDesc,pack.PkgStartDate,pack.PkgEndDate,pack.PkgBasePrice,pack.PkgAgencyCommission,p.ProductId,p.ProdName,s.SupplierId,s.SupName FROM Packages_Products_Suppliers pps, Products_Suppliers ps, Packages pack, Products p, Suppliers s WHERE pps.PackageId=pack.PackageId AND pps.ProductSupplierId=ps.ProductSupplierId AND ps.ProductId=p.ProductId AND ps.SupplierId=s.SupplierId ORDER BY pack.PackageId";
 
         protected override string GetByIdSql(int id)
         {

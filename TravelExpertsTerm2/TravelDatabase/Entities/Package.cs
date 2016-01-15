@@ -1,4 +1,9 @@
-﻿using System;
+﻿// Author: Team 5 (See Annotations)
+// Project: TravelExpertsTerm2
+// Date: 2016-01
+
+using System;
+using System.Collections.Generic;
 
 namespace TravelDatabase
 {
@@ -12,5 +17,8 @@ namespace TravelDatabase
         public string Description { get; set; }
         public decimal BasePrice { get; set; }
         public decimal AgencyCommission { get; set; }
+
+        public List<Product> Products { get; set; }
+        public List<Supplier> Suppliers { get; set; }
     }
 }

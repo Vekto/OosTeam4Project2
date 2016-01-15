@@ -2,6 +2,8 @@
 // Project: TravelExpertsTerm2
 // Date: 2016-01
 
+using System;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using JetBrains.Annotations;
@@ -29,12 +31,12 @@ namespace TravelDatabase
                 ? File.ReadLines(ConnectionStringFilePath).FirstOrDefault()
                 : null;
 
-        /// <summary>
-        /// Provides database operations for <see cref="Package"/> entities
-        /// </summary>
-        [ProvidesContext]
-        public static PackageEntityProvider PackageProvider { get; } 
-            = new PackageEntityProvider();
+        ///// <summary>
+        ///// Provides database operations for <see cref="Package"/> entities
+        ///// </summary>
+        //[ProvidesContext]
+        //public static PackageEntityProvider PackageProvider { get; } 
+        //    = new PackageEntityProvider();
 
         /// <summary>
         /// Provides database operations for <see cref="Product"/> entities
@@ -43,18 +45,76 @@ namespace TravelDatabase
         public static ProductEntityProvider ProductProvider { get; }
             = new ProductEntityProvider();
 
-        /// <summary>
-        /// Provides database operations for <see cref="ProductSupplier"/> entities
-        /// </summary>
-        [ProvidesContext]
-        public static ProductSupplierEntityProvider ProductSupplierProvider { get; }
-            = new ProductSupplierEntityProvider();
+        ///// <summary>
+        ///// Provides database operations for <see cref="ProductSupplier"/> entities
+        ///// </summary>
+        //[ProvidesContext]
+        //public static ProductSupplierEntityProvider ProductSupplierProvider { get; }
+        //    = new ProductSupplierEntityProvider();
+
+        ///// <summary>
+        ///// Provides database operations for <see cref="Supplier"/> entities
+        ///// </summary>
+        //[ProvidesContext]
+        //public static SupplierEntityProvider SupplierProvider { get; }
+        //    = new SupplierEntityProvider();
+
+
+        #region Internal Helpers
 
         /// <summary>
-        /// Provides database operations for <see cref="Supplier"/> entities
+        /// Gets the last assigned key on a table with an auto-incrementing primary key.
+        /// May return incorrect results if other sessions are modifying data. 
+        /// Throws an exception if the table doesn't exist.
         /// </summary>
-        [ProvidesContext]
-        public static SupplierEntityProvider SupplierProvider { get; }
-            = new SupplierEntityProvider();
+        /// <param name="conn">An open <see cref="SqlConnection"/> object</param>
+        /// <param name="tablename">Name of a database table</param>
+        /// <returns>The last assigned key on a table with an auto-incrementing primary key</returns>
+        [Pure]
+        [ContractAnnotation("conn:null=>halt; tablename:null=>halt")]
+        internal static int GetLastAssignedId([NotNull] SqlConnection conn, [NotNull] string tablename)
+        {
+            if (conn == null) throw new ArgumentNullException(nameof(conn));
+            if (tablename == null) throw new ArgumentNullException(nameof(tablename));
+            return Convert.ToInt32(new SqlCommand($"SELECT IDENT_CURRENT('{tablename}')", conn).ExecuteScalar());
+        }
+
+        /// <summary>
+        /// Gets the amount by which the primary key is incremented on a table with an auto-incrementing primary key.
+        /// May return incorrect results if other sessions are modifying data. 
+        /// Throws an exception if the table doesn't exist.
+        /// </summary>
+        /// <param name="conn">An open <see cref="SqlConnection"/> object</param>
+        /// <param name="tablename">Name of a database table</param>
+        /// <returns>The amount by which the primary key is incremented</returns>
+        [Pure]
+        [ContractAnnotation("conn:null=>halt; tablename:null=>halt")]
+        internal static int GetIdIncrementer([NotNull] SqlConnection conn, [NotNull] string tablename)
+        {
+            if (conn == null) throw new ArgumentNullException(nameof(conn));
+            if (tablename == null) throw new ArgumentNullException(nameof(tablename));
+            return Convert.ToInt32(new SqlCommand($"SELECT IDENT_INCR('{tablename}')", conn).ExecuteScalar());
+        }
+
+        /// <summary>
+        /// Gets the next key assignable on a table with an auto-incrementing primary key.
+        /// May return incorrect results if other sessions are modifying data. 
+        /// Throws an exception if the table doesn't exist.
+        /// Equal to <see cref="GetNextAssignedId"/> + <see cref="GetIdIncrementer"/>.
+        /// </summary>
+        /// <param name="conn">An open <see cref="SqlConnection"/> object</param>
+        /// <param name="tablename">Name of a database table</param>
+        /// <returns>The next assignable key on a table with an auto-incrementing primary key</returns>
+        [Pure]
+        [ContractAnnotation("conn:null=>halt; tablename:null=>halt")]
+        internal static int GetNextAssignedId([NotNull] SqlConnection conn, [NotNull] string tablename)
+        {
+            if (conn == null) throw new ArgumentNullException(nameof(conn));
+            if (tablename == null) throw new ArgumentNullException(nameof(tablename));
+            return Convert.ToInt32(new SqlCommand($"SELECT IDENT_CURRENT('{tablename}')+IDENT_INCR('{tablename}')", conn).ExecuteScalar());
+        }
+
+        #endregion
+
     }
 }
