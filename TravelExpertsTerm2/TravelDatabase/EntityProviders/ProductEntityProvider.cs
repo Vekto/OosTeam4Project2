@@ -3,20 +3,17 @@
 // Date: 2016-01
 
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using JetBrains.Annotations;
 
 namespace TravelDatabase.EntityProviders
 {
+    [Devin]
     [PublicAPI]
     public sealed class ProductEntityProvider : EntityProviderBase<Product>
     {
-        protected override string TableName => "Products";
-
-        protected override string GetByIdSql(int id)
-            => $"SELECT * FROM Products WHERE ProductId={id}";
-
-        protected override Product ReadSingleEntity(SqlDataReader reader)
+        private static Product ReadSingleEntity(SqlDataReader reader)
         {
             return new Product
             {
@@ -25,13 +22,48 @@ namespace TravelDatabase.EntityProviders
             };
         }
 
-        protected override string DeleteEntitySql(Product entity)
-            => $"DELETE FROM Products WHERE ProductId={entity.ProductId}";
+        #region EntityProviderBase
 
-        protected override string AddEntitySql(Product entity)
-            => $"INSERT INTO Products VALUES('{entity.Name}')";
+        protected override string TableName => "Products";
 
-        protected override string UpdateEntitySql(Product entity)
-            => $"UPDATE Products SET ProdName='{entity.Name}' WHERE ProductId={entity.ProductId}";
+        protected override IEnumerable<Product> GetAll(SqlConnection conn)
+        {
+            using (var reader = new SqlCommand($"SELECT * FROM {TableName}", conn).ExecuteReader())
+            {
+                var products = new List<Product>();
+                while (reader.Read()) products.Add(ReadSingleEntity(reader));
+                return products;
+            }
+        }
+
+        protected override Product Get(SqlConnection conn, int id)
+        {
+            if (id < 0) throw new ArgumentOutOfRangeException(nameof(id), "Cannot be less than zero");
+
+            using (var reader = new SqlCommand($"SELECT * FROM {TableName} WHERE ProductId={id}", conn).ExecuteReader())
+            {
+                return !reader.Read() ? null : ReadSingleEntity(reader);
+            }
+        }
+
+        protected override bool Delete(SqlConnection conn, Product entity) 
+            => DeleteById(entity.ProductId, "ProductId", conn);
+
+        protected override int Add(SqlConnection conn, Product entity)
+        {
+            var rowsAffected = new SqlCommand($"INSERT INTO Products VALUES('{entity.Name}')", conn).ExecuteNonQuery();
+            if (rowsAffected < 1) return -1; // return -1 if the update failed
+            return Database.GetLastAssignedId(conn, TableName); // return the id of the item just added
+        }
+
+        protected override bool Update(SqlConnection conn, Product entity)
+        {
+            return new SqlCommand(
+                $"UPDATE Products SET ProdName='{entity.Name}' WHERE ProductId={entity.ProductId}", conn)
+                .ExecuteNonQuery() > 0;
+        }
+
+        #endregion
+
     }
 }
