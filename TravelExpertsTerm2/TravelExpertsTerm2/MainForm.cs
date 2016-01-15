@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TravelDatabase;
+using TravelDatabase.EntityData;
 
 namespace TravelExpertsTerm2
 {
@@ -15,6 +17,11 @@ namespace TravelExpertsTerm2
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(PackageDB.GetPackage(2));
         }
     }
 }
