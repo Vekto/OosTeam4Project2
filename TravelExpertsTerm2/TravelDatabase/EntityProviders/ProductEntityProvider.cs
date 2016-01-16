@@ -13,13 +13,12 @@ namespace TravelDatabase.EntityProviders
     [PublicAPI]
     public sealed class ProductEntityProvider : EntityProviderBase<Product>
     {
-        private static Product ReadSingleEntity(SqlDataReader reader)
+
+        /// <summary>
+        /// Access instance through <see cref="Database.ProductProvider"/>
+        /// </summary>
+        internal ProductEntityProvider()
         {
-            return new Product
-            {
-                ProductId = reader.GetInt32(0),
-                Name = reader.GetString(1)
-            };
         }
 
         #region EntityProviderBase
@@ -31,7 +30,7 @@ namespace TravelDatabase.EntityProviders
             using (var reader = new SqlCommand($"SELECT * FROM {TableName}", conn).ExecuteReader())
             {
                 var products = new List<Product>();
-                while (reader.Read()) products.Add(ReadSingleEntity(reader));
+                while (reader.Read()) products.Add(ParseProduct(reader));
                 return products;
             }
         }
@@ -42,7 +41,7 @@ namespace TravelDatabase.EntityProviders
 
             using (var reader = new SqlCommand($"SELECT * FROM {TableName} WHERE ProductId={id}", conn).ExecuteReader())
             {
-                return !reader.Read() ? null : ReadSingleEntity(reader);
+                return !reader.Read() ? null : ParseProduct(reader);
             }
         }
 
@@ -61,6 +60,19 @@ namespace TravelDatabase.EntityProviders
             return new SqlCommand(
                 $"UPDATE Products SET ProdName='{entity.Name}' WHERE ProductId={entity.ProductId}", conn)
                 .ExecuteNonQuery() > 0;
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private static Product ParseProduct(SqlDataReader reader)
+        {
+            return new Product
+            {
+                ProductId = reader.GetInt32(0),
+                Name = reader.GetString(1)
+            };
         }
 
         #endregion

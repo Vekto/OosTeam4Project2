@@ -9,6 +9,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelDatabase", "TravelDat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{C127F6EC-7AE5-43B5-B462-9138736077A4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0AFF6B32-76FE-4FD4-88C8-39291DB01BF0}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+		SharedAssemblyInfo.cs = SharedAssemblyInfo.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database Scripts", "Database Scripts", "{E661BFF9-56A2-4D6A-ABB0-B494B6FFE146}"
+	ProjectSection(SolutionItems) = preProject
+		..\Database Scripts\TEST TravelExperts_Test-mssql.sql = ..\Database Scripts\TEST TravelExperts_Test-mssql.sql
+		..\Database Scripts\TravelExperts-mssql.sql = ..\Database Scripts\TravelExperts-mssql.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +42,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E661BFF9-56A2-4D6A-ABB0-B494B6FFE146} = {0AFF6B32-76FE-4FD4-88C8-39291DB01BF0}
 	EndGlobalSection
 EndGlobal
