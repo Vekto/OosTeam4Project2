@@ -64,9 +64,10 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="DatabaseTestingBase.cs" />
-    <Compile Include="PackageEntityProviderTests.cs" />
-    <Compile Include="ProductEntityProviderTests.cs" />
+    <Compile Include="EntityProviders\DatabaseTestingBase.cs" />
+    <Compile Include="EntityProviders\DatabaseTests.cs" />
+    <Compile Include="EntityProviders\PackageEntityProviderTests.cs" />
+    <Compile Include="EntityProviders\ProductEntityProviderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

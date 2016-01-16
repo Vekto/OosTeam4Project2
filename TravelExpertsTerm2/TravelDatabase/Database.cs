@@ -18,7 +18,8 @@ namespace TravelDatabase
     [PublicAPI]
     public static class Database
     {
-        [Devin] public const string ConnectionStringFilePath = @"ConnectionString.txt";
+        [Devin]
+        public const string ConnectionStringFilePath = @"ConnectionString.txt";
 
         /// <summary>
         ///     Connection string used by all the database functions. Defaults to the first line

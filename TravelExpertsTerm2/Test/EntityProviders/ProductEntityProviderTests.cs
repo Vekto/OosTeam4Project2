@@ -12,7 +12,7 @@ using TravelDatabase;
 using Xunit;
 
 // ReSharper disable MemberCanBePrivate.Global
-namespace Test
+namespace Test.EntityProviders
 {
     [Devin]
     [NoReorder]
@@ -56,7 +56,7 @@ namespace Test
         {
             var product = new Product
             {
-                ProductId = LastAddedIdentity() + 1, // next ID
+                ProductId = LastAddedIdentity("Products") + 1, // next ID
                 Name = "TEST_OBJECT"
             };
 
@@ -123,24 +123,6 @@ namespace Test
                 new Product {ProductId = 9, Name = "Travel Insurance"},
                 new Product {ProductId = 10, Name = "Yacht/Boat Charters"}
             };
-
-        #endregion
-
-        #region Private Helpers
-
-        private int LastAddedIdentity()
-        {
-            if (Database.ConnectionString == null)
-                throw new InvalidOperationException($"{nameof(Database.ConnectionString)} is null");
-            using (var conn = new SqlConnection(Database.ConnectionString))
-            {
-                conn.Open();
-                using (var command = new SqlCommand("SELECT IDENT_CURRENT('Products')", conn))
-                {
-                    return Convert.ToInt32(command.ExecuteScalar());
-                }
-            }
-        }
 
         #endregion
 
