@@ -16,8 +16,9 @@ namespace Test
 {
     [Devin]
     [NoReorder]
-    public class ProductEntityProviderTests : IEqualityComparer<Product>
+    public class ProductEntityProviderTests : DatabaseTestingBase, IEqualityComparer<Product>
     {
+
         #region Tests
 
         [Fact]
@@ -108,7 +109,7 @@ namespace Test
             => _AllProducts.Select(product => new object[] { product });
 
         // This table is used to test EntityProviderBase because it's small and never changes
-        private static readonly List<Product> _AllProducts
+        private static readonly List<Product> _AllProducts 
             = new List<Product>
             {
                 new Product {ProductId = 1, Name = "Air"},
@@ -145,12 +146,12 @@ namespace Test
 
         #region IEqualityComparer<Product>
 
-        public bool Equals(Product x, Product y)
+        bool IEqualityComparer<Product>.Equals(Product x, Product y)
         {
             return x.ProductId == y.ProductId && x.Name == y.Name;
         }
 
-        public int GetHashCode(Product obj)
+        int IEqualityComparer<Product>.GetHashCode(Product obj)
         {
             return obj.Name.GetHashCode() ^ obj.ProductId.GetHashCode();
         }

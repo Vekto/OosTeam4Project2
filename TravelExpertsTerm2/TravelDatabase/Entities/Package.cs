@@ -4,10 +4,12 @@
 
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace TravelDatabase
 {
     [Devin]
+    [PublicAPI]
     public class Package
     {
         public int PackageId { get; set; }
@@ -18,7 +20,7 @@ namespace TravelDatabase
         public decimal BasePrice { get; set; }
         public decimal AgencyCommission { get; set; }
 
-        public List<Product> Products { get; set; }
-        public List<Supplier> Suppliers { get; set; }
+        [NotNull]
+        public List<ProductSupplier> ProductSuppliers { get; } = new List<ProductSupplier>();
     }
 }

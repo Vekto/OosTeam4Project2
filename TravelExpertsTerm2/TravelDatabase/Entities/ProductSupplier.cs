@@ -10,9 +10,8 @@ namespace TravelDatabase
     [Devin]
     public class ProductSupplier
     {
-        public Package Package { get; set; }
+        public int ProductSupplierId { get; set; }
         public Product Product { get; set; }
         public Supplier Supplier { get; set; }
-        public int ProductSupplierId { get; set; }
     }
 }

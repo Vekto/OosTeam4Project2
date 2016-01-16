@@ -31,12 +31,12 @@ namespace TravelDatabase
                 ? File.ReadLines(ConnectionStringFilePath).FirstOrDefault()
                 : null;
 
-        ///// <summary>
-        ///// Provides database operations for <see cref="Package"/> entities
-        ///// </summary>
-        //[ProvidesContext]
-        //public static PackageEntityProvider PackageProvider { get; } 
-        //    = new PackageEntityProvider();
+        /// <summary>
+        /// Provides database operations for <see cref="Package"/> entities
+        /// </summary>
+        [ProvidesContext]
+        public static PackageEntityProvider PackageProvider { get; }
+            = new PackageEntityProvider();
 
         /// <summary>
         /// Provides database operations for <see cref="Product"/> entities
