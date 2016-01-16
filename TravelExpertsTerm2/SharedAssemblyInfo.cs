@@ -7,7 +7,6 @@ using System.Resources;
 
 /*  Shared General Information  */
 #if DEBUG
-
 [assembly: AssemblyConfiguration("Debug")]
 #else
 [assembly: AssemblyConfiguration("Production")]

@@ -38,8 +38,6 @@ namespace TravelDatabase.EntityProviders
         [NotNull]
         protected abstract string TableName { get; }
 
-
-
         // Internal ctor to block inheretence outside of this assembly
         internal EntityProviderBase()
         {
@@ -97,30 +95,10 @@ namespace TravelDatabase.EntityProviders
         [NotNull]
         [ItemNotNull]
         public IEnumerable<TEntity> GetEntities() => DatabaseOperation(GetAll);
-        //{
-        //    if (Database.ConnectionString == null)
-        //        throw new InvalidOperationException(NullConnectionStringExceptionMessage);
-
-        //    using (var conn = new SqlConnection(Database.ConnectionString))
-        //    {
-        //        conn.Open();
-        //        return GetAll(conn);
-        //    }
-        //}
 
         [Pure]
         [CanBeNull]
         public TEntity GetEntityById(int id) => DatabaseOperation(Get, id);
-        //{
-        //    if (Database.ConnectionString == null)
-        //        throw new InvalidOperationException(NullConnectionStringExceptionMessage);
-
-        //    using (var conn = new SqlConnection(Database.ConnectionString))
-        //    {
-        //        conn.Open();
-        //        return GetEntity(conn, id);
-        //    }
-        //}
 
         [ContractAnnotation("entity:null=>halt")]
         public bool DeleteEntity([NotNull] TEntity entity)
@@ -128,16 +106,6 @@ namespace TravelDatabase.EntityProviders
             if (entity == null) throw new ArgumentNullException(nameof(entity));
             return DatabaseOperation(Delete, entity);
         }
-        //{
-        //    if (Database.ConnectionString == null)
-        //        throw new InvalidOperationException(NullConnectionStringExceptionMessage);
-
-        //    using (var conn = new SqlConnection(Database.ConnectionString))
-        //    {
-        //        conn.Open();
-        //        return Delete(conn, entity);
-        //    }
-        //}
 
         [ContractAnnotation("entity:null=>halt")]
         public int AddEntity([NotNull] TEntity entity)
@@ -145,16 +113,6 @@ namespace TravelDatabase.EntityProviders
             if (entity == null) throw new ArgumentNullException(nameof(entity));
             return DatabaseOperation(Add, entity);
         }
-        //{
-        //    if (Database.ConnectionString == null)
-        //        throw new InvalidOperationException(NullConnectionStringExceptionMessage);
-
-        //    using (var conn = new SqlConnection(Database.ConnectionString))
-        //    {
-        //        conn.Open();
-        //        return Add(conn, entity);
-        //    }
-        //}
 
         [ContractAnnotation("entity:null=>halt")]
         public bool UpdateEntity([NotNull] TEntity entity)
@@ -162,16 +120,6 @@ namespace TravelDatabase.EntityProviders
             if (entity == null) throw new ArgumentNullException(nameof(entity));
             return DatabaseOperation(Update, entity);
         }
-        //{
-        //    if (Database.ConnectionString == null)
-        //        throw new InvalidOperationException(NullConnectionStringExceptionMessage);
-
-        //    using (var conn = new SqlConnection(Database.ConnectionString))
-        //    {
-        //        conn.Open();
-        //        return Update(conn, entity);
-        //    }
-        //}
 
         #endregion
 
