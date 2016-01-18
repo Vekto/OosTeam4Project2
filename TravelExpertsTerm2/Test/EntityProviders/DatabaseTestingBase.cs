@@ -9,7 +9,11 @@ namespace Test.EntityProviders
 {
     public abstract class DatabaseTestingBase
     {
-        
+        /// <summary>
+        /// Used to lock the test database for concurrent test execution
+        /// </summary>
+        protected static readonly object TestDatabaseLocker = new object();
+
         #region Test Database
 
         private const string ConnectionStringFilePath = @"TestDatabaseConnectionString.txt";

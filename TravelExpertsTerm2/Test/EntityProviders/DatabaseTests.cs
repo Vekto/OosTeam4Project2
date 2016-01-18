@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Test.EntityProviders
 {
-    public class DatabaseTests
+    public class DatabaseTests : DatabaseTestingBase
     {
         // TODO: make "ConnectionStringFilePath" a settable public property, test whether non-existent file returns null
 

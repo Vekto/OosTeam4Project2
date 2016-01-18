@@ -19,52 +19,70 @@ namespace Test.EntityProviders
         [Fact]
         public void GetAll()
         {
-            var actual = Database.PackageProvider.GetEntities();
-            Assert.Equal(AllPackagesNoChildrenList, actual, this);
+            lock (TestDatabaseLocker)
+            {
+                var actual = Database.PackageProvider.GetEntities();
+                Assert.Equal(AllPackagesNoChildrenList, actual, this);
+            }
         }
 
         [Fact]
         public void GetAll_Cascade()
         {
-            var actual = Database.PackageProvider.Cascade.GetEntities();
-            Assert.Equal(AllPackagesList, actual, this);
+            lock (TestDatabaseLocker)
+            {
+                var actual = Database.PackageProvider.Cascade.GetEntities();
+                Assert.Equal(AllPackagesList, actual, this);
+            }
         }
 
         [Theory]
         [MemberData(nameof(AllPackagesNoChildrenParams))]
         public void GetById(Package expected)
         {
-            var actual = Database.PackageProvider.GetEntityById(expected.PackageId);
-            Assert.Equal(expected, actual, this);
+            lock (TestDatabaseLocker)
+            {
+                var actual = Database.PackageProvider.GetEntityById(expected.PackageId);
+                Assert.Equal(expected, actual, this);
+            }
         }
 
         [Theory]
         [MemberData(nameof(AllPackagesParams))]
         public void GetById_Cascade(Package expected)
         {
-            var actual = Database.PackageProvider.Cascade.GetEntityById(expected.PackageId);
-            Assert.Equal(expected, actual, this);
+            lock (TestDatabaseLocker)
+            {
+                var actual = Database.PackageProvider.Cascade.GetEntityById(expected.PackageId);
+                Assert.Equal(expected, actual, this);
+            }
         }
 
         [Theory]
         [MemberData(nameof(AllPackagesNoChildrenParams))]
         public void GetById_CascadeDoesntPersistToNextCall(Package expected)
         {
-            // ReSharper disable once UnusedVariable
-            var cas = Database.PackageProvider.Cascade;
-            var actual = Database.PackageProvider.GetEntityById(expected.PackageId);
-            Assert.Equal(expected, actual, this);
+            lock (TestDatabaseLocker)
+            {
+                // ReSharper disable once UnusedVariable
+                var cas = Database.PackageProvider.Cascade;
+                var actual = Database.PackageProvider.GetEntityById(expected.PackageId);
+                Assert.Equal(expected, actual, this);
+            }
         }
 
         [Theory]
         [MemberData(nameof(AllPackagesParams))]
         public void GetById_MultipleCascadeCallsDoesntAffectResult(Package expected)
         {
-            var actual = Database.PackageProvider
+            lock (TestDatabaseLocker)
+            {
+                var actual = Database.PackageProvider
                 .Cascade.Cascade.Cascade
                 .GetEntityById(expected.PackageId);
 
-            Assert.Equal(expected, actual, this);
+                Assert.Equal(expected, actual, this);
+            }
         }
 
         [Theory]
@@ -75,7 +93,10 @@ namespace Test.EntityProviders
         [InlineData(1111)]
         public void GetEntityById_NullForNonExistentId(int id)
         {
-            Assert.Null(Database.PackageProvider.GetEntityById(id));
+            lock (TestDatabaseLocker)
+            {
+                Assert.Null(Database.PackageProvider.GetEntityById(id));
+            }
         }
 
         [Theory]
@@ -86,32 +107,41 @@ namespace Test.EntityProviders
         [InlineData(1111)]
         public void GetEntityById_NullForNonExistentId_Cascade(int id)
         {
-            Assert.Null(Database.PackageProvider.Cascade.GetEntityById(id));
+            lock (TestDatabaseLocker)
+            {
+                Assert.Null(Database.PackageProvider.Cascade.GetEntityById(id));
+            }
         }
 
         [Theory]
         [MemberData(nameof(FakePackagesWithExistingProductSuppliersParams))]
         public void AddReadDeletePackage(Package newEntity)
         {
-            Assert.True(newEntity.PackageId < 0); // ID starts invalid
-            var newId = NextAddedIdentity("Packages");
+            lock (TestDatabaseLocker)
+            {
+                Assert.True(newEntity.PackageId < 0); // ID starts invalid
+                var newId = NextAddedIdentity("Packages");
 
-            Assert.Equal(newId, Database.PackageProvider.AddEntity(newEntity)); // Add returns the new ID
+                Assert.Equal(newId, Database.PackageProvider.AddEntity(newEntity)); // Add returns the new ID
 
-            newEntity.PackageId = newId; // Set ID to make it equal to the new one in the database
-            newEntity.ProductSuppliers.Clear(); // product suppliers should not have been added
+                newEntity.PackageId = newId; // Set ID to make it equal to the new one in the database
+                newEntity.ProductSuppliers.Clear(); // product suppliers should not have been added
 
-            Assert.Equal(newEntity, Database.PackageProvider.GetEntityById(newId), this); // Read new entity from database
-            Assert.True(Database.PackageProvider.DeleteEntity(newEntity)); // Delete new entity from database
-            Assert.Null(Database.PackageProvider.GetEntityById(newId)); // Verify entity is deleted
+                Assert.Equal(newEntity, Database.PackageProvider.GetEntityById(newId), this); // Read new entity from database
+                Assert.True(Database.PackageProvider.DeleteEntity(newEntity)); // Delete new entity from database
+                Assert.Null(Database.PackageProvider.GetEntityById(newId)); // Verify entity is deleted
+            }
         }
 
         [Theory]
         [MemberData(nameof(AllPackagesParams))]
         public void DeleteEntity_CascadeThrowsWithoutAffectingTableRows(Package package)
         {
-            Assert.Throws<InvalidOperationException>(() => Database.PackageProvider.Cascade.DeleteEntity(package));
-            Assert.Equal(package, Database.PackageProvider.Cascade.GetEntityById(package.PackageId), this);
+            lock (TestDatabaseLocker)
+            {
+                Assert.Throws<InvalidOperationException>(() => Database.PackageProvider.Cascade.DeleteEntity(package));
+                Assert.Equal(package, Database.PackageProvider.Cascade.GetEntityById(package.PackageId), this);
+            }
         }
 
         //[Theory]
