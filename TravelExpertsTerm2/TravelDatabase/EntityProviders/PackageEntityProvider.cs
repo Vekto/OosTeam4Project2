@@ -1,4 +1,4 @@
-﻿// Author: Team 5 (See Annotations)
+﻿// Author: Team 4 (See Annotations)
 // Project: TravelExpertsTerm2
 // Date: 2016-01
 
@@ -9,6 +9,7 @@ using JetBrains.Annotations;
 
 namespace TravelDatabase.EntityProviders
 {
+    [Devin]
     [PublicAPI]
     public sealed class PackageEntityProvider : EntityProviderBase<Package>
     {
@@ -80,14 +81,13 @@ namespace TravelDatabase.EntityProviders
 
             var sql = $"INSERT INTO {TableName} VALUES ('{entity.Name}','{entity.StartDate}','{entity.EndDate}','{entity.Description}',{entity.BasePrice},{entity.AgencyCommission})";
             var rowsAffected = new SqlCommand(sql, conn).ExecuteNonQuery();
-            if (rowsAffected < 1) return -1; // return -1 if the command failed
+            if (rowsAffected < 1) return int.MinValue; // return negative if the command failed
 
             if (_CascadeEnabled)
             {
                 // TODO: check which ProductSuppliers exist, add entries into Packages_Products_Suppliers
                 // TODO: Update existing ProductSuppliers with values & add Product/Supplier as necessary.
                 // TODO: for the new ProductSuppliers, add them + Product/Supplier as necessary
-                throw new NotImplementedException();
             }
 
             return Database.GetLastAssignedId(conn, TableName); // return the id of the item just added
@@ -110,9 +110,17 @@ namespace TravelDatabase.EntityProviders
 
         protected override bool Update(SqlConnection conn, Package entity)
         {
-            throw new NotImplementedException();
-            // Remove non-existent references to ProductSuppliers in Packages_Products_Suppliers
-            // Add/Update existing references to ProductSuppliers in Packages_Products_Suppliers
+            if (_CascadeEnabled) throw new NotImplementedException();
+
+            if (_CascadeEnabled)
+            {
+                // TODO: Remove non-existent references to ProductSuppliers in Packages_Products_Suppliers
+                // TODO: Add/Update existing references to ProductSuppliers in Packages_Products_Suppliers
+            }
+
+            return new SqlCommand(
+                $"UPDATE {TableName} SET PkgName='{entity.Name}',PkgStartDate='{entity.StartDate}',PkgEndDate='{entity.EndDate}',PkgDesc='{entity.Description}',PkgBasePrice={entity.BasePrice},PkgAgencyCommission={entity.AgencyCommission} WHERE PackageId={entity.PackageId}",
+                conn).ExecuteNonQuery() > 0;
         }
 
         #endregion

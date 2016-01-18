@@ -1,10 +1,15 @@
-﻿using JetBrains.Annotations;
+﻿// Author: Team 4 (See Annotations)
+// Project: TravelExpertsTerm2
+// Date: 2016-01
+
+using JetBrains.Annotations;
 using TravelDatabase;
 using TravelDatabase.EntityProviders;
 using Xunit;
 
 namespace Test.EntityProviders
 {
+    [Devin]
     public class DatabaseTests : DatabaseTestingBase
     {
         // TODO: make "ConnectionStringFilePath" a settable public property, test whether non-existent file returns null

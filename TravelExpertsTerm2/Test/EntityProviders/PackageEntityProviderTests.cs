@@ -11,6 +11,7 @@ using Xunit;
 
 namespace Test.EntityProviders
 {
+    [Devin]
     public class PackageEntityProviderTests : DatabaseTestingBase, IEqualityComparer<Package>
     {
 
@@ -432,7 +433,6 @@ namespace Test.EntityProviders
         int IEqualityComparer<Package>.GetHashCode(Package obj)
         {
             // Prices are not used because floating-point inequality doesn't imply object inequality
-
             return obj.PackageId.GetHashCode() * 17
                    + obj.Name.GetHashCode() * 17
                    + obj.StartDate.GetHashCode() * 17
