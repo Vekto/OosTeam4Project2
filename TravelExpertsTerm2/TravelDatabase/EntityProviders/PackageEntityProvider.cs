@@ -44,10 +44,6 @@ namespace TravelDatabase.EntityProviders
 
         protected override Package Get(SqlConnection conn, int id)
         {
-            // TODO: Lock FluentApi
-            //var cascade = _CascadeEnabled;
-            //_CascadeEnabled = false; // reset immediately so the setting doesn't persist
-
             Package package;
             using (var reader = new SqlCommand($"SELECT * FROM {TableName} WHERE PackageId={id}", conn).ExecuteReader())
             {
@@ -61,9 +57,6 @@ namespace TravelDatabase.EntityProviders
 
         protected override IEnumerable<Package> GetAll(SqlConnection conn)
         {
-            //var cascade = _CascadeEnabled;
-            //_CascadeEnabled = false; // reset immediately so the setting doesn't persist
-
             var packages = new List<Package>();
 
             using (var reader = new SqlCommand($"SELECT * FROM {TableName}", conn).ExecuteReader())
@@ -83,8 +76,8 @@ namespace TravelDatabase.EntityProviders
 
         protected override int Add(SqlConnection conn, Package entity)
         {
+            var sql = $"INSERT INTO {TableName} VALUES ('{entity.Name}'),'{entity.StartDate}','{entity.EndDate}','{entity.Description}',{entity.BasePrice},{entity.AgencyCommission})";
             throw new NotImplementedException();
-            //var sql = $"INSERT INTO {TableName}";
         }
 
         protected override bool Delete(SqlConnection conn, Package entity)
