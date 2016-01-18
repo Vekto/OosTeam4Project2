@@ -48,7 +48,6 @@
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="AuthorAttribute.cs" />
-    <Compile Include="Entities\CustomerAccount.cs" />
     <Compile Include="Entities\Package.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ProductSupplier.cs" />

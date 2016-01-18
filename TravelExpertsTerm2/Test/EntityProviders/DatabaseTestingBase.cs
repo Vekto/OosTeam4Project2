@@ -9,7 +9,7 @@ namespace Test.EntityProviders
 {
     public abstract class DatabaseTestingBase
     {
-
+        
         #region Test Database
 
         private const string ConnectionStringFilePath = @"TestDatabaseConnectionString.txt";
