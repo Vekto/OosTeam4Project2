@@ -24,20 +24,29 @@ namespace Test.EntityProviders
         [Fact]
         public void GetEntities()
         {
-            Assert.Equal(_AllProducts, Database.ProductProvider.GetEntities(), this);
+            lock (TestDatabaseLocker)
+            {
+                Assert.Equal(_AllProducts, Database.ProductProvider.GetEntities(), this);
+            }
         }
 
         [Fact]
         public void GetEntities_ToList()
         {
-            Assert.Equal(_AllProducts, Database.ProductProvider.GetEntities().ToList(), this);
+            lock (TestDatabaseLocker)
+            {
+                Assert.Equal(_AllProducts, Database.ProductProvider.GetEntities().ToList(), this);
+            }
         }
 
         [Theory]
         [MemberData(nameof(AllProductsTestData))]
         public void GetEntityById(Product product)
         {
-            Assert.Equal(product, Database.ProductProvider.GetEntityById(product.ProductId), this);
+            lock (TestDatabaseLocker)
+            {
+                Assert.Equal(product, Database.ProductProvider.GetEntityById(product.ProductId), this);
+            }
         }
 
         [Theory]
@@ -48,57 +57,72 @@ namespace Test.EntityProviders
         [InlineData(1111)]
         public void GetEntityById_NullForNonExistentId(int id)
         {
-            Assert.Null(Database.ProductProvider.GetEntityById(id));
+            lock (TestDatabaseLocker)
+            {
+                Assert.Null(Database.ProductProvider.GetEntityById(id));
+            }
         }
 
         [Fact]
         public void AddThenDeleteEntity()
         {
-            var product = new Product
+            lock (TestDatabaseLocker)
             {
-                ProductId = LastAddedIdentity("Products") + 1, // next ID
-                Name = "TEST_OBJECT"
-            };
+                var product = new Product
+                {
+                    ProductId = LastAddedIdentity("Products") + 1, // next ID
+                    Name = "TEST_OBJECT"
+                };
 
-            Assert.Null(Database.ProductProvider.GetEntityById(product.ProductId)); // check doesn't exist
-            Assert.Equal(product.ProductId, Database.ProductProvider.AddEntity(product)); // add returns new ID
-            Assert.Equal(product, Database.ProductProvider.GetEntityById(product.ProductId), this); // check does exist
-            Assert.True(Database.ProductProvider.DeleteEntity(product)); // delete returns success
-            Assert.Null(Database.ProductProvider.GetEntityById(product.ProductId)); // check doesn't exist
+                Assert.Null(Database.ProductProvider.GetEntityById(product.ProductId)); // check doesn't exist
+                Assert.Equal(product.ProductId, Database.ProductProvider.AddEntity(product)); // add returns new ID
+                Assert.Equal(product, Database.ProductProvider.GetEntityById(product.ProductId), this); // check does exist
+                Assert.True(Database.ProductProvider.DeleteEntity(product)); // delete returns success
+                Assert.Null(Database.ProductProvider.GetEntityById(product.ProductId)); // check doesn't exist
+            }
         }
 
         [Theory]
         [MemberData(nameof(AllProductsTestData))]
         public void UpdateEntity(Product product)
         {
-            var modified = new Product
+            lock (TestDatabaseLocker)
             {
-                ProductId = product.ProductId,
-                Name = "FISH"
-            };
+                var modified = new Product
+                {
+                    ProductId = product.ProductId,
+                    Name = "FISH"
+                };
 
-            // Set to FISH
-            Assert.True(Database.ProductProvider.UpdateEntity(modified));
-            Assert.Equal(modified, Database.ProductProvider.GetEntityById(modified.ProductId), this);
+                // Set to FISH
+                Assert.True(Database.ProductProvider.UpdateEntity(modified));
+                Assert.Equal(modified, Database.ProductProvider.GetEntityById(modified.ProductId), this);
 
-            // Set to original value
-            Assert.True(Database.ProductProvider.UpdateEntity(product));
-            Assert.Equal(product, Database.ProductProvider.GetEntityById(product.ProductId), this);
+                // Set to original value
+                Assert.True(Database.ProductProvider.UpdateEntity(product));
+                Assert.Equal(product, Database.ProductProvider.GetEntityById(product.ProductId), this);
+            }
         }
 
         [Fact]
         [SuppressMessage("ReSharper", "AssignNullToNotNullAttribute")]
         public void ArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => Database.ProductProvider.AddEntity(null));
-            Assert.Throws<ArgumentNullException>(() => Database.ProductProvider.DeleteEntity(null));
-            Assert.Throws<ArgumentNullException>(() => Database.ProductProvider.UpdateEntity(null));
+            lock (TestDatabaseLocker)
+            {
+                Assert.Throws<ArgumentNullException>(() => Database.ProductProvider.AddEntity(null));
+                Assert.Throws<ArgumentNullException>(() => Database.ProductProvider.DeleteEntity(null));
+                Assert.Throws<ArgumentNullException>(() => Database.ProductProvider.UpdateEntity(null));
+            }
         }
 
         [Fact]
         public void ArgumentRangeException() // Product table only
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => Database.ProductProvider.GetEntityById(-1));
+            lock (TestDatabaseLocker)
+            {
+                Assert.Throws<ArgumentOutOfRangeException>(() => Database.ProductProvider.GetEntityById(-1));
+            }
         }
 
         #endregion
