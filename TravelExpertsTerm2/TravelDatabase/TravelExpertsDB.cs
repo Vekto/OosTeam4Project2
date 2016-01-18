@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Dynamic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -27,5 +29,11 @@ namespace TravelDatabase
             File.Exists(ConnectionStringFilePath)
             ? File.ReadLines(ConnectionStringFilePath).FirstOrDefault()
             : null;
+
+        public static SqlConnection GetConnection()
+        {
+            SqlConnection connection = new SqlConnection(ConnectionString); //creates a new connection and returns it
+            return connection;
+        }
     }
 }
