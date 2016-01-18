@@ -37,14 +37,14 @@ namespace TravelDatabase.EntityData
         #endregion
 
         #region Methods
-        //GetSuppliers()
         public static List<Supplier> GetSuppliers()
         {
-            List<Supplier> suppliersList = new List<Supplier>; //create emtpy list
-            SqlConnection connection = TravelExpertsDB.GetConnection(); //create database connection
-
+            List<Supplier> suppliersList = new List<Supplier>(); //create emtpy list
+            string connectionString = "Data Source=ELF5OOSD212989\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
+            SqlConnection connection = new SqlConnection(connectionString);            
+            string selectStatement = "SELECT * FROM Suppliers ORDER BY SupplierID";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-
+            
             try
             {
                 connection.Open();
@@ -66,18 +66,87 @@ namespace TravelDatabase.EntityData
                 connection.Close();
             }
             return suppliersList;
-        } //END OF GetSuppliers()
+        }
 
-
-
-        static string selectStatement = "SELECT * FROM Suppliers";
-        SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-
-        try{
-
-
+        public static bool DeleteSupplier(int supplierID)
+       {            
+            string connectionString = "Data Source=ELF5OOSD212989\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
+            SqlConnection connection = new SqlConnection(connectionString);
         
+            string deleteStatement =
+                "DELETE FROM Suppliers " +
+                "WHERE SupplierID = @SupplierID";
+            SqlCommand deleteCommand = new SqlCommand(deleteStatement, connection);
+            deleteCommand.Parameters.AddWithValue("@SupplierID", supplierID);
+            try
+            {
+                connection.Open();
+                int count = deleteCommand.ExecuteNonQuery();
+                if (count > 0)
+                {
+                    //form1.updateListView(getSuppliers());
+                    return true;
+                }
+                else
+                {
+                    
+                    return false;
+                }
             }
-    }//END OF SUPPLIER DB
-}//END OF NAMESPACE
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }     
+        }
 
+        public static bool AddSupplier (Supplier supplier)
+        {
+            //in form, validate before doing this
+            //Supplier supplier = new Supplier(); -->do on form --> passing the text objects       
+            string connectionString = "Data Source=ELF5OOSD212989\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
+            SqlConnection connection = new SqlConnection(connectionString);
+            try
+                {
+                    //create insert statement and parameters
+                    string insertStatement =
+                        "INSERT INTO Suppliers " +
+                        "(SupplierID, SupName) " +
+                        "Values(@SupplierID, @SupName)";
+                    SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+                    insertCommand.Parameters.AddWithValue("@SupplierID", supplier.SupplierID);
+                    insertCommand.Parameters.AddWithValue("@SupName", supplier.SupName);
+                    connection.Open();
+                    
+                    int nr = insertCommand.ExecuteNonQuery(); //counts how many new rows were inserted
+                    if (nr > 0) //if insert was successful
+                    {
+                    return true;
+                    }
+                    else // insert was not successful
+                    {
+                    return false; 
+                    }
+                } //end of try
+                  //catch (SqlException ex)
+
+            // throw ex;
+            //MessageBox.Show("Duplicate Supplier ID is not allowed.");
+            //end of catch
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+                {
+                    connection.Close();
+                }           
+        }//END OF ADD METHOD
+        #endregion
+
+
+        }//END OF SUPPLIER DB
+}//END OF NAMESPACE
