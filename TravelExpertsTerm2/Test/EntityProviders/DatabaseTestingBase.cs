@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Author: Team 4 (See Annotations)
+// Project: TravelExpertsTerm2
+// Date: 2016-01
+
+using System;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -7,6 +11,7 @@ using TravelDatabase;
 
 namespace Test.EntityProviders
 {
+    [Devin]
     public abstract class DatabaseTestingBase
     {
         /// <summary>

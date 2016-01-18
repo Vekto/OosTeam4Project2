@@ -1,4 +1,4 @@
-﻿// Author: Team 5 (See Annotations)
+﻿// Author: Team 4 (See Annotations)
 // Project: TravelExpertsTerm2
 // Date: 2016-01
 

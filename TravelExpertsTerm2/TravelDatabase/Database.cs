@@ -1,4 +1,4 @@
-﻿// Author: Team 5 (See Annotations)
+﻿// Author: Team 4 (See Annotations)
 // Project: TravelExpertsTerm2
 // Date: 2016-01
 
@@ -35,6 +35,7 @@ namespace TravelDatabase
         /// <summary>
         /// Provides database operations for <see cref="Package"/> entities
         /// </summary>
+        [Devin]
         [ProvidesContext]
         public static PackageEntityProvider PackageProvider { get; }
             = new PackageEntityProvider();
@@ -42,6 +43,7 @@ namespace TravelDatabase
         /// <summary>
         /// Provides database operations for <see cref="Product"/> entities
         /// </summary>
+        [Devin]
         [ProvidesContext]
         public static ProductEntityProvider ProductProvider { get; }
             = new ProductEntityProvider();
@@ -71,6 +73,7 @@ namespace TravelDatabase
         /// <param name="conn">An open <see cref="SqlConnection"/> object</param>
         /// <param name="tablename">Name of a database table</param>
         /// <returns>The last assigned key on a table with an auto-incrementing primary key</returns>
+        [Devin]
         [Pure]
         [ContractAnnotation("conn:null=>halt; tablename:null=>halt")]
         internal static int GetLastAssignedId([NotNull] SqlConnection conn, [NotNull] string tablename)
@@ -88,6 +91,7 @@ namespace TravelDatabase
         /// <param name="conn">An open <see cref="SqlConnection"/> object</param>
         /// <param name="tablename">Name of a database table</param>
         /// <returns>The amount by which the primary key is incremented</returns>
+        [Devin]
         [Pure]
         [ContractAnnotation("conn:null=>halt; tablename:null=>halt")]
         internal static int GetIdIncrementer([NotNull] SqlConnection conn, [NotNull] string tablename)
@@ -106,6 +110,7 @@ namespace TravelDatabase
         /// <param name="conn">An open <see cref="SqlConnection"/> object</param>
         /// <param name="tablename">Name of a database table</param>
         /// <returns>The next assignable key on a table with an auto-incrementing primary key</returns>
+        [Devin]
         [Pure]
         [ContractAnnotation("conn:null=>halt; tablename:null=>halt")]
         internal static int GetNextAssignedId([NotNull] SqlConnection conn, [NotNull] string tablename)
