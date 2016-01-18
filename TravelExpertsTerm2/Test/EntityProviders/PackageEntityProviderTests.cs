@@ -50,6 +50,7 @@ namespace Test.EntityProviders
         [MemberData(nameof(AllPackagesNoChildrenParams))]
         public void GetById_CascadeDoesntPersistToNextCall(Package expected)
         {
+            // ReSharper disable once UnusedVariable
             var cas = Database.PackageProvider.Cascade;
             var actual = Database.PackageProvider.GetEntityById(expected.PackageId);
             Assert.Equal(expected, actual, this);
@@ -86,6 +87,31 @@ namespace Test.EntityProviders
         public void GetEntityById_NullForNonExistentId_Cascade(int id)
         {
             Assert.Null(Database.PackageProvider.Cascade.GetEntityById(id));
+        }
+
+        [Theory]
+        [MemberData(nameof(FakePackagesWithExistingProductSuppliersParams))]
+        public void AddReadDeletePackage(Package newEntity)
+        {
+            Assert.True(newEntity.PackageId < 0); // ID starts invalid
+            var newId = NextAddedIdentity("Packages");
+
+            Assert.Equal(newId, Database.PackageProvider.AddEntity(newEntity)); // Add returns the new ID
+
+            newEntity.PackageId = newId; // Set ID to make it equal to the new one in the database
+            newEntity.ProductSuppliers.Clear(); // product suppliers should not have been added
+
+            Assert.Equal(newEntity, Database.PackageProvider.GetEntityById(newId), this); // Read new entity from database
+            Assert.True(Database.PackageProvider.DeleteEntity(newEntity)); // Delete new entity from database
+            Assert.Null(Database.PackageProvider.GetEntityById(newId)); // Verify entity is deleted
+        }
+
+        [Theory]
+        [MemberData(nameof(AllPackagesParams))]
+        public void DeleteEntity_CascadeThrowsWithoutAffectingTableRows(Package package)
+        {
+            Assert.Throws<InvalidOperationException>(() => Database.PackageProvider.Cascade.DeleteEntity(package));
+            Assert.Equal(package, Database.PackageProvider.Cascade.GetEntityById(package.PackageId), this);
         }
 
         //[Theory]
@@ -269,7 +295,7 @@ namespace Test.EntityProviders
         }
 
         // ReSharper disable once MemberCanBePrivate.Global
-        public static IEnumerable<object[]> FakePackagesParams
+        public static IEnumerable<object[]> FakePackagesWithExistingProductSuppliersParams
         {
             get
             {
@@ -294,12 +320,12 @@ namespace Test.EntityProviders
                     new Package
                     {
                         PackageId = -1,
-                        Name = "Go To Hell",
-                        StartDate = DateTime.Parse("2016-01-01 00:00:00.000"),
-                        EndDate = DateTime.Parse("2016-02-02 00:00:00.000"),
-                        Description = "FISH WITH THIS TEST-PACKAGE DESCRIPTION",
-                        BasePrice = 6666M,
-                        AgencyCommission = 666M,
+                        Name = "Go Fishing",
+                        StartDate = DateTime.Parse("2016-06-06 00:00:00.000"),
+                        EndDate = DateTime.Parse("2016-07-07 00:00:00.000"),
+                        Description = "WELCOME TO HELL, WE ONLY FISH FOR COAL",
+                        BasePrice = 7777M,
+                        AgencyCommission = 777M,
                         ProductSuppliers =
                         {
                             new ProductSupplier
@@ -318,12 +344,12 @@ namespace Test.EntityProviders
                     new Package
                     {
                         PackageId = -1,
-                        Name = "Go To Hell",
-                        StartDate = DateTime.Parse("2016-01-01 00:00:00.000"),
-                        EndDate = DateTime.Parse("2016-02-02 00:00:00.000"),
-                        Description = "FISH WITH THIS TEST-PACKAGE DESCRIPTION",
-                        BasePrice = 6666M,
-                        AgencyCommission = 666M,
+                        Name = "Go Get a Haircut",
+                        StartDate = DateTime.Parse("2016-04-01 00:00:00.000"),
+                        EndDate = DateTime.Parse("2016-05-02 00:00:00.000"),
+                        Description = "FROM SATAN",
+                        BasePrice = 3333M,
+                        AgencyCommission = 333M,
                         ProductSuppliers =
                         {
                             new ProductSupplier
@@ -341,11 +367,6 @@ namespace Test.EntityProviders
                         }
                     }
                 };
-
-
-                // Fake Package with non-existent ProductSupplier
-                // Fake Package with ProductSupplier new Product/Supplier
-                // (exception) Fake Package with ProductSupplier and null Product/Supplier
 
             }
         }
@@ -380,7 +401,18 @@ namespace Test.EntityProviders
 
         int IEqualityComparer<Package>.GetHashCode(Package obj)
         {
-            return obj.PackageId.GetHashCode();
+            // Prices are not used because floating-point inequality doesn't imply object inequality
+
+            return obj.PackageId.GetHashCode() * 17
+                   + obj.Name.GetHashCode() * 17
+                   + obj.StartDate.GetHashCode() * 17
+                   + obj.EndDate.GetHashCode() * 17
+                   + obj.Description.GetHashCode() * 17
+                   + obj.ProductSuppliers.Count.GetHashCode();
+
+            // use the hash of every product supplier as well
+            //return obj.ProductSuppliers
+            //    .Aggregate(initialHash, (result, next) => result * 17 + next.GetHashCode());
         }
 
         #endregion

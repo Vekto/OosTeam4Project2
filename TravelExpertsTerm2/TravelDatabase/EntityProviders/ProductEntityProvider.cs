@@ -45,15 +45,15 @@ namespace TravelDatabase.EntityProviders
             }
         }
 
-        protected override bool Delete(SqlConnection conn, Product entity) 
-            => DeleteById(entity.ProductId, "ProductId", conn);
-
         protected override int Add(SqlConnection conn, Product entity)
         {
             var rowsAffected = new SqlCommand($"INSERT INTO Products VALUES('{entity.Name}')", conn).ExecuteNonQuery();
-            if (rowsAffected < 1) return -1; // return -1 if the update failed
+            if (rowsAffected < 1) return -1; // return -1 if the command failed
             return Database.GetLastAssignedId(conn, TableName); // return the id of the item just added
         }
+
+        protected override bool Delete(SqlConnection conn, Product entity) 
+            => DeleteById(entity.ProductId, "ProductId", conn);
 
         protected override bool Update(SqlConnection conn, Product entity)
         {
