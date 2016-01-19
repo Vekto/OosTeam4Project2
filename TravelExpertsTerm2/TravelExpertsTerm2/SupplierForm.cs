@@ -13,14 +13,16 @@ using TravelDatabase.EntityData;
 
 namespace TravelExpertsTerm2
 {
-    public partial class MainForm : Form
+    public partial class SupplierForm : Form
     {
-        public string selectedProduct = "";
+        public string selectedSupplierID = "";
+        public string selectedSupName = "";
 
-        public MainForm()
+        public SupplierForm()
         {
             InitializeComponent();
         }
+
         #region Events
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -43,64 +45,139 @@ namespace TravelExpertsTerm2
             }
             updateListView(searchResults);  //display search results
         }
-
        
        //selecting items in list view
         private void lstSuppliers_SelectedIndexChanged(object sender, EventArgs e)
         {
+            clearForm();
             try
             {
-                selectedProduct = lstSuppliers.Items[lstSuppliers.SelectedIndices[0]].Text.Trim(); //store selected supplier id
+                selectedSupplierID = lstSuppliers.Items[lstSuppliers.SelectedIndices[0]].Text.Trim(); //store selected supplier id
+                selectedSupName = lstSuppliers.Items[lstSuppliers.SelectedIndices[0]].SubItems[1].Text.Trim(); //store selected supplier name
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Failed to select item.");
+                throw ex;
+                //MessageBox.Show(ex.Message);
             }
         }
-
        
         //Call add function
         private void btnSave_Click(object sender, EventArgs e)
         {
-            txtSearch.Text = "";
-            Supplier supplier = new Supplier();
-            supplier.SupplierID = Convert.ToInt32(txtSupplierID.Text);
-            supplier.SupName = txtSupName.Text;
+            int integer;
 
-            try
+            if (txtSupplierID.Text == "")
             {
-                if (SupplierDB.AddSupplier(supplier))
-                {
-                    MessageBox.Show("Supplier added successfully.");
-                    updateListView(SupplierDB.GetSuppliers());
-                    clearForm();
-                }
-                else
-                {
-                    MessageBox.Show("Supplier not added successfully.");
-                }
-            }
-            catch(SqlException ex)
-            {
-                if(ex.Message.StartsWith("Violation of PRIMARY KEY"))
-                {
-                    MessageBox.Show("Supplier with this ID already exists. Enter unique ID.");
-                }
-                else
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                MessageBox.Show("Please fill in all fields.");
             }
 
+            else if (txtSupName.Text == "")
+            {
+                MessageBox.Show("Please fill in all fields.");
+            }
+            else if (!Int32.TryParse(txtSupplierID.Text, out integer))//validate that SupplierID is an integer
+            {
+                MessageBox.Show("Please enter a valid Supplier ID.");
+            }
+            else {
+                if (btnAdd.Text == "Add")
+                {
+                    txtSearch.Text = "";
+                    Supplier supplier = new Supplier();
+                    supplier.SupplierID = Convert.ToInt32(txtSupplierID.Text);
+                    supplier.SupName = txtSupName.Text;
+                    try
+                    {
+                        if (SupplierDB.AddSupplier(supplier))
+                        {
+                            MessageBox.Show("Supplier added successfully.");
+                            updateListView(SupplierDB.GetSuppliers());
+                            clearForm();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Supplier not added successfully.");
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        if (ex.Message.StartsWith("Violation of PRIMARY KEY"))
+                        {
+                            MessageBox.Show("Supplier with this ID already exists. Enter unique ID.");
+                        }
+                        else
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                }
+
+                else if (btnAdd.Text == "Update")
+                {
+                    if (UpdateSupplier(Convert.ToInt32(selectedSupplierID)))
+                    {
+                        MessageBox.Show("Record updated successfully.");
+                        clearForm();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Record was not updated.");
+                    }
+                }
+            }
         }
 
         private void btnAddNewSupplier_Click(object sender, EventArgs e)
         {
+            txtSearch.Text = "";
+            clearForm();
             pnlAddUpdate.Visible = true;
             btnAdd.Text = "Add";
-            selectedProduct = "";
+            selectedSupplierID = "";
         }
 
+        private void btnDeleteSelected_Click(object sender, EventArgs e)
+        {
+            clearForm();
+            if (lstSuppliers.SelectedItems.Count == 1)
+            {
+                selectedSupplierID = lstSuppliers.Items[lstSuppliers.SelectedIndices[0]].Text.Trim(); //store selected supplier id
+
+                if (SupplierDB.CheckDependency(Convert.ToInt32(selectedSupplierID)))
+                {
+                    MessageBox.Show("Cannot delete.  SupplierID exists in table Products_Suppliers");
+                }
+                else
+                {
+                    //confirm that user wants to delete
+                    DialogResult result = MessageBox.Show("Are you sure you want to delete this record?" + "\n\nSupplier ID: " + selectedSupplierID + "\nSupplier Name: " + selectedSupName, "Confirmation", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        if (SupplierDB.DeleteSupplier(Convert.ToInt32(selectedSupplierID)))
+                        {
+                            //if delete is successful, display message and update list view
+                            MessageBox.Show("Delete successful!");
+                            updateListView(SupplierDB.GetSuppliers());
+                            clearForm();
+                        }
+                        else
+                        {
+                            //delete failed, display message
+                            MessageBox.Show("Delete was not successful.");
+                        }
+                    }
+                    else if (result == DialogResult.No) //if user confirms they do not want to delete, display cancel message
+                    {
+                        MessageBox.Show("Delete cancelled");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select item to delete");
+            }
+        }//END OF DELETE BUTTON CLICK
         #endregion
 
         #region Methods
@@ -109,6 +186,48 @@ namespace TravelExpertsTerm2
             txtSupplierID.Text = "";
             txtSupName.Text = "";            
         }
+
+        public bool UpdateSupplier(int supplierID) //refreshes supplier list with updated supplier
+        {
+            //validate on the form
+            string connectionString = "Data Source=ELF5OOSD212989\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            string updateStatement = "UPDATE Suppliers " +
+                                     "SET SupplierID = @NewSupplierID, " +
+                                     "       SupName = @NewSupName " +
+                                     "WHERE SupplierID = @OldSupplierID";
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+            updateCommand.Parameters.AddWithValue("@NewSupplierID", txtSupplierID.Text);
+            updateCommand.Parameters.AddWithValue("@NewSupName", txtSupName.Text);
+            updateCommand.Parameters.AddWithValue("@OldSupplierID", selectedSupplierID);
+
+            try
+            {
+                connection.Open();
+                int count = updateCommand.ExecuteNonQuery(); //count how many rows are affected
+                if (count > 0) //if update was successful
+                {
+                    List<Supplier> suppliersList = SupplierDB.GetSuppliers();
+                    updateListView(suppliersList);
+                    return true;
+                }
+                else
+                {                   
+                    return false;
+                }
+            }
+            catch(SqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+                MessageBox.Show("There was an error. Please try again.");
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }//END OF UpdateSupplier()
 
         public void updateListView(List<Supplier> suppliersList) //populate list view with list of products
         {
@@ -121,57 +240,36 @@ namespace TravelExpertsTerm2
                 i++;
             }
         }
-
-
         #endregion
 
-        private void btnDeleteSelected_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-            
-                //try
-                //{
-                    
-                    if (lstSuppliers.SelectedItems.Count == 1)
-                    {
+            clearForm();
+            pnlAddUpdate.Visible = false;
+            selectedSupplierID = "";
+            //selectedSupName = "";
+        }
 
-                selectedProduct = lstSuppliers.Items[lstSuppliers.SelectedIndices[0]].Text.Trim(); //store selected supplier id
-
-
-
-                //confirm that user wants to delete
-                DialogResult result = MessageBox.Show("Do you want to delete?", "Confirmation", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-
-                     
-
-                        if (SupplierDB.DeleteSupplier(Convert.ToInt32(selectedProduct)))
-                        {
-                            //if delete is successful, display message and update list view
-                            MessageBox.Show("Delete successful!");
-                            updateListView(SupplierDB.GetSuppliers());
-                            clearForm();
-                        }
-                        else
-                        {
-                            //delete failed, display message
-                            MessageBox.Show("Delete was not successful.");
-                        }
-                    }                    
-                    else if (result == DialogResult.No) //if user confirms they do not want to delete, display cancel message
-                    {
-                        MessageBox.Show("Delete cancelled");
-                    }
+        private void btnUpdateSelected_Click(object sender, EventArgs e)
+        {
+            if (selectedSupplierID=="")// check that user selected supplier
+            {
+                MessageBox.Show("Please select a suppiler");
             }
             else
             {
-                MessageBox.Show("Please select item to delete");
-            }                               
+                //show and populate panel
+                pnlAddUpdate.Visible = true;
+                btnAdd.Text = "Update";
+                clearForm();
+                txtSupplierID.Text = selectedSupplierID;
+                txtSupName.Text = selectedSupName;
+                txtSupName.Focus();
+            }
         }
+    }//END OF FORM 
+}//END OF NAMESPACE
 
-
-    }           
-}
 
 
 

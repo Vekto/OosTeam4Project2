@@ -41,10 +41,10 @@ namespace TravelDatabase.EntityData
         {
             List<Supplier> suppliersList = new List<Supplier>(); //create emtpy list
             string connectionString = "Data Source=ELF5OOSD212989\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
-            SqlConnection connection = new SqlConnection(connectionString);            
+            SqlConnection connection = new SqlConnection(connectionString);
             string selectStatement = "SELECT * FROM Suppliers ORDER BY SupplierID";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-            
+
             try
             {
                 connection.Open();
@@ -68,11 +68,44 @@ namespace TravelDatabase.EntityData
             return suppliersList;
         }
 
-        public static bool DeleteSupplier(int supplierID)
-       {            
+        public static bool CheckDependency(int supplierID)
+        {
             string connectionString = "Data Source=ELF5OOSD212989\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
             SqlConnection connection = new SqlConnection(connectionString);
-        
+
+            string selectStatement = "SELECT SupplierID FROM Products_Suppliers as p WHERE p.SupplierID = @SupplierID";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@SupplierID", supplierID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                if (reader.Read()) //while there is data
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public static bool DeleteSupplier(int supplierID)
+        {
+            string connectionString = "Data Source=ELF5OOSD212989\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
+            SqlConnection connection = new SqlConnection(connectionString);
+
             string deleteStatement =
                 "DELETE FROM Suppliers " +
                 "WHERE SupplierID = @SupplierID";
@@ -89,7 +122,6 @@ namespace TravelDatabase.EntityData
                 }
                 else
                 {
-                    
                     return false;
                 }
             }
@@ -100,53 +132,50 @@ namespace TravelDatabase.EntityData
             finally
             {
                 connection.Close();
-            }     
+            }
         }
 
-        public static bool AddSupplier (Supplier supplier)
+        public static bool AddSupplier(Supplier supplier)
         {
             //in form, validate before doing this
             //Supplier supplier = new Supplier(); -->do on form --> passing the text objects       
             string connectionString = "Data Source=ELF5OOSD212989\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
             SqlConnection connection = new SqlConnection(connectionString);
             try
-                {
-                    //create insert statement and parameters
-                    string insertStatement =
-                        "INSERT INTO Suppliers " +
-                        "(SupplierID, SupName) " +
-                        "Values(@SupplierID, @SupName)";
-                    SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-                    insertCommand.Parameters.AddWithValue("@SupplierID", supplier.SupplierID);
-                    insertCommand.Parameters.AddWithValue("@SupName", supplier.SupName);
-                    connection.Open();
-                    
-                    int nr = insertCommand.ExecuteNonQuery(); //counts how many new rows were inserted
-                    if (nr > 0) //if insert was successful
-                    {
-                    return true;
-                    }
-                    else // insert was not successful
-                    {
-                    return false; 
-                    }
-                } //end of try
-                  //catch (SqlException ex)
+            {
+                //create insert statement and parameters
+                string insertStatement =
+                    "INSERT INTO Suppliers " +
+                    "(SupplierID, SupName) " +
+                    "Values(@SupplierID, @SupName)";
+                SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+                insertCommand.Parameters.AddWithValue("@SupplierID", supplier.SupplierID);
+                insertCommand.Parameters.AddWithValue("@SupName", supplier.SupName);
+                connection.Open();
 
-            // throw ex;
-            //MessageBox.Show("Duplicate Supplier ID is not allowed.");
-            //end of catch
+                int nr = insertCommand.ExecuteNonQuery(); //counts how many new rows were inserted
+                if (nr > 0) //if insert was successful
+                {
+                    return true;
+                }
+                else // insert was not successful
+                {
+                    return false;
+                }
+            }
             catch (Exception ex)
             {
                 throw ex;
             }
             finally
-                {
-                    connection.Close();
-                }           
+            {
+                connection.Close();
+            }
         }//END OF ADD METHOD
+        
         #endregion
 
+       
 
-        }//END OF SUPPLIER DB
+    } //END OF SUPPLIER DB
 }//END OF NAMESPACE

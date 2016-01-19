@@ -1,6 +1,6 @@
 ﻿namespace TravelExpertsTerm2
 {
-    partial class MainForm
+    partial class SupplierForm
     {
         /// <summary>
         /// Required designer variable.
@@ -51,6 +51,7 @@
             this.lstSuppliers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.SupplierID,
             this.SupName});
+            this.lstSuppliers.FullRowSelect = true;
             this.lstSuppliers.Location = new System.Drawing.Point(576, 12);
             this.lstSuppliers.Name = "lstSuppliers";
             this.lstSuppliers.Size = new System.Drawing.Size(382, 510);
@@ -126,6 +127,7 @@
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAdd
             // 
@@ -165,6 +167,7 @@
             this.btnUpdateSelected.TabIndex = 9;
             this.btnUpdateSelected.Text = "&Update Selected";
             this.btnUpdateSelected.UseVisualStyleBackColor = true;
+            this.btnUpdateSelected.Click += new System.EventHandler(this.btnUpdateSelected_Click);
             // 
             // btnAddNewSupplier
             // 
@@ -188,7 +191,7 @@
             this.btnDeleteSelected.UseVisualStyleBackColor = true;
             this.btnDeleteSelected.Click += new System.EventHandler(this.btnDeleteSelected_Click);
             // 
-            // MainForm
+            // SupplierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -200,7 +203,7 @@
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.pnlAddUpdate);
             this.Controls.Add(this.lstSuppliers);
-            this.Name = "MainForm";
+            this.Name = "SupplierForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.pnlAddUpdate.ResumeLayout(false);
