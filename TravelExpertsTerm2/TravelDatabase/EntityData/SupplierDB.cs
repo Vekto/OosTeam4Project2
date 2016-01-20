@@ -40,7 +40,7 @@ namespace TravelDatabase.EntityData
         public static List<Supplier> GetSuppliers()
         {
             List<Supplier> suppliersList = new List<Supplier>(); //create emtpy list
-            string connectionString = "Data Source=ELF5OOSD212989\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
+            string connectionString = "Data Source=localhost\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
             SqlConnection connection = new SqlConnection(connectionString);
             string selectStatement = "SELECT * FROM Suppliers ORDER BY SupplierID";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TravelDatabase.EntityProviders;
 
 namespace TravelDatabase.EntityData
 {
@@ -29,6 +30,16 @@ namespace TravelDatabase.EntityData
         }
 
         public bool UpdateEntity(Product entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        int IDataOperations<Product>.AddEntity(Product entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<Product> IDataOperations<Product>.GetEntities()
         {
             throw new NotImplementedException();
         }
