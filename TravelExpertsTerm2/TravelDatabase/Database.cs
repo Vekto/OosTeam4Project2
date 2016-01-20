@@ -18,8 +18,10 @@ namespace TravelDatabase
     [PublicAPI]
     public static class Database
     {
-        [Devin]
-        public const string ConnectionStringFilePath = @"ConnectionString.txt";
+
+        #region Public Connection String
+
+        [Devin] public const string ConnectionStringFilePath = @"ConnectionString.txt";
 
         /// <summary>
         ///     Connection string used by all the database functions. Defaults to the first line
@@ -31,6 +33,10 @@ namespace TravelDatabase
             File.Exists(ConnectionStringFilePath)
                 ? File.ReadLines(ConnectionStringFilePath).FirstOrDefault()
                 : null;
+
+        #endregion
+
+        #region Public Entity Providers
 
         /// <summary>
         /// Provides database operations for <see cref="Package"/> entities
@@ -64,8 +70,23 @@ namespace TravelDatabase
         public static SupplierEntityProvider Suppliers { get; }
             = new SupplierEntityProvider();
 
+        #endregion
 
         #region Internal Helpers
+
+        /// <summary>
+        /// Creates a new <see cref="SqlConnection"/> with <see cref="ConnectionStringFilePath"/>
+        /// </summary>
+        /// <returns>new <see cref="SqlConnection"/> instance</returns>
+        [Devin]
+        [Pure]
+        [NotNull]
+        internal static SqlConnection GetConnection()
+        {
+            if (ConnectionString == null)
+                throw new InvalidOperationException($"Connection string is null. Check {ConnectionStringFilePath}");
+            return new SqlConnection(ConnectionString);
+        }
 
         /// <summary>
         /// Gets the last assigned key on a table with an auto-incrementing primary key.

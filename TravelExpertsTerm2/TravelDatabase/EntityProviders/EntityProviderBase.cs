@@ -20,8 +20,6 @@ namespace TravelDatabase.EntityProviders
     public abstract class EntityProviderBase<TEntity> : IDataOperations<TEntity>
         where TEntity : class, new()
     {
-        private static string NullConnectionStringExceptionMessage
-            => $"Connection string is null. Check {Database.ConnectionStringFilePath}";
 
         [NotNull]
         [ItemNotNull]
@@ -44,30 +42,28 @@ namespace TravelDatabase.EntityProviders
 
         #region DatabaseOperation Method
 
+        [Pure]
         [ContractAnnotation("func:null=>halt")]
         private TReturn DatabaseOperation<TReturn>(Func<SqlConnection, TReturn> func)
         {
-            if (Database.ConnectionString == null)
-                throw new InvalidOperationException(NullConnectionStringExceptionMessage);
             if (func == null) throw new ArgumentNullException(nameof(func));
 
-            using (var conn = new SqlConnection(Database.ConnectionString))
+            using (var conn = Database.GetConnection())
             {
                 conn.Open();
                 return func(conn);
             }
         }
 
+        [Pure]
         [ContractAnnotation("func:null=>halt")]
         private TReturn DatabaseOperation<TReturn, TParam>(
             [NotNull] Func<SqlConnection, TParam, TReturn> func,
             TParam param)
         {
-            if (Database.ConnectionString == null)
-                throw new InvalidOperationException(NullConnectionStringExceptionMessage);
             if (func == null) throw new ArgumentNullException(nameof(func));
 
-            using (var conn = new SqlConnection(Database.ConnectionString))
+            using (var conn = Database.GetConnection())
             {
                 conn.Open();
                 return func(conn, param);
