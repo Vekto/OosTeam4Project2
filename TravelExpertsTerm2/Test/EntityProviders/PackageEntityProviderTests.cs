@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using JetBrains.Annotations;
 using TravelDatabase;
@@ -144,6 +145,18 @@ namespace Test.EntityProviders
             {
                 Assert.Throws<InvalidOperationException>(() => Database.Packages.Cascade.DeleteEntity(package));
                 Assert.Equal(package, Database.Packages.Cascade.GetEntityById(package.PackageId), this);
+            }
+        }
+
+        [Fact]
+        [SuppressMessage("ReSharper", "AssignNullToNotNullAttribute")]
+        public void ArgumentNullException()
+        {
+            lock (TestDatabaseLocker)
+            {
+                Assert.Throws<ArgumentNullException>(() => Database.Packages.AddEntity(null));
+                Assert.Throws<ArgumentNullException>(() => Database.Packages.DeleteEntity(null));
+                Assert.Throws<ArgumentNullException>(() => Database.Packages.UpdateEntity(null));
             }
         }
 

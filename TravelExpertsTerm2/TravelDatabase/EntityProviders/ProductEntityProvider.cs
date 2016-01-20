@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using JetBrains.Annotations;
 
@@ -48,7 +49,7 @@ namespace TravelDatabase.EntityProviders
         protected override int Add(SqlConnection conn, Product entity)
         {
             var rowsAffected = new SqlCommand($"INSERT INTO Products VALUES('{entity.Name}')", conn).ExecuteNonQuery();
-            if (rowsAffected < 1) return -1; // return -1 if the command failed
+            if (rowsAffected < 1) return int.MinValue; // return negative if the command failed
             return Database.GetLastAssignedId(conn, TableName); // return the id of the item just added
         }
 
@@ -66,7 +67,7 @@ namespace TravelDatabase.EntityProviders
 
         #region Private Methods
 
-        private static Product ParseProduct(SqlDataReader reader)
+        private static Product ParseProduct(IDataRecord reader)
         {
             return new Product
             {
