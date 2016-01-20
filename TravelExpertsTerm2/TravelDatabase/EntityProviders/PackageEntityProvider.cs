@@ -13,6 +13,9 @@ namespace TravelDatabase.EntityProviders
     [PublicAPI]
     public sealed class PackageEntityProvider : EntityProviderBase<Package>
     {
+        // TODO: Class-level cascade should be gotten rid of. The only time it's
+        //       used is for the Get methods. Therefore, we should add two public
+        //       "GetWithChildren" methods to replace "Cascade"
         private bool _CascadeEnabled;
 
         /// <summary>
@@ -23,7 +26,7 @@ namespace TravelDatabase.EntityProviders
         #region Constructors
 
         /// <summary>
-        /// Access instance through <see cref="Database.PackageProvider"/>
+        /// Access instance through <see cref="Database.Packages"/>
         /// </summary>
         internal PackageEntityProvider()
         {
@@ -140,7 +143,7 @@ namespace TravelDatabase.EntityProviders
             {
                 while (reader.Read())
                 {
-                    result.Add(ParseProductSupplier(reader));
+                    result.Add(ProductSupplierEntityProvider.ParseProductSupplier(reader));
                 }
             }
             return result;
@@ -160,25 +163,6 @@ namespace TravelDatabase.EntityProviders
             };
         }
 
-        private static ProductSupplier ParseProductSupplier(SqlDataReader reader)
-        {
-            return new ProductSupplier
-            {
-                ProductSupplierId = reader.GetInt32(0),
-                Product = new Product
-                {
-                    ProductId = reader.GetInt32(1),
-                    Name = reader.GetString(2)
-                },
-                Supplier = new Supplier()
-                {
-                    SupplierId = reader.GetInt32(3),
-                    Name = reader.GetString(4)
-                }
-            };
-        }
-
         #endregion
-
     }
 }

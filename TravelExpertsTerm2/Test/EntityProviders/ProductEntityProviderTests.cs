@@ -26,7 +26,7 @@ namespace Test.EntityProviders
         {
             lock (TestDatabaseLocker)
             {
-                Assert.Equal(_AllProducts, Database.ProductProvider.GetEntities(), this);
+                Assert.Equal(_AllProducts, Database.Products.GetEntities(), this);
             }
         }
 
@@ -35,7 +35,7 @@ namespace Test.EntityProviders
         {
             lock (TestDatabaseLocker)
             {
-                Assert.Equal(_AllProducts, Database.ProductProvider.GetEntities().ToList(), this);
+                Assert.Equal(_AllProducts, Database.Products.GetEntities().ToList(), this);
             }
         }
 
@@ -45,7 +45,7 @@ namespace Test.EntityProviders
         {
             lock (TestDatabaseLocker)
             {
-                Assert.Equal(product, Database.ProductProvider.GetEntityById(product.ProductId), this);
+                Assert.Equal(product, Database.Products.GetEntityById(product.ProductId), this);
             }
         }
 
@@ -59,7 +59,7 @@ namespace Test.EntityProviders
         {
             lock (TestDatabaseLocker)
             {
-                Assert.Null(Database.ProductProvider.GetEntityById(id));
+                Assert.Null(Database.Products.GetEntityById(id));
             }
         }
 
@@ -74,11 +74,11 @@ namespace Test.EntityProviders
                     Name = "TEST_OBJECT"
                 };
 
-                Assert.Null(Database.ProductProvider.GetEntityById(product.ProductId)); // check doesn't exist
-                Assert.Equal(product.ProductId, Database.ProductProvider.AddEntity(product)); // add returns new ID
-                Assert.Equal(product, Database.ProductProvider.GetEntityById(product.ProductId), this); // check does exist
-                Assert.True(Database.ProductProvider.DeleteEntity(product)); // delete returns success
-                Assert.Null(Database.ProductProvider.GetEntityById(product.ProductId)); // check doesn't exist
+                Assert.Null(Database.Products.GetEntityById(product.ProductId)); // check doesn't exist
+                Assert.Equal(product.ProductId, Database.Products.AddEntity(product)); // add returns new ID
+                Assert.Equal(product, Database.Products.GetEntityById(product.ProductId), this); // check does exist
+                Assert.True(Database.Products.DeleteEntity(product)); // delete returns success
+                Assert.Null(Database.Products.GetEntityById(product.ProductId)); // check doesn't exist
             }
         }
 
@@ -95,12 +95,12 @@ namespace Test.EntityProviders
                 };
 
                 // Set to FISH
-                Assert.True(Database.ProductProvider.UpdateEntity(modified));
-                Assert.Equal(modified, Database.ProductProvider.GetEntityById(modified.ProductId), this);
+                Assert.True(Database.Products.UpdateEntity(modified));
+                Assert.Equal(modified, Database.Products.GetEntityById(modified.ProductId), this);
 
                 // Set to original value
-                Assert.True(Database.ProductProvider.UpdateEntity(product));
-                Assert.Equal(product, Database.ProductProvider.GetEntityById(product.ProductId), this);
+                Assert.True(Database.Products.UpdateEntity(product));
+                Assert.Equal(product, Database.Products.GetEntityById(product.ProductId), this);
             }
         }
 
@@ -110,9 +110,9 @@ namespace Test.EntityProviders
         {
             lock (TestDatabaseLocker)
             {
-                Assert.Throws<ArgumentNullException>(() => Database.ProductProvider.AddEntity(null));
-                Assert.Throws<ArgumentNullException>(() => Database.ProductProvider.DeleteEntity(null));
-                Assert.Throws<ArgumentNullException>(() => Database.ProductProvider.UpdateEntity(null));
+                Assert.Throws<ArgumentNullException>(() => Database.Products.AddEntity(null));
+                Assert.Throws<ArgumentNullException>(() => Database.Products.DeleteEntity(null));
+                Assert.Throws<ArgumentNullException>(() => Database.Products.UpdateEntity(null));
             }
         }
 
@@ -121,7 +121,7 @@ namespace Test.EntityProviders
         {
             lock (TestDatabaseLocker)
             {
-                Assert.Throws<ArgumentOutOfRangeException>(() => Database.ProductProvider.GetEntityById(-1));
+                Assert.Throws<ArgumentOutOfRangeException>(() => Database.Products.GetEntityById(-1));
             }
         }
 
@@ -159,7 +159,7 @@ namespace Test.EntityProviders
 
         int IEqualityComparer<Product>.GetHashCode(Product obj)
         {
-            return obj.Name.GetHashCode() ^ obj.ProductId.GetHashCode();
+            return obj.Name.GetHashCode() * 17 + obj.ProductId.GetHashCode();
         }
 
         #endregion

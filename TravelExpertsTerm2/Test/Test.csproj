@@ -68,6 +68,7 @@
     <Compile Include="EntityProviders\DatabaseTests.cs" />
     <Compile Include="EntityProviders\PackageEntityProviderTests.cs" />
     <Compile Include="EntityProviders\ProductEntityProviderTests.cs" />
+    <Compile Include="EntityProviders\ProductSupplierEntityProviderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -15,7 +15,7 @@ namespace TravelDatabase.EntityProviders
     {
 
         /// <summary>
-        /// Access instance through <see cref="Database.ProductProvider"/>
+        /// Access instance through <see cref="Database.Products"/>
         /// </summary>
         internal ProductEntityProvider()
         {
