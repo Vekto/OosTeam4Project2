@@ -15,6 +15,7 @@ namespace TravelDatabase
     ///     Global database functions like creating connections.
     /// </summary>
     [Chad]
+    [NoReorder]
     [PublicAPI]
     public static class Database
     {
@@ -88,6 +89,8 @@ namespace TravelDatabase
             return new SqlConnection(ConnectionString);
         }
 
+        // ----------- TODO: Helpers below here should probably be made protected members of EntityProviderBase
+
         /// <summary>
         /// Gets the last assigned key on a table with an auto-incrementing primary key.
         /// May return incorrect results if other sessions are modifying data. 
@@ -142,6 +145,30 @@ namespace TravelDatabase
             if (tablename == null) throw new ArgumentNullException(nameof(tablename));
             return Convert.ToInt32(new SqlCommand($"SELECT IDENT_CURRENT('{tablename}')+IDENT_INCR('{tablename}')", conn).ExecuteScalar());
         }
+
+        //[Devin]
+        //[Pure]
+        //[ContractAnnotation("tablename:null=>halt")]
+        //internal static string GetPrimaryKeyName([NotNull] string tablename, SqlConnection conn = null)
+        //{
+        //    if (tablename == null) throw new ArgumentNullException(nameof(tablename));
+        //    const string sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.Table_Constraints tc" +
+        //                       " JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE kcu ON tc.TABLE_NAME = kcu.TABLE_NAME AND tc.TABLE_SCHEMA = kcu.TABLE_SCHEMA AND tc.TABLE_CATALOG = kcu.TABLE_CATALOG AND tc.CONSTRAINT_NAME = kcu.CONSTRAINT_NAME" +
+        //                       " WHERE tc.TABLE_NAME=@TableName AND CONSTRAINT_TYPE='PRIMARY KEY'";
+
+        //    Func<SqlConnection,string> executeSql = (c) =>
+        //    {
+        //        var command = new SqlCommand(sql, c);
+        //        command.Parameters.AddWithValue("TableName", tablename);
+        //        return (string)command.ExecuteScalar();
+        //    };
+
+        //    if (conn != null) return executeSql(conn);
+        //    using (var c = GetConnection())
+        //    {
+        //        return executeSql(c);
+        //    }
+        //}
 
         #endregion
 

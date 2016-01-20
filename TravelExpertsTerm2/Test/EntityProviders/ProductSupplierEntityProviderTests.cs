@@ -36,6 +36,19 @@ namespace Test.EntityProviders
             }
         }
 
+        //[Theory]
+        //[MemberData(nameof(AllProductSuppliersParams))]
+        //public void Update(ProductSupplier productSupplier)
+        //{
+        //    lock (TestDatabaseLocker)
+        //    {
+        //        var modified = new ProductSupplier
+        //        {
+        //            // Should not update if the product/supplier Name is different than in the DB
+        //        };
+        //    }
+        //}
+
         #endregion
 
         #region TestData
