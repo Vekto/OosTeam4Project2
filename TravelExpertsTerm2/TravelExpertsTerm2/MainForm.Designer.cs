@@ -88,6 +88,7 @@ namespace TravelExpertsTerm2
             this.metroButton1.UseCustomBackColor = true;
             this.metroButton1.UseSelectable = true;
             this.metroButton1.UseStyleColors = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // metroTile3
             // 
@@ -144,7 +145,7 @@ namespace TravelExpertsTerm2
             this.panel2.BackColor = System.Drawing.Color.Silver;
             this.panel2.Location = new System.Drawing.Point(217, 83);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(750, 672);
+            this.panel2.Size = new System.Drawing.Size(970, 672);
             this.panel2.TabIndex = 8;
             // 
             // panel1
@@ -164,7 +165,7 @@ namespace TravelExpertsTerm2
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(990, 786);
+            this.ClientSize = new System.Drawing.Size(1210, 786);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.metroPanel1);

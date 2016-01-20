@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TravelDatabase.EntityProviders;
 
 namespace TravelDatabase.EntityData
 {
@@ -25,6 +26,16 @@ namespace TravelDatabase.EntityData
             throw new NotImplementedException();
         }
         public ProductSupplier GetEntityById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<ProductSupplier> IDataOperations<ProductSupplier>.GetEntities()
+        {
+            throw new NotImplementedException();
+        }
+
+        int IDataOperations<ProductSupplier>.AddEntity(ProductSupplier entity)
         {
             throw new NotImplementedException();
         }

@@ -14,10 +14,10 @@ namespace TravelDatabase
     ///     Global database functions like creating connections.
     /// </summary>
     [Chad]
-    public static class TravelExpertsDb
+    public static class TravelExpertsDB
     {
         [Devin]
-        private const string ConnectionStringFilePath = @"ConnectionString.txt";
+        private const string ConnectionStringFilePath = "Data Source=ELF5OOSD212989\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
 
         /// <summary>
         ///     Connection string used by all the database functions. Defaults to the first line 

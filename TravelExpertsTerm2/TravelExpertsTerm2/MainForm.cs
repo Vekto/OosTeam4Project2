@@ -40,5 +40,16 @@ namespace TravelExpertsTerm2
            // panel2.Width = MdiParent.Width-metroPanel1.Width;
 
         }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            
+            SupplierForm form = new SupplierForm();
+            //form.MdiParent = this;
+            form.TopLevel = false;
+            panel2.Controls.Add(form);
+            form.Dock = DockStyle.Fill;
+            form.Show();
+        }
     }
 }
