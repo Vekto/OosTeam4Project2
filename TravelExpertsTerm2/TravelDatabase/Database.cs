@@ -37,27 +37,29 @@ namespace TravelDatabase
         /// </summary>
         [Devin]
         [ProvidesContext]
-        public static PackageEntityProvider PackageProvider { get; }
+        public static PackageEntityProvider Packages { get; }
             = new PackageEntityProvider();
+
+        /// <summary>
+        /// Provides database operations for <see cref="ProductSupplier"/> entities
+        /// </summary>
+        [Devin]
+        [ProvidesContext]
+        public static ProductSupplierEntityProvider ProductSuppliers { get; }
+            = new ProductSupplierEntityProvider();
 
         /// <summary>
         /// Provides database operations for <see cref="Product"/> entities
         /// </summary>
         [Devin]
         [ProvidesContext]
-        public static ProductEntityProvider ProductProvider { get; }
+        public static ProductEntityProvider Products { get; }
             = new ProductEntityProvider();
-
-        ///// <summary>
-        ///// Provides database operations for <see cref="ProductSupplier"/> entities
-        ///// </summary>
-        //[ProvidesContext]
-        //public static ProductSupplierEntityProvider ProductSupplierProvider { get; }
-        //    = new ProductSupplierEntityProvider();
 
         ///// <summary>
         ///// Provides database operations for <see cref="Supplier"/> entities
         ///// </summary>
+        //[Devin]
         //[ProvidesContext]
         //public static SupplierEntityProvider SupplierProvider { get; }
         //    = new SupplierEntityProvider();

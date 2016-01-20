@@ -17,15 +17,15 @@ namespace Test.EntityProviders
         [Fact]
         public void PackageProvider_Initialized()
         {
-            Assert.NotNull(Database.PackageProvider);
-            Assert.IsAssignableFrom<EntityProviderBase<Package>>(Database.PackageProvider);
+            Assert.NotNull(Database.Packages);
+            Assert.IsAssignableFrom<EntityProviderBase<Package>>(Database.Packages);
         }
 
         [Fact]
         public void ProductProvider_Initialized()
         {
-            Assert.NotNull(Database.ProductProvider);
-            Assert.IsAssignableFrom<EntityProviderBase<Product>>(Database.ProductProvider);
+            Assert.NotNull(Database.Products);
+            Assert.IsAssignableFrom<EntityProviderBase<Product>>(Database.Products);
         }
 
         // TODO: tests for Internal Helpers (need a contitional compile which exposes them for testing)
