@@ -31,11 +31,11 @@ namespace Test.EntityProviders
         }
 
         [Fact]
-        public void GetAll_Cascade()
+        public void GetEntitiesWithChildren()
         {
             lock (TestDatabaseLocker)
             {
-                var actual = Database.Packages.Cascade.GetEntities();
+                var actual = Database.Packages.GetEntitiesWithChildren();
                 Assert.Equal(AllPackagesList, actual, this);
             }
         }
@@ -53,41 +53,41 @@ namespace Test.EntityProviders
 
         [Theory]
         [MemberData(nameof(AllPackagesParams))]
-        public void GetById_Cascade(Package expected)
+        public void GetEntityByIdWithChildren(Package expected)
         {
             lock (TestDatabaseLocker)
             {
-                var actual = Database.Packages.Cascade.GetEntityById(expected.PackageId);
+                var actual = Database.Packages.GetEntityByIdWithChildren(expected.PackageId);
                 Assert.Equal(expected, actual, this);
             }
         }
 
-        [Theory]
-        [MemberData(nameof(AllPackagesNoChildrenParams))]
-        public void GetById_CascadeDoesntPersistToNextCall(Package expected)
-        {
-            lock (TestDatabaseLocker)
-            {
-                // ReSharper disable once UnusedVariable
-                var cas = Database.Packages.Cascade;
-                var actual = Database.Packages.GetEntityById(expected.PackageId);
-                Assert.Equal(expected, actual, this);
-            }
-        }
+        //[Theory]
+        //[MemberData(nameof(AllPackagesNoChildrenParams))]
+        //public void GetById_CascadeDoesntPersistToNextCall(Package expected)
+        //{
+        //    lock (TestDatabaseLocker)
+        //    {
+        //        // ReSharper disable once UnusedVariable
+        //        var cas = Database.Packages.Cascade;
+        //        var actual = Database.Packages.GetEntityById(expected.PackageId);
+        //        Assert.Equal(expected, actual, this);
+        //    }
+        //}
 
-        [Theory]
-        [MemberData(nameof(AllPackagesParams))]
-        public void GetById_MultipleCascadeCallsDoesntAffectResult(Package expected)
-        {
-            lock (TestDatabaseLocker)
-            {
-                var actual = Database.Packages
-                .Cascade.Cascade.Cascade
-                .GetEntityById(expected.PackageId);
+        //[Theory]
+        //[MemberData(nameof(AllPackagesParams))]
+        //public void GetById_MultipleCascadeCallsDoesntAffectResult(Package expected)
+        //{
+        //    lock (TestDatabaseLocker)
+        //    {
+        //        var actual = Database.Packages
+        //        .Cascade.Cascade.Cascade
+        //        .GetEntityById(expected.PackageId);
 
-                Assert.Equal(expected, actual, this);
-            }
-        }
+        //        Assert.Equal(expected, actual, this);
+        //    }
+        //}
 
         [Theory]
         [InlineData(666)]
@@ -109,11 +109,11 @@ namespace Test.EntityProviders
         [InlineData(888)]
         [InlineData(999)]
         [InlineData(1111)]
-        public void GetEntityById_NullForNonExistentId_Cascade(int id)
+        public void GetEntityByIdWithChildren_NullForNonExistentId(int id)
         {
             lock (TestDatabaseLocker)
             {
-                Assert.Null(Database.Packages.Cascade.GetEntityById(id));
+                Assert.Null(Database.Packages.GetEntityByIdWithChildren(id));
             }
         }
 
@@ -137,16 +137,16 @@ namespace Test.EntityProviders
             }
         }
 
-        [Theory]
-        [MemberData(nameof(AllPackagesParams))]
-        public void DeleteEntity_CascadeThrowsWithoutAffectingTableRows(Package package)
-        {
-            lock (TestDatabaseLocker)
-            {
-                Assert.Throws<InvalidOperationException>(() => Database.Packages.Cascade.DeleteEntity(package));
-                Assert.Equal(package, Database.Packages.Cascade.GetEntityById(package.PackageId), this);
-            }
-        }
+        //[Theory]
+        //[MemberData(nameof(AllPackagesParams))]
+        //public void DeleteEntity_CascadeThrowsWithoutAffectingTableRows(Package package)
+        //{
+        //    lock (TestDatabaseLocker)
+        //    {
+        //        Assert.Throws<InvalidOperationException>(() => Database.Packages.Cascade.DeleteEntity(package));
+        //        Assert.Equal(package, Database.Packages.Cascade.GetEntityById(package.PackageId), this);
+        //    }
+        //}
 
         [Fact]
         [SuppressMessage("ReSharper", "AssignNullToNotNullAttribute")]
