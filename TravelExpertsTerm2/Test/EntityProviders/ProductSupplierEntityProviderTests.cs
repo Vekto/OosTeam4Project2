@@ -21,7 +21,7 @@ namespace Test.EntityProviders
         {
             lock (TestDatabaseLocker)
             {
-                Assert.Equal(AllProductSuppliers, Database.ProductSuppliers.GetEntities(), this);
+                Assert.Equal(_AllProductSuppliers, Database.ProductSuppliers.GetEntities(), this);
             }
         }
 
@@ -40,7 +40,7 @@ namespace Test.EntityProviders
 
         #region TestData
 
-        private static IEnumerable<ProductSupplier> AllProductSuppliers { get; } = new List<ProductSupplier>
+        private static readonly List<ProductSupplier> _AllProductSuppliers = new List<ProductSupplier>
         {
             new ProductSupplier { ProductSupplierId = 1, Product = new Product { ProductId = 1, Name = "Air" }, Supplier = new Supplier { SupplierId = 5492, Name = "SKYWAYS INTERNATIONAL" } },
             new ProductSupplier { ProductSupplierId = 2, Product = new Product { ProductId = 1, Name = "Air" }, Supplier = new Supplier { SupplierId = 6505, Name = "TRADE WINDS ASSOCIATES" } },
@@ -124,7 +124,7 @@ namespace Test.EntityProviders
 
         // ReSharper disable once MemberCanBePrivate.Global
         public static IEnumerable<object[]> AllProductSuppliersParams
-            => AllProductSuppliers.Select(ps => new object[] {ps});
+            => _AllProductSuppliers.Select(ps => new object[] {ps});
 
         #endregion
 

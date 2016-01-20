@@ -56,13 +56,13 @@ namespace TravelDatabase
         public static ProductEntityProvider Products { get; }
             = new ProductEntityProvider();
 
-        ///// <summary>
-        ///// Provides database operations for <see cref="Supplier"/> entities
-        ///// </summary>
-        //[Devin]
-        //[ProvidesContext]
-        //public static SupplierEntityProvider SupplierProvider { get; }
-        //    = new SupplierEntityProvider();
+        /// <summary>
+        /// Provides database operations for <see cref="Supplier"/> entities
+        /// </summary>
+        [Devin]
+        [ProvidesContext]
+        public static SupplierEntityProvider Suppliers { get; }
+            = new SupplierEntityProvider();
 
 
         #region Internal Helpers

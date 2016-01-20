@@ -104,6 +104,8 @@ namespace TravelDatabase.EntityProviders
 
         #endregion
 
+        #region Column Names
+
         /// <summary>
         /// Column names
         /// </summary>
@@ -115,5 +117,8 @@ namespace TravelDatabase.EntityProviders
             public const string ProdName = nameof(ProdName);
             public const string SupName = nameof(SupName);
         }
+
+        #endregion
+
     }
 }

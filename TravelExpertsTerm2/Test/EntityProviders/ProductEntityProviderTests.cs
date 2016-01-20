@@ -69,11 +69,11 @@ namespace Test.EntityProviders
             {
                 var product = new Product
                 {
-                    ProductId = LastAddedIdentity("Products") + 1, // next ID
+                    ProductId = NextAddedIdentity("Products"), // next ID
                     Name = "TEST_OBJECT"
                 };
 
-                Assert.Null(Database.Products.GetEntityById(product.ProductId)); // check doesn't exist
+                Assert.Null(Database.Products.GetEntityById(product.ProductId)); // nexy ID doesn't exist
                 Assert.Equal(product.ProductId, Database.Products.AddEntity(product)); // add returns new ID
                 Assert.Equal(product, Database.Products.GetEntityById(product.ProductId), this); // check does exist
                 Assert.True(Database.Products.DeleteEntity(product)); // delete returns success
@@ -131,7 +131,6 @@ namespace Test.EntityProviders
         public static IEnumerable<object[]> AllProductsTestData
             => _AllProducts.Select(product => new object[] { product });
 
-        // This table is used to test EntityProviderBase because it's small and never changes
         private static readonly List<Product> _AllProducts 
             = new List<Product>
             {

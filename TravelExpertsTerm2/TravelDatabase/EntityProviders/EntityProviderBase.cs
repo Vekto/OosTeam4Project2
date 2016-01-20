@@ -111,7 +111,7 @@ namespace TravelDatabase.EntityProviders
         /// <summary>
         /// Adds an entity to the database. Returns the new item's ID, or negative on failure.
         /// </summary>
-        /// <param name="entity">Entity to add. Its ID is ignored.</param>
+        /// <param name="entity">Entity to add.</param>
         /// <returns>The ID of the newly added entity, or negative on failure.</returns>
         [ContractAnnotation("entity:null=>halt")]
         public int AddEntity([NotNull] TEntity entity)
