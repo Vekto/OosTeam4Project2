@@ -9,6 +9,7 @@ using Xunit;
 
 namespace Test.EntityProviders
 {
+    [Devin]
     public class ProductSupplierEntityProviderTests : DatabaseTestingBase, IEqualityComparer<ProductSupplier>
     {
         // TODO: Test Add/Update/Delete & make sure it affects Packages_Products_Suppliers
