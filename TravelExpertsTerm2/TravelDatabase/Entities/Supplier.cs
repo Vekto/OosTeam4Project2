@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// Author: Team 4 (See Annotations)
+// Project: TravelExpertsTerm2
+// Date: 2016-01
+
+using JetBrains.Annotations;
 
 namespace TravelDatabase
 {
@@ -10,5 +10,7 @@ namespace TravelDatabase
     {
         public int SupplierID { get; set; }
         public string SupName { get; set; }
+        public int SupplierId { get; set; }
+        public string Name { get; set; }
     }
 }
