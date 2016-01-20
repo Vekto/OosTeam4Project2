@@ -12,9 +12,9 @@ using System.Resources;
 [assembly: AssemblyConfiguration("Production")]
 #endif
 
-[assembly: AssemblyCompany("OOSD Term 2 Project, Team 5")]
+[assembly: AssemblyCompany("Team 4: Devin Ireland, Chad Davison, Amiaya Best Ej, Heidi Jo")]
 [assembly: AssemblyProduct("Travel Experts Management System")]
-[assembly: AssemblyCopyright("Copyright © 2016")]
+[assembly: AssemblyCopyright("Copyright © 2016 Respective Authors")]
 [assembly: AssemblyTrademark("")]
 [assembly: NeutralResourcesLanguage("en-US")]
 [assembly: AssemblyCulture("")]
