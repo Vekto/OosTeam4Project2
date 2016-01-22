@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿// Author: Team 4 (See Annotations)
+// Project: TravelExpertsTerm2
+// Date: 2016-01
+
+using System;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using JetBrains.Annotations;
 using TravelDatabase;
@@ -89,6 +87,13 @@ namespace TravelExpertsTerm2
                 if (_CreateNew)
                 {
                     // TODO: Call save. If successful, add item to _Packages & select
+                    //var id = Database.Packages.AddEntity(package);
+                    //if (id < 0)
+                    //{
+                    //    // TODO: Try/Catch + Error message
+                    //    return;
+                    //}
+
                 }
                 else
                 {
