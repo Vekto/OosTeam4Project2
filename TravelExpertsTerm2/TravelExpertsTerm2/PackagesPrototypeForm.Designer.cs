@@ -43,6 +43,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.TotalLabel = new System.Windows.Forms.Label();
+            this.NewEditButton = new System.Windows.Forms.Button();
+            this.SaveCancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // PackageSelectorComboBox
@@ -170,11 +172,31 @@
             this.TotalLabel.TabIndex = 16;
             this.TotalLabel.Text = "Total";
             // 
+            // NewEditButton
+            // 
+            this.NewEditButton.Location = new System.Drawing.Point(315, 461);
+            this.NewEditButton.Name = "NewEditButton";
+            this.NewEditButton.Size = new System.Drawing.Size(75, 23);
+            this.NewEditButton.TabIndex = 17;
+            this.NewEditButton.Text = "New/Edit";
+            this.NewEditButton.UseVisualStyleBackColor = true;
+            // 
+            // SaveCancelButton
+            // 
+            this.SaveCancelButton.Location = new System.Drawing.Point(396, 461);
+            this.SaveCancelButton.Name = "SaveCancelButton";
+            this.SaveCancelButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveCancelButton.TabIndex = 18;
+            this.SaveCancelButton.Text = "Save/Cancel";
+            this.SaveCancelButton.UseVisualStyleBackColor = true;
+            // 
             // PackagesPrototypeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(702, 583);
+            this.Controls.Add(this.SaveCancelButton);
+            this.Controls.Add(this.NewEditButton);
             this.Controls.Add(this.TotalLabel);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -216,5 +238,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label TotalLabel;
+        private System.Windows.Forms.Button NewEditButton;
+        private System.Windows.Forms.Button SaveCancelButton;
     }
 }
