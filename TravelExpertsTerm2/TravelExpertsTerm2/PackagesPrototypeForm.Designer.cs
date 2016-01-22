@@ -43,14 +43,18 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.TotalLabel = new System.Windows.Forms.Label();
-            this.NewEditButton = new System.Windows.Forms.Button();
-            this.SaveCancelButton = new System.Windows.Forms.Button();
+            this.EditCancelButton = new System.Windows.Forms.Button();
+            this.NewSaveButton = new System.Windows.Forms.Button();
+            this.DeleteButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // PackageSelectorComboBox
             // 
+            this.PackageSelectorComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.PackageSelectorComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.PackageSelectorComboBox.FormattingEnabled = true;
             this.PackageSelectorComboBox.Location = new System.Drawing.Point(271, 114);
+            this.PackageSelectorComboBox.MaxDropDownItems = 16;
             this.PackageSelectorComboBox.Name = "PackageSelectorComboBox";
             this.PackageSelectorComboBox.Size = new System.Drawing.Size(200, 24);
             this.PackageSelectorComboBox.TabIndex = 0;
@@ -88,6 +92,7 @@
             // StartDateTimePicker
             // 
             this.StartDateTimePicker.Location = new System.Drawing.Point(271, 196);
+            this.StartDateTimePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.StartDateTimePicker.Name = "StartDateTimePicker";
             this.StartDateTimePicker.Size = new System.Drawing.Size(200, 22);
             this.StartDateTimePicker.TabIndex = 7;
@@ -172,31 +177,44 @@
             this.TotalLabel.TabIndex = 16;
             this.TotalLabel.Text = "Total";
             // 
-            // NewEditButton
+            // EditCancelButton
             // 
-            this.NewEditButton.Location = new System.Drawing.Point(315, 461);
-            this.NewEditButton.Name = "NewEditButton";
-            this.NewEditButton.Size = new System.Drawing.Size(75, 23);
-            this.NewEditButton.TabIndex = 17;
-            this.NewEditButton.Text = "New/Edit";
-            this.NewEditButton.UseVisualStyleBackColor = true;
+            this.EditCancelButton.Location = new System.Drawing.Point(315, 461);
+            this.EditCancelButton.Name = "EditCancelButton";
+            this.EditCancelButton.Size = new System.Drawing.Size(75, 23);
+            this.EditCancelButton.TabIndex = 17;
+            this.EditCancelButton.Text = "Edit/Cancel";
+            this.EditCancelButton.UseVisualStyleBackColor = true;
+            this.EditCancelButton.Click += new System.EventHandler(this.EditCancelButton_Click);
             // 
-            // SaveCancelButton
+            // NewSaveButton
             // 
-            this.SaveCancelButton.Location = new System.Drawing.Point(396, 461);
-            this.SaveCancelButton.Name = "SaveCancelButton";
-            this.SaveCancelButton.Size = new System.Drawing.Size(75, 23);
-            this.SaveCancelButton.TabIndex = 18;
-            this.SaveCancelButton.Text = "Save/Cancel";
-            this.SaveCancelButton.UseVisualStyleBackColor = true;
+            this.NewSaveButton.Location = new System.Drawing.Point(396, 461);
+            this.NewSaveButton.Name = "NewSaveButton";
+            this.NewSaveButton.Size = new System.Drawing.Size(75, 23);
+            this.NewSaveButton.TabIndex = 18;
+            this.NewSaveButton.Text = "New/Save";
+            this.NewSaveButton.UseVisualStyleBackColor = true;
+            this.NewSaveButton.Click += new System.EventHandler(this.NewSaveButton_Click);
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Location = new System.Drawing.Point(134, 461);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteButton.TabIndex = 19;
+            this.DeleteButton.Text = "Delete";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // PackagesPrototypeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(702, 583);
-            this.Controls.Add(this.SaveCancelButton);
-            this.Controls.Add(this.NewEditButton);
+            this.Controls.Add(this.DeleteButton);
+            this.Controls.Add(this.NewSaveButton);
+            this.Controls.Add(this.EditCancelButton);
             this.Controls.Add(this.TotalLabel);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -238,7 +256,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label TotalLabel;
-        private System.Windows.Forms.Button NewEditButton;
-        private System.Windows.Forms.Button SaveCancelButton;
+        private System.Windows.Forms.Button EditCancelButton;
+        private System.Windows.Forms.Button NewSaveButton;
+        private System.Windows.Forms.Button DeleteButton;
     }
 }

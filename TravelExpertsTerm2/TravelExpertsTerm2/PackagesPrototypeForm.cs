@@ -15,6 +15,10 @@ namespace TravelExpertsTerm2
     public partial class PackagesPrototypeForm : Form
     {
         private readonly BindingList<Package> _Packages = new BindingList<Package>();
+        private bool _EditMode;
+        private bool _CreateNew; // used to track whether the user clicked "New" or "Edit"
+
+        private Package SelectedPackage => (Package)PackageSelectorComboBox.SelectedItem;
 
         #region Constructor
 
@@ -39,13 +43,68 @@ namespace TravelExpertsTerm2
                 _Packages.Add(package);
             ShowPackage((Package)PackageSelectorComboBox.SelectedItem);
 
-            SetReadonlyFields(true);
+            SetEditMode(false);
             PackageSelectorComboBox.Enabled = true;
         }
 
         private void PackageSelectorComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ShowPackage((Package)PackageSelectorComboBox.SelectedItem);
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.Yes == MessageBox.Show(@"This will permanently delete this package. Continue?",
+                @"Confirm Delete", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning,
+                MessageBoxDefaultButton.Button2))
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        private void EditCancelButton_Click(object sender, EventArgs e)
+        {
+            if (_EditMode) // clicked Cancel
+            {
+                SetEditMode(false);
+                ShowPackage((Package)PackageSelectorComboBox.SelectedItem);
+            }
+            else // clicked Edit
+            {
+                _CreateNew = false; // existing item should be updated, not created
+                SetEditMode(true);
+            }
+        }
+
+        private void NewSaveButton_Click(object sender, EventArgs e)
+        {
+            if (_EditMode) // clicked Save
+            {
+                SetEditMode(false);
+
+                var package = ParsePackage();
+                // TODO: Validate business object here, show error & return if invalid
+
+                if (_CreateNew)
+                {
+                    // TODO: Call save. If successful, add item to _Packages & select
+                }
+                else
+                {
+                    package.PackageId = SelectedPackage.PackageId;
+                    // TODO: Call update
+                }
+
+                // TODO: Show any errors that occurred during update/insert
+                throw new NotImplementedException();
+            }
+            else // clicked New
+            {
+                _CreateNew = true; // new item should be added to the database
+                SetEditMode(true);
+                ShowPackage(null); // make fields blank
+            }
         }
 
         #endregion
@@ -55,9 +114,9 @@ namespace TravelExpertsTerm2
         private void ShowPackage([CanBeNull] Package package)
         {
             NameTextBox.Text = package?.Name;
+            DescriptionTextBox.Text = package?.Description;
             StartDateTimePicker.Value = package?.StartDate ?? DateTime.Today;
             EndDateTimePicker.Value = package?.EndDate ?? DateTime.Today + TimeSpan.FromDays(1);
-            DescriptionTextBox.Text = package?.Description;
 
             var basePrice = (package?.BasePrice ?? 0);
             var agencyCommission = (package?.AgencyCommission ?? 0);
@@ -90,20 +149,29 @@ namespace TravelExpertsTerm2
             DescriptionTextBox.ReadOnly = @readonly;
             BasePriceTextBox.ReadOnly = @readonly;
             AgencyCommissionTextBox.ReadOnly = @readonly;
+            StartDateTimePicker.Enabled = !@readonly;
+            EndDateTimePicker.Enabled = !@readonly;
+        }
 
-            if (@readonly)
+        private void SetEditMode(bool enabled)
+        {
+            _EditMode = enabled;
+
+            if (_EditMode)
             {
-                StartDateTimePicker.MinDate = StartDateTimePicker.Value;
-                StartDateTimePicker.MaxDate = StartDateTimePicker.Value;
-                EndDateTimePicker.MinDate = EndDateTimePicker.Value;
-                EndDateTimePicker.MaxDate = EndDateTimePicker.Value;
+                NewSaveButton.Text = @"Save";
+                EditCancelButton.Text = @"Cancel";
+                DeleteButton.Enabled = false;
+                PackageSelectorComboBox.Enabled = false;
+                SetReadonlyFields(false);
             }
             else
             {
-                StartDateTimePicker.MinDate = new DateTime(2000, 1, 1);
-                StartDateTimePicker.MaxDate = DateTime.MaxValue;
-                EndDateTimePicker.MinDate = new DateTime(2000, 1, 1);
-                EndDateTimePicker.MaxDate = DateTime.MaxValue;
+                NewSaveButton.Text = @"New";
+                EditCancelButton.Text = @"Edit";
+                DeleteButton.Enabled = true;
+                PackageSelectorComboBox.Enabled = true;
+                SetReadonlyFields(true);
             }
         }
 
