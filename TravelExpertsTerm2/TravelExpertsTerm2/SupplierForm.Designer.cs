@@ -39,12 +39,12 @@
             this.btnDeleteSelected = new MetroFramework.Controls.MetroButton();
             this.metroStyleExtender1 = new MetroFramework.Components.MetroStyleExtender(this.components);
             this.pnlAddUpdate = new MetroFramework.Controls.MetroPanel();
-            this.btnAdd = new MetroFramework.Controls.MetroButton();
-            this.btnCancel1 = new MetroFramework.Controls.MetroButton();
-            this.txtSupplierID = new MetroFramework.Controls.MetroTextBox();
+            this.lblSupName = new MetroFramework.Controls.MetroLabel();
             this.txtSupName = new MetroFramework.Controls.MetroTextBox();
             this.lblSupplierID = new MetroFramework.Controls.MetroLabel();
-            this.lblSupName = new MetroFramework.Controls.MetroLabel();
+            this.txtSupplierID = new MetroFramework.Controls.MetroTextBox();
+            this.btnAdd = new MetroFramework.Controls.MetroButton();
+            this.btnCancel1 = new MetroFramework.Controls.MetroButton();
             this.pnlAddUpdate.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -147,41 +147,16 @@
             this.pnlAddUpdate.VerticalScrollbarBarColor = true;
             this.pnlAddUpdate.VerticalScrollbarHighlightOnWheel = false;
             this.pnlAddUpdate.VerticalScrollbarSize = 10;
+            this.pnlAddUpdate.Visible = false;
             // 
-            // btnAdd
+            // lblSupName
             // 
-            this.btnAdd.Location = new System.Drawing.Point(128, 88);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 15;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseSelectable = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnCancel1
-            // 
-            this.btnCancel1.Location = new System.Drawing.Point(209, 88);
-            this.btnCancel1.Name = "btnCancel1";
-            this.btnCancel1.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel1.TabIndex = 16;
-            this.btnCancel1.Text = "Cancel";
-            this.btnCancel1.UseSelectable = true;
-            this.btnCancel1.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // txtSupplierID
-            // 
-            this.txtSupplierID.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.txtSupplierID.Lines = new string[0];
-            this.txtSupplierID.Location = new System.Drawing.Point(128, 22);
-            this.txtSupplierID.MaxLength = 32767;
-            this.txtSupplierID.Name = "txtSupplierID";
-            this.txtSupplierID.PasswordChar = '\0';
-            this.txtSupplierID.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtSupplierID.SelectedText = "";
-            this.txtSupplierID.Size = new System.Drawing.Size(156, 23);
-            this.txtSupplierID.TabIndex = 16;
-            this.txtSupplierID.UseSelectable = true;
-            this.txtSupplierID.Click += new System.EventHandler(this.txtSupplierID_Click);
+            this.lblSupName.AutoSize = true;
+            this.lblSupName.Location = new System.Drawing.Point(19, 54);
+            this.lblSupName.Name = "lblSupName";
+            this.lblSupName.Size = new System.Drawing.Size(101, 20);
+            this.lblSupName.TabIndex = 16;
+            this.lblSupName.Text = "Supplier Name";
             // 
             // txtSupName
             // 
@@ -207,14 +182,40 @@
             this.lblSupplierID.TabIndex = 16;
             this.lblSupplierID.Text = "SupplierID";
             // 
-            // lblSupName
+            // txtSupplierID
             // 
-            this.lblSupName.AutoSize = true;
-            this.lblSupName.Location = new System.Drawing.Point(19, 54);
-            this.lblSupName.Name = "lblSupName";
-            this.lblSupName.Size = new System.Drawing.Size(101, 20);
-            this.lblSupName.TabIndex = 16;
-            this.lblSupName.Text = "Supplier Name";
+            this.txtSupplierID.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.txtSupplierID.Lines = new string[0];
+            this.txtSupplierID.Location = new System.Drawing.Point(128, 22);
+            this.txtSupplierID.MaxLength = 32767;
+            this.txtSupplierID.Name = "txtSupplierID";
+            this.txtSupplierID.PasswordChar = '\0';
+            this.txtSupplierID.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtSupplierID.SelectedText = "";
+            this.txtSupplierID.Size = new System.Drawing.Size(156, 23);
+            this.txtSupplierID.TabIndex = 16;
+            this.txtSupplierID.UseSelectable = true;
+            this.txtSupplierID.Click += new System.EventHandler(this.txtSupplierID_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(128, 88);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 15;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseSelectable = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnCancel1
+            // 
+            this.btnCancel1.Location = new System.Drawing.Point(209, 88);
+            this.btnCancel1.Name = "btnCancel1";
+            this.btnCancel1.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel1.TabIndex = 16;
+            this.btnCancel1.Text = "Cancel";
+            this.btnCancel1.UseSelectable = true;
+            this.btnCancel1.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // SupplierForm
             // 

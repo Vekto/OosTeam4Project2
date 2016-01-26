@@ -26,6 +26,7 @@ namespace TravelExpertsTerm2
         #region Events
         private void MainForm_Load(object sender, EventArgs e)
         {
+
             List<Supplier> suppliersList = SupplierDB.GetSuppliers(); //creates supplier list to pass to updateListView()
             updateListView(suppliersList);
         }
