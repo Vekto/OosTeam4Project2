@@ -17,7 +17,7 @@ namespace TravelExpertsTerm2
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new SupplierForm());
-            Application.Run(new PackagesPrototypeForm());
+            Application.Run(new PackagesForm());
             //Application.Run(new MainForm());
         }
     }

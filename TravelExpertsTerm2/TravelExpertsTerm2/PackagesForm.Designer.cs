@@ -1,6 +1,6 @@
 ﻿namespace TravelExpertsTerm2
 {
-    partial class PackagesPrototypeForm
+    partial class PackagesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -53,7 +53,7 @@
             this.PackageSelectorComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.PackageSelectorComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.PackageSelectorComboBox.FormattingEnabled = true;
-            this.PackageSelectorComboBox.Location = new System.Drawing.Point(271, 114);
+            this.PackageSelectorComboBox.Location = new System.Drawing.Point(670, 127);
             this.PackageSelectorComboBox.MaxDropDownItems = 16;
             this.PackageSelectorComboBox.Name = "PackageSelectorComboBox";
             this.PackageSelectorComboBox.Size = new System.Drawing.Size(200, 24);
@@ -62,14 +62,14 @@
             // 
             // NameTextBox
             // 
-            this.NameTextBox.Location = new System.Drawing.Point(271, 168);
+            this.NameTextBox.Location = new System.Drawing.Point(670, 181);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(200, 22);
             this.NameTextBox.TabIndex = 1;
             // 
             // DescriptionTextBox
             // 
-            this.DescriptionTextBox.Location = new System.Drawing.Point(271, 252);
+            this.DescriptionTextBox.Location = new System.Drawing.Point(670, 265);
             this.DescriptionTextBox.Multiline = true;
             this.DescriptionTextBox.Name = "DescriptionTextBox";
             this.DescriptionTextBox.Size = new System.Drawing.Size(200, 88);
@@ -77,21 +77,21 @@
             // 
             // BasePriceTextBox
             // 
-            this.BasePriceTextBox.Location = new System.Drawing.Point(271, 346);
+            this.BasePriceTextBox.Location = new System.Drawing.Point(670, 359);
             this.BasePriceTextBox.Name = "BasePriceTextBox";
             this.BasePriceTextBox.Size = new System.Drawing.Size(200, 22);
             this.BasePriceTextBox.TabIndex = 5;
             // 
             // AgencyCommissionTextBox
             // 
-            this.AgencyCommissionTextBox.Location = new System.Drawing.Point(271, 374);
+            this.AgencyCommissionTextBox.Location = new System.Drawing.Point(670, 387);
             this.AgencyCommissionTextBox.Name = "AgencyCommissionTextBox";
             this.AgencyCommissionTextBox.Size = new System.Drawing.Size(200, 22);
             this.AgencyCommissionTextBox.TabIndex = 6;
             // 
             // StartDateTimePicker
             // 
-            this.StartDateTimePicker.Location = new System.Drawing.Point(271, 196);
+            this.StartDateTimePicker.Location = new System.Drawing.Point(670, 209);
             this.StartDateTimePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.StartDateTimePicker.Name = "StartDateTimePicker";
             this.StartDateTimePicker.Size = new System.Drawing.Size(200, 22);
@@ -99,7 +99,7 @@
             // 
             // EndDateTimePicker
             // 
-            this.EndDateTimePicker.Location = new System.Drawing.Point(271, 224);
+            this.EndDateTimePicker.Location = new System.Drawing.Point(670, 237);
             this.EndDateTimePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.EndDateTimePicker.Name = "EndDateTimePicker";
             this.EndDateTimePicker.Size = new System.Drawing.Size(200, 22);
@@ -108,7 +108,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(220, 171);
+            this.label1.Location = new System.Drawing.Point(619, 184);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 17);
             this.label1.TabIndex = 9;
@@ -117,7 +117,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(193, 201);
+            this.label2.Location = new System.Drawing.Point(592, 214);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 17);
             this.label2.TabIndex = 10;
@@ -126,7 +126,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(198, 229);
+            this.label3.Location = new System.Drawing.Point(597, 242);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 17);
             this.label3.TabIndex = 11;
@@ -135,7 +135,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(186, 255);
+            this.label4.Location = new System.Drawing.Point(585, 268);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 17);
             this.label4.TabIndex = 12;
@@ -144,7 +144,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(225, 349);
+            this.label5.Location = new System.Drawing.Point(624, 362);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 17);
             this.label5.TabIndex = 13;
@@ -153,7 +153,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(131, 377);
+            this.label6.Location = new System.Drawing.Point(530, 390);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(134, 17);
             this.label6.TabIndex = 14;
@@ -162,7 +162,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(225, 405);
+            this.label7.Location = new System.Drawing.Point(624, 418);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(40, 17);
             this.label7.TabIndex = 15;
@@ -171,7 +171,7 @@
             // TotalLabel
             // 
             this.TotalLabel.AutoSize = true;
-            this.TotalLabel.Location = new System.Drawing.Point(268, 405);
+            this.TotalLabel.Location = new System.Drawing.Point(667, 418);
             this.TotalLabel.Name = "TotalLabel";
             this.TotalLabel.Size = new System.Drawing.Size(40, 17);
             this.TotalLabel.TabIndex = 16;
@@ -179,7 +179,7 @@
             // 
             // EditCancelButton
             // 
-            this.EditCancelButton.Location = new System.Drawing.Point(315, 461);
+            this.EditCancelButton.Location = new System.Drawing.Point(714, 462);
             this.EditCancelButton.Name = "EditCancelButton";
             this.EditCancelButton.Size = new System.Drawing.Size(75, 23);
             this.EditCancelButton.TabIndex = 17;
@@ -189,7 +189,7 @@
             // 
             // NewSaveButton
             // 
-            this.NewSaveButton.Location = new System.Drawing.Point(396, 461);
+            this.NewSaveButton.Location = new System.Drawing.Point(795, 462);
             this.NewSaveButton.Name = "NewSaveButton";
             this.NewSaveButton.Size = new System.Drawing.Size(75, 23);
             this.NewSaveButton.TabIndex = 18;
@@ -199,7 +199,7 @@
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(134, 461);
+            this.DeleteButton.Location = new System.Drawing.Point(533, 462);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(75, 23);
             this.DeleteButton.TabIndex = 19;
@@ -211,7 +211,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(702, 583);
+            this.ClientSize = new System.Drawing.Size(1160, 690);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.NewSaveButton);
             this.Controls.Add(this.EditCancelButton);

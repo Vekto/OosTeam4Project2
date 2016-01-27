@@ -74,11 +74,11 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PackagesPrototypeForm.cs">
+    <Compile Include="PackagesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PackagesPrototypeForm.Designer.cs">
-      <DependentUpon>PackagesPrototypeForm.cs</DependentUpon>
+    <Compile Include="PackagesForm.Designer.cs">
+      <DependentUpon>PackagesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SupplierForm.cs">
       <SubType>Form</SubType>
@@ -94,8 +94,8 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PackagesPrototypeForm.resx">
-      <DependentUpon>PackagesPrototypeForm.cs</DependentUpon>
+    <EmbeddedResource Include="PackagesForm.resx">
+      <DependentUpon>PackagesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierForm.resx">
       <DependentUpon>SupplierForm.cs</DependentUpon>

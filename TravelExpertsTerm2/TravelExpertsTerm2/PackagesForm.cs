@@ -3,24 +3,30 @@
 // Date: 2016-01
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 using JetBrains.Annotations;
 using TravelDatabase;
 
 namespace TravelExpertsTerm2
 {
-    public partial class PackagesPrototypeForm : Form
+    public partial class PackagesForm : Form
     {
         private readonly BindingList<Package> _Packages = new BindingList<Package>();
         private bool _EditMode;
         private bool _CreateNew; // used to track whether the user clicked "New" or "Edit"
 
-        private Package SelectedPackage => (Package)PackageSelectorComboBox.SelectedItem;
+        private Package SelectedPackage
+        {
+            get { return (Package) PackageSelectorComboBox.SelectedItem; }
+            set { PackageSelectorComboBox.SelectedItem = value; }
+        }
 
         #region Constructor
 
-        public PackagesPrototypeForm()
+        public PackagesForm()
         {
             InitializeComponent();
 
@@ -37,17 +43,22 @@ namespace TravelExpertsTerm2
         private void PackagesPrototypeForm_Load(object sender, EventArgs e)
         {
             _Packages.Clear();
-            foreach (var package in Database.Packages.GetEntitiesWithChildren())
-                _Packages.Add(package);
-            ShowPackage((Package)PackageSelectorComboBox.SelectedItem);
-
             SetEditMode(false);
             PackageSelectorComboBox.Enabled = true;
+
+            // get packagees, reporting errors
+            IEnumerable<Package> packages;
+            if (!TryReport(Database.Packages.GetEntitiesWithChildren, out packages)) return;
+
+            // add and display them
+            foreach (var package in packages)
+                _Packages.Add(package);
+            ShowPackage(SelectedPackage);
         }
 
         private void PackageSelectorComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ShowPackage((Package)PackageSelectorComboBox.SelectedItem);
+            ShowPackage(SelectedPackage);
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
@@ -79,30 +90,31 @@ namespace TravelExpertsTerm2
         {
             if (_EditMode) // clicked Save
             {
-                SetEditMode(false);
-
                 var package = ParsePackage();
                 // TODO: Validate business object here, show error & return if invalid
 
                 if (_CreateNew)
                 {
-                    // TODO: Call save. If successful, add item to _Packages & select
-                    //var id = Database.Packages.AddEntity(package);
-                    //if (id < 0)
-                    //{
-                    //    // TODO: Try/Catch + Error message
-                    //    return;
-                    //}
+                    int id;
+                    if (!TryReport(() => Database.Packages.AddEntity(package), out id)) return;
 
+                    if (id < 0) // negative means item wasn't added
+                    {
+                        Error("Could not add item.");
+                        return;
+                    }
+
+                    package.PackageId = id; // save actual id before adding/displaying
+                    _Packages.Add(package);
+                    SelectedPackage = package;
                 }
-                else
+                else // updating package
                 {
                     package.PackageId = SelectedPackage.PackageId;
                     // TODO: Call update
                 }
 
-                // TODO: Show any errors that occurred during update/insert
-                throw new NotImplementedException();
+                SetEditMode(false); // turn off edit mode on success, else return
             }
             else // clicked New
             {
@@ -177,6 +189,28 @@ namespace TravelExpertsTerm2
                 DeleteButton.Enabled = true;
                 PackageSelectorComboBox.Enabled = true;
                 SetReadonlyFields(true);
+            }
+        }
+
+        private static void Error(string message)
+        {
+            MessageBox.Show(message, @"Error", 
+                MessageBoxButtons.OK, MessageBoxIcon.Error,
+                MessageBoxDefaultButton.Button1);
+        }
+
+        private static bool TryReport<TReturn>(Func<TReturn> func, out TReturn result)
+        {
+            try
+            {
+                result = func();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Error($"An exception of type {e.GetType().Name} has occurred. {e.Message}");
+                result = default(TReturn);
+                return false;
             }
         }
 
