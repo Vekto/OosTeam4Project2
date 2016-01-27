@@ -179,6 +179,10 @@ namespace TravelExpertsTerm2
             AgencyCommissionTextBox.ReadOnly = @readonly;
             StartDateTimePicker.Enabled = !@readonly;
             EndDateTimePicker.Enabled = !@readonly;
+            LinkedProductSuppliersListBox.SelectionMode = @readonly ? SelectionMode.None : SelectionMode.One;
+            OtherProductSuppliersListBox.Enabled = !@readonly;
+            OtherProductSuppliersListBox.Visible = !@readonly;
+            OtherProductSuppliersLabel.Visible = !@readonly;
         }
 
         private void SetEditMode(bool enabled)
