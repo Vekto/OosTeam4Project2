@@ -5,13 +5,13 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 using JetBrains.Annotations;
 using TravelDatabase;
 
 namespace TravelExpertsTerm2
 {
+    [Devin]
     public partial class PackagesForm : Form
     {
         private readonly BindingList<Package> _Packages = new BindingList<Package>();
@@ -54,6 +54,7 @@ namespace TravelExpertsTerm2
             foreach (var package in packages)
                 _Packages.Add(package);
             ShowPackage(SelectedPackage);
+
         }
 
         private void PackageSelectorComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,12 +64,15 @@ namespace TravelExpertsTerm2
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
+            // ReSharper disable once InvertIf
             if (DialogResult.Yes == MessageBox.Show(@"This will permanently delete this package. Continue?",
                 @"Confirm Delete", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning,
-                MessageBoxDefaultButton.Button2))
+                MessageBoxDefaultButton.Button2) 
+                && TryReport(() => Database.Packages.DeleteEntity(SelectedPackage)))
             {
-                throw new NotImplementedException();
+                _Packages.Remove(SelectedPackage);
+                ShowPackage(SelectedPackage);
             }
         }
 
@@ -104,14 +108,21 @@ namespace TravelExpertsTerm2
                         return;
                     }
 
-                    package.PackageId = id; // save actual id before adding/displaying
+                    package.PackageId = id; // save actual id before adding/displaying on form
                     _Packages.Add(package);
                     SelectedPackage = package;
                 }
                 else // updating package
                 {
                     package.PackageId = SelectedPackage.PackageId;
-                    // TODO: Call update
+
+                    bool success;
+                    if (!TryReport(() => Database.Packages.UpdateEntity(package), out success)) return;
+                    if (!success)
+                    {
+                        Error("Could not update item.");
+                        return;
+                    }
                 }
 
                 SetEditMode(false); // turn off edit mode on success, else return
@@ -210,6 +221,20 @@ namespace TravelExpertsTerm2
             {
                 Error($"An exception of type {e.GetType().Name} has occurred. {e.Message}");
                 result = default(TReturn);
+                return false;
+            }
+        }
+
+        private static bool TryReport(Action action)
+        {
+            try
+            {
+                action();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Error($"An exception of type {e.GetType().Name} has occurred. {e.Message}");
                 return false;
             }
         }

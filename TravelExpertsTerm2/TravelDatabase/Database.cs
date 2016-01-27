@@ -156,12 +156,12 @@ namespace TravelDatabase
         //                       " JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE kcu ON tc.TABLE_NAME = kcu.TABLE_NAME AND tc.TABLE_SCHEMA = kcu.TABLE_SCHEMA AND tc.TABLE_CATALOG = kcu.TABLE_CATALOG AND tc.CONSTRAINT_NAME = kcu.CONSTRAINT_NAME" +
         //                       " WHERE tc.TABLE_NAME=@TableName AND CONSTRAINT_TYPE='PRIMARY KEY'";
 
-        //    Func<SqlConnection,string> executeSql = (c) =>
-        //    {
-        //        var command = new SqlCommand(sql, c);
-        //        command.Parameters.AddWithValue("TableName", tablename);
-        //        return (string)command.ExecuteScalar();
-        //    };
+        //    Func<SqlConnection, string> executeSql = (c) =>
+        //     {
+        //         var command = new SqlCommand(sql, c);
+        //         command.Parameters.AddWithValue("TableName", tablename);
+        //         return (string)command.ExecuteScalar();
+        //     };
 
         //    if (conn != null) return executeSql(conn);
         //    using (var c = GetConnection())
