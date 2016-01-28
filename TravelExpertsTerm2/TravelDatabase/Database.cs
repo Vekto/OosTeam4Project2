@@ -176,9 +176,13 @@ namespace TravelDatabase
 
         #region Diagnostics
 
+        [Devin]
+        [Pure]
         internal static SqlCommand DebuggerLogCommand(SqlCommand command, bool verbose = false) 
             => DebuggerLogCommand(command, null, verbose);
 
+        [Devin]
+        [Pure]
         internal static SqlCommand DebuggerLogCommand(SqlCommand command, object source, bool verbose = false)
         {
             #if !DEBUG

@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 
 namespace TravelDatabase.EntityProviders
 {
+    [Devin]
     public class ProductSupplierEntityProvider : EntityProviderBase<ProductSupplier>
     {
 
