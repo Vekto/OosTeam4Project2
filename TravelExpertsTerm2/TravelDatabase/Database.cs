@@ -3,7 +3,9 @@
 // Date: 2016-01
 
 using System;
+using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using JetBrains.Annotations;
@@ -171,6 +173,69 @@ namespace TravelDatabase
         //}
 
         #endregion
+
+        #region Diagnostics
+
+        internal static SqlCommand DebuggerLogCommand(SqlCommand command, bool verbose = false) 
+            => DebuggerLogCommand(command, null, verbose);
+
+        internal static SqlCommand DebuggerLogCommand(SqlCommand command, object source, bool verbose = false)
+        {
+            #if !DEBUG
+            return command; // if Release, don't log any SQL queries or security sensitive information
+            #else
+
+            const string category = "Database";
+            var src = 
+                source == null 
+                ? string.Empty 
+                : source is string 
+                    ? $" of {source}" 
+                    : $" of {source.GetType().Name}";
+
+            if (command == null)
+            {
+                Debug.WriteLine($"Error, {nameof(SqlCommand)}{src} is null", category);
+            }
+            else
+            {
+                Debug.WriteLineIf(verbose, string.Empty, category);
+                Debug.WriteLineIf(verbose, $"{DateTime.Now.ToLongTimeString()} ----- New Database Operation{src}", category);
+                Debug.WriteLineIf(verbose, $"Connection String{src}: {command.Connection.ConnectionString}", category);
+                var connected = (command.Connection.State & ConnectionState.Open) == ConnectionState.Open
+                    ? "Connected"
+                    : "Disconnected";
+                Debug.WriteLine($"{nameof(SqlCommand)}{src} {connected} :: {command.CommandText}", category);
+                Debug.WriteLineIf(verbose, string.Empty, category);
+
+
+                // Event Handlers
+                command.StatementCompleted +=
+                        (sender, e) => Debug.WriteLine($"{DateTime.Now.ToLongTimeString()} {nameof(SqlCommand)}{src} completed with {e.RecordCount} records", category);
+                if (verbose) command.Disposed +=
+                        (sender, e) => Debug.WriteLine($"{DateTime.Now.ToLongTimeString()} {nameof(SqlCommand)}{src} Disposed", category);
+
+                // Note: The connection's handlers may be added more than once if multiple command
+                //       objects use the same connection. To avoid duplicate log entries, we remove
+                //       the handler (if it exists) and then add it again.
+                SqlInfoMessageEventHandler infoMessageHandler = (sender, e) => Debug.WriteLine($"{DateTime.Now.ToLongTimeString()} {nameof(SqlConnection)}{src} Error, {e.Message}", category);
+                command.Connection.InfoMessage -= infoMessageHandler;
+                command.Connection.InfoMessage += infoMessageHandler;
+
+                // ReSharper disable once InvertIf
+                if (verbose)
+                {
+                    EventHandler disposedHandler = (sender, e) => Debug.WriteLine($"{DateTime.Now.ToLongTimeString()} {nameof(SqlConnection)}{src} Disposed", category);
+                    command.Connection.Disposed -= disposedHandler;
+                    command.Connection.Disposed += disposedHandler;
+                }
+            }
+
+            return command;
+            #endif
+        }
+
+#endregion
 
     }
 }

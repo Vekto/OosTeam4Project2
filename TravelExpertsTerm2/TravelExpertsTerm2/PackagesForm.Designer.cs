@@ -215,10 +215,12 @@
             // 
             this.LinkedProductSuppliersListBox.FormattingEnabled = true;
             this.LinkedProductSuppliersListBox.ItemHeight = 16;
-            this.LinkedProductSuppliersListBox.Location = new System.Drawing.Point(544, 173);
+            this.LinkedProductSuppliersListBox.Location = new System.Drawing.Point(478, 173);
             this.LinkedProductSuppliersListBox.Name = "LinkedProductSuppliersListBox";
-            this.LinkedProductSuppliersListBox.Size = new System.Drawing.Size(200, 228);
+            this.LinkedProductSuppliersListBox.Size = new System.Drawing.Size(266, 228);
+            this.LinkedProductSuppliersListBox.Sorted = true;
             this.LinkedProductSuppliersListBox.TabIndex = 20;
+            this.LinkedProductSuppliersListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.LinkedProductSuppliersListBox_MouseDoubleClick);
             // 
             // OtherProductSuppliersListBox
             // 
@@ -226,8 +228,10 @@
             this.OtherProductSuppliersListBox.ItemHeight = 16;
             this.OtherProductSuppliersListBox.Location = new System.Drawing.Point(808, 173);
             this.OtherProductSuppliersListBox.Name = "OtherProductSuppliersListBox";
-            this.OtherProductSuppliersListBox.Size = new System.Drawing.Size(200, 228);
+            this.OtherProductSuppliersListBox.Size = new System.Drawing.Size(266, 228);
+            this.OtherProductSuppliersListBox.Sorted = true;
             this.OtherProductSuppliersListBox.TabIndex = 21;
+            this.OtherProductSuppliersListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.OtherProductSuppliersListBox_MouseDoubleClick);
             // 
             // OtherProductSuppliersLabel
             // 
