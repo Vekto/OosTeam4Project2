@@ -13,5 +13,7 @@ namespace TravelDatabase
         public int ProductSupplierId { get; set; }
         public Product Product { get; set; }
         public Supplier Supplier { get; set; }
+
+        public string FullName => $"{Product.Name} | {Supplier.Name}";
     }
 }
