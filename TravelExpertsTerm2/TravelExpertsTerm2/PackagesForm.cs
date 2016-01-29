@@ -293,13 +293,11 @@ namespace TravelExpertsTerm2
         // TODO: Maybe move these to a shared utility class for use on other forms
         #region Static Utility Methods
 
-        private static bool ValidateAndDisplayErrors(IValidatable obj, string header = null)
+        private static bool ValidateAndDisplayErrors([NotNull] IValidatable obj, string header = null)
         {
-            var result = obj.ValidateSelf();
-            if (result.IsValid) return true;
-
-            Error(result.FormattedErrorMessageList(header));
-            return false;
+            var validationResult = obj.ValidateSelf();
+            if (!validationResult.IsValid) Error(validationResult.FormattedErrorMessageList(header));
+            return validationResult.IsValid;
         }
 
         private static void Error([NotNull] string message)

@@ -16,10 +16,4 @@ namespace TravelDatabase
         /// <returns>An implementation of <see cref="IValidator"/> that can be used to validate this object.</returns>
         IValidator GetValidator();
     }
-
-    //[Devin]
-    //public interface IValidatable<T>
-    //{
-    //    IValidator<T> GetValidator();
-    //}
 }
