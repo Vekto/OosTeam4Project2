@@ -209,8 +209,8 @@ namespace TravelExpertsTerm2
             StartDateTimePicker.Value = package?.StartDate ?? DateTime.Today;
             EndDateTimePicker.Value = package?.EndDate ?? DateTime.Today + TimeSpan.FromDays(1);
 
-            var basePrice = (package?.BasePrice ?? 0);
-            var agencyCommission = (package?.AgencyCommission ?? 0);
+            var basePrice = package?.BasePrice ?? 0;
+            var agencyCommission = package?.AgencyCommission ?? 0;
             BasePriceTextBox.Text = basePrice.ToString("C2");
             AgencyCommissionTextBox.Text = agencyCommission.ToString("C2");
             TotalLabel.Text = (basePrice + agencyCommission).ToString("C2");
