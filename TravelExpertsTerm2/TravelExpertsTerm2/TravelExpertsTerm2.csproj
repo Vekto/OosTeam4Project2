@@ -130,7 +130,12 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Icons\TravelExpertLogo.png" />
+    <None Include="Icons\Package3.png" />
     <Content Include="Icons\PackageIcon.jpg" />
+    <None Include="Icons\ProdSup.png" />
+    <None Include="Icons\Products.png" />
+    <None Include="Icons\Supplier.png" />
     <None Include="Icons\TravelPackage3.png" />
     <None Include="Icons\TravelPackage2.png" />
     <None Include="Icons\TravelPackage.png" />
