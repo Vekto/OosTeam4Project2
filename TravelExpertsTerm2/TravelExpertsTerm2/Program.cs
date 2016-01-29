@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿// Author: Team 4 (See Annotations)
+// Project: TravelExpertsTerm2
+// Date: 2016-01
+
+using System;
 using System.Windows.Forms;
 
 namespace TravelExpertsTerm2
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// The main entry point for the application.
@@ -16,7 +17,6 @@ namespace TravelExpertsTerm2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new SupplierForm());
             Application.Run(new MainForm());
         }
     }

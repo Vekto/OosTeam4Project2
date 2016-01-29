@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 
 namespace TravelDatabase.EntityProviders
 {
+    [Devin]
     public class ProductSupplierEntityProvider : EntityProviderBase<ProductSupplier>
     {
 
@@ -47,9 +48,10 @@ namespace TravelDatabase.EntityProviders
                 $" FROM {TableName} ps, Products p, Suppliers s " +
                 $" WHERE ps.{C.ProductId}=p.{C.ProductId} AND ps.{C.SupplierId}=s.{C.SupplierId} " +
                 $" ORDER BY ps.{C.ProductSupplierId}";
-
+            
             using (var reader = new SqlCommand(sql, conn).ExecuteReader())
             {
+                
                 var result = new List<ProductSupplier>();
                 while (reader.Read()) result.Add(ParseProductSupplier(reader));
                 return result;

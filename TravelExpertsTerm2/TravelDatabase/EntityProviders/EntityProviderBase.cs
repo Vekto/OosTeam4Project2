@@ -16,10 +16,12 @@ namespace TravelDatabase.EntityProviders
     /// </summary>
     /// <typeparam name="TEntity">Entity Class</typeparam>
     [Devin]
+    [PublicAPI]
     [NoReorder]
     public abstract class EntityProviderBase<TEntity> : IDataOperations<TEntity>
         where TEntity : class, new()
     {
+        private const bool VerboseLogging = false;
 
         [NotNull]
         [ItemNotNull]
@@ -44,7 +46,7 @@ namespace TravelDatabase.EntityProviders
 
         [Pure]
         [ContractAnnotation("func:null=>halt")]
-        private TReturn DatabaseOperation<TReturn>(Func<SqlConnection, TReturn> func)
+        protected TReturn DatabaseOperation<TReturn>(Func<SqlConnection, TReturn> func)
         {
             if (func == null) throw new ArgumentNullException(nameof(func));
 
@@ -57,7 +59,7 @@ namespace TravelDatabase.EntityProviders
 
         [Pure]
         [ContractAnnotation("func:null=>halt")]
-        private TReturn DatabaseOperation<TReturn, TParam>(
+        protected TReturn DatabaseOperation<TReturn, TParam>(
             [NotNull] Func<SqlConnection, TParam, TReturn> func,
             TParam param)
         {
@@ -137,7 +139,34 @@ namespace TravelDatabase.EntityProviders
         {
             if (idColumnName == null) throw new ArgumentNullException(nameof(idColumnName));
             var sql = $"DELETE FROM {TableName} WHERE {idColumnName}={id}";
-            return new SqlCommand(sql, conn).ExecuteNonQuery() > 0; // success means 1 row was affected
+            return ExecuteNonQuery(sql, conn) > 0; // success means 1 row was affected
+
+            //return new SqlCommand(sql, conn).ExecuteNonQuery() > 0; // success means 1 row was affected
+        }
+
+        [Pure]
+        [NotNull]
+        [ContractAnnotation("cmdText:null=>halt; connection:null=>halt")]
+        protected SqlCommand CreateSqlCommand(
+            [NotNull] string cmdText, 
+            [NotNull] SqlConnection connection)
+        {
+            if (cmdText == null) throw new ArgumentNullException(nameof(cmdText));
+            if (connection == null) throw new ArgumentNullException(nameof(connection));
+            return Database.DebuggerLogCommand(
+                new SqlCommand(cmdText, connection ?? Database.GetConnection()),
+                this, VerboseLogging);
+        }
+
+        protected int ExecuteNonQuery(
+            [NotNull] string sql, 
+            [NotNull] SqlConnection conn,
+            params KeyValuePair<string, object>[] bindingParams)
+        {
+            var command = CreateSqlCommand(sql, conn);
+            foreach (KeyValuePair<string, object> sqlParam in bindingParams)
+                command.Parameters.AddWithValue(sqlParam.Key, sqlParam.Value);
+            return command.ExecuteNonQuery();
         }
 
         #endregion
