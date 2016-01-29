@@ -70,8 +70,8 @@ namespace TravelDatabase
                     .WithMessage("The start date cannot be earlier than the day the towers fell; September 11, 2001.");
 
                 RuleFor(package => package.EndDate)
-                    .GreaterThan(package => package.EndDate)
-                    .WithMessage("The end date cannot be earlier than the start date.");
+                    .GreaterThan(package => package.StartDate)
+                    .WithMessage("The end date has to come after the start date.");
 
                 RuleFor(package => package.Description)
                     .NotNull()
