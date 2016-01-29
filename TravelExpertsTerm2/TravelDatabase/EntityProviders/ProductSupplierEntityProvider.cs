@@ -2,14 +2,18 @@
 // Project: TravelExpertsTerm2
 // Date: 2016-01
 
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics.CodeAnalysis;
 
 namespace TravelDatabase.EntityProviders
 {
     [Devin]
     public class ProductSupplierEntityProvider : EntityProviderBase<ProductSupplier>
     {
+        private const string NullProductSupplierExceptionMessage =
+            "Invalid object passed to database function. Properties cannot be null.";
 
         #region Internal Methods
 
@@ -85,22 +89,43 @@ namespace TravelDatabase.EntityProviders
             return DeleteById(entity.ProductSupplierId, C.ProductSupplierId, conn);
         }
 
+        [SuppressMessage("ReSharper", "PossibleNullReferenceException", 
+            Justification = "Wraps in InvalidOperationException and rethrows")]
         protected override int Add(SqlConnection conn, ProductSupplier entity)
         {
             var command = new SqlCommand($"INSERT INTO {TableName} VALUES(@{C.ProductId}, @{C.SupplierId})", conn);
-            command.Parameters.AddWithValue(C.ProductId, entity.Product.ProductId);
-            command.Parameters.AddWithValue(C.SupplierId, entity.Supplier.SupplierId);
 
+            try
+            {
+                command.Parameters.AddWithValue(C.ProductId, entity.Product.ProductId);
+                command.Parameters.AddWithValue(C.SupplierId, entity.Supplier.SupplierId);
+            }
+            catch (NullReferenceException exception)
+            {
+                throw new InvalidOperationException(NullProductSupplierExceptionMessage, exception);
+            }
+            
             return command.ExecuteNonQuery() > 0
                 ? Database.GetLastAssignedId(conn, TableName)
                 : int.MinValue;
         }
 
+        [SuppressMessage("ReSharper", "PossibleNullReferenceException",
+            Justification = "Wraps in InvalidOperationException and rethrows")]
         protected override bool Update(SqlConnection conn, ProductSupplier entity)
         {
             var command = new SqlCommand($"UPDATE {TableName} SET {C.ProductId}=@{C.ProductId}, {C.SupplierId}=@{C.SupplierId}", conn);
-            command.Parameters.AddWithValue(C.ProductId, entity.Product.ProductId);
-            command.Parameters.AddWithValue(C.SupplierId, entity.Supplier.SupplierId);
+
+            try
+            {
+                command.Parameters.AddWithValue(C.ProductId, entity.Product.ProductId);
+                command.Parameters.AddWithValue(C.SupplierId, entity.Supplier.SupplierId);
+            }
+            catch (NullReferenceException exception)
+            {
+                throw new InvalidOperationException(NullProductSupplierExceptionMessage, exception);
+            }
+
             return command.ExecuteNonQuery() > 0;
         }
 

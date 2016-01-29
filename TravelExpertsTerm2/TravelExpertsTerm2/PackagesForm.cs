@@ -122,7 +122,10 @@ namespace TravelExpertsTerm2
                 @"Confirm Delete", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning,
                 MessageBoxDefaultButton.Button2) 
-                && TryReport(() => Database.Packages.DeleteEntity(SelectedPackage)))
+                && TryReport(() =>
+                {
+                    if (SelectedPackage != null) Database.Packages.DeleteEntity(SelectedPackage);
+                }))
             {
                 _Packages.Remove(SelectedPackage);
                 ShowPackage(SelectedPackage);

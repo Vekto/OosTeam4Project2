@@ -146,19 +146,19 @@ namespace Test.EntityProviders
         public bool Equals(ProductSupplier x, ProductSupplier y)
         {
             return x.ProductSupplierId == y.ProductSupplierId &&
-                   x.Product.ProductId == y.Product.ProductId &&
-                   x.Product.Name == y.Product.Name &&
-                   x.Supplier.SupplierId == y.Supplier.SupplierId &&
-                   x.Supplier.Name == y.Supplier.Name;
+                   x.Product?.ProductId == y.Product?.ProductId &&
+                   x.Product?.Name == y.Product?.Name &&
+                   x.Supplier?.SupplierId == y.Supplier?.SupplierId &&
+                   x.Supplier?.Name == y.Supplier?.Name;
         }
 
         public int GetHashCode(ProductSupplier obj)
         {
-            return obj.ProductSupplierId.GetHashCode()*17 +
-                   obj.Product.ProductId.GetHashCode()*17 +
-                   obj.Product.Name.GetHashCode()*17 +
-                   obj.Supplier.SupplierId.GetHashCode()*17 +
-                   obj.Supplier.Name.GetHashCode();
+            return obj.ProductSupplierId.GetHashCode() * 17 +
+                   obj.Product?.ProductId.GetHashCode() ?? 0 * 17 +
+                   obj.Product?.Name?.GetHashCode() ?? 0 * 17 +
+                   obj.Supplier?.SupplierId.GetHashCode() ?? 0 *17 +
+                   obj.Supplier?.Name?.GetHashCode() ?? 0;
         }
 
         #endregion
