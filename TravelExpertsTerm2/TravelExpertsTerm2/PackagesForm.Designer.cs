@@ -57,7 +57,7 @@
             this.PackageSelectorComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.PackageSelectorComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.PackageSelectorComboBox.FormattingEnabled = true;
-            this.PackageSelectorComboBox.Location = new System.Drawing.Point(263, 119);
+            this.PackageSelectorComboBox.Location = new System.Drawing.Point(181, 130);
             this.PackageSelectorComboBox.MaxDropDownItems = 16;
             this.PackageSelectorComboBox.Name = "PackageSelectorComboBox";
             this.PackageSelectorComboBox.Size = new System.Drawing.Size(200, 24);
@@ -66,14 +66,14 @@
             // 
             // NameTextBox
             // 
-            this.NameTextBox.Location = new System.Drawing.Point(263, 173);
+            this.NameTextBox.Location = new System.Drawing.Point(181, 184);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(200, 22);
             this.NameTextBox.TabIndex = 1;
             // 
             // DescriptionTextBox
             // 
-            this.DescriptionTextBox.Location = new System.Drawing.Point(263, 257);
+            this.DescriptionTextBox.Location = new System.Drawing.Point(181, 268);
             this.DescriptionTextBox.Multiline = true;
             this.DescriptionTextBox.Name = "DescriptionTextBox";
             this.DescriptionTextBox.Size = new System.Drawing.Size(200, 88);
@@ -81,21 +81,21 @@
             // 
             // BasePriceTextBox
             // 
-            this.BasePriceTextBox.Location = new System.Drawing.Point(263, 351);
+            this.BasePriceTextBox.Location = new System.Drawing.Point(181, 362);
             this.BasePriceTextBox.Name = "BasePriceTextBox";
             this.BasePriceTextBox.Size = new System.Drawing.Size(200, 22);
             this.BasePriceTextBox.TabIndex = 5;
             // 
             // AgencyCommissionTextBox
             // 
-            this.AgencyCommissionTextBox.Location = new System.Drawing.Point(263, 379);
+            this.AgencyCommissionTextBox.Location = new System.Drawing.Point(181, 390);
             this.AgencyCommissionTextBox.Name = "AgencyCommissionTextBox";
             this.AgencyCommissionTextBox.Size = new System.Drawing.Size(200, 22);
             this.AgencyCommissionTextBox.TabIndex = 6;
             // 
             // StartDateTimePicker
             // 
-            this.StartDateTimePicker.Location = new System.Drawing.Point(263, 201);
+            this.StartDateTimePicker.Location = new System.Drawing.Point(181, 212);
             this.StartDateTimePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.StartDateTimePicker.Name = "StartDateTimePicker";
             this.StartDateTimePicker.Size = new System.Drawing.Size(200, 22);
@@ -103,7 +103,7 @@
             // 
             // EndDateTimePicker
             // 
-            this.EndDateTimePicker.Location = new System.Drawing.Point(263, 229);
+            this.EndDateTimePicker.Location = new System.Drawing.Point(181, 240);
             this.EndDateTimePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.EndDateTimePicker.Name = "EndDateTimePicker";
             this.EndDateTimePicker.Size = new System.Drawing.Size(200, 22);
@@ -112,7 +112,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(212, 176);
+            this.label1.Location = new System.Drawing.Point(130, 187);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 17);
             this.label1.TabIndex = 9;
@@ -121,7 +121,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(185, 206);
+            this.label2.Location = new System.Drawing.Point(103, 217);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 17);
             this.label2.TabIndex = 10;
@@ -130,7 +130,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(190, 234);
+            this.label3.Location = new System.Drawing.Point(108, 245);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 17);
             this.label3.TabIndex = 11;
@@ -139,7 +139,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(178, 260);
+            this.label4.Location = new System.Drawing.Point(96, 271);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 17);
             this.label4.TabIndex = 12;
@@ -148,7 +148,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(217, 354);
+            this.label5.Location = new System.Drawing.Point(135, 365);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 17);
             this.label5.TabIndex = 13;
@@ -157,7 +157,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(123, 382);
+            this.label6.Location = new System.Drawing.Point(41, 393);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(134, 17);
             this.label6.TabIndex = 14;
@@ -166,7 +166,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(217, 410);
+            this.label7.Location = new System.Drawing.Point(135, 421);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(40, 17);
             this.label7.TabIndex = 15;
@@ -175,7 +175,7 @@
             // TotalLabel
             // 
             this.TotalLabel.AutoSize = true;
-            this.TotalLabel.Location = new System.Drawing.Point(260, 410);
+            this.TotalLabel.Location = new System.Drawing.Point(178, 421);
             this.TotalLabel.Name = "TotalLabel";
             this.TotalLabel.Size = new System.Drawing.Size(40, 17);
             this.TotalLabel.TabIndex = 16;
@@ -183,7 +183,7 @@
             // 
             // EditCancelButton
             // 
-            this.EditCancelButton.Location = new System.Drawing.Point(307, 454);
+            this.EditCancelButton.Location = new System.Drawing.Point(225, 465);
             this.EditCancelButton.Name = "EditCancelButton";
             this.EditCancelButton.Size = new System.Drawing.Size(75, 23);
             this.EditCancelButton.TabIndex = 17;
@@ -193,7 +193,7 @@
             // 
             // NewSaveButton
             // 
-            this.NewSaveButton.Location = new System.Drawing.Point(388, 454);
+            this.NewSaveButton.Location = new System.Drawing.Point(306, 465);
             this.NewSaveButton.Name = "NewSaveButton";
             this.NewSaveButton.Size = new System.Drawing.Size(75, 23);
             this.NewSaveButton.TabIndex = 18;
@@ -203,7 +203,7 @@
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(126, 454);
+            this.DeleteButton.Location = new System.Drawing.Point(44, 465);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(75, 23);
             this.DeleteButton.TabIndex = 19;
@@ -215,9 +215,9 @@
             // 
             this.LinkedProductSuppliersListBox.FormattingEnabled = true;
             this.LinkedProductSuppliersListBox.ItemHeight = 16;
-            this.LinkedProductSuppliersListBox.Location = new System.Drawing.Point(478, 173);
+            this.LinkedProductSuppliersListBox.Location = new System.Drawing.Point(453, 114);
             this.LinkedProductSuppliersListBox.Name = "LinkedProductSuppliersListBox";
-            this.LinkedProductSuppliersListBox.Size = new System.Drawing.Size(266, 228);
+            this.LinkedProductSuppliersListBox.Size = new System.Drawing.Size(266, 148);
             this.LinkedProductSuppliersListBox.Sorted = true;
             this.LinkedProductSuppliersListBox.TabIndex = 20;
             this.LinkedProductSuppliersListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.LinkedProductSuppliersListBox_MouseDoubleClick);
@@ -226,9 +226,9 @@
             // 
             this.OtherProductSuppliersListBox.FormattingEnabled = true;
             this.OtherProductSuppliersListBox.ItemHeight = 16;
-            this.OtherProductSuppliersListBox.Location = new System.Drawing.Point(808, 173);
+            this.OtherProductSuppliersListBox.Location = new System.Drawing.Point(453, 290);
             this.OtherProductSuppliersListBox.Name = "OtherProductSuppliersListBox";
-            this.OtherProductSuppliersListBox.Size = new System.Drawing.Size(266, 228);
+            this.OtherProductSuppliersListBox.Size = new System.Drawing.Size(266, 196);
             this.OtherProductSuppliersListBox.Sorted = true;
             this.OtherProductSuppliersListBox.TabIndex = 21;
             this.OtherProductSuppliersListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.OtherProductSuppliersListBox_MouseDoubleClick);
@@ -236,17 +236,17 @@
             // OtherProductSuppliersLabel
             // 
             this.OtherProductSuppliersLabel.AutoSize = true;
-            this.OtherProductSuppliersLabel.Location = new System.Drawing.Point(750, 271);
+            this.OtherProductSuppliersLabel.Location = new System.Drawing.Point(508, 270);
             this.OtherProductSuppliersLabel.Name = "OtherProductSuppliersLabel";
-            this.OtherProductSuppliersLabel.Size = new System.Drawing.Size(52, 17);
+            this.OtherProductSuppliersLabel.Size = new System.Drawing.Size(149, 17);
             this.OtherProductSuppliersLabel.TabIndex = 22;
-            this.OtherProductSuppliersLabel.Text = "<<   >>";
+            this.OtherProductSuppliersLabel.Text = "<< Click-Click-Click  >>";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(541, 153);
+            this.label9.Location = new System.Drawing.Point(498, 94);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(137, 17);
             this.label9.TabIndex = 23;
@@ -256,7 +256,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1160, 690);
+            this.ClientSize = new System.Drawing.Size(867, 618);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.OtherProductSuppliersLabel);
             this.Controls.Add(this.OtherProductSuppliersListBox);
