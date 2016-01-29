@@ -7,39 +7,35 @@ using TravelDatabase.EntityProviders;
 
 namespace TravelDatabase.EntityData
 {
-    public class ProductDB : IDataOperations<Product>
+    public class ProductSupplierDB : IDataOperations<ProductSupplier>
     {
-        public bool AddEntity(Product entity)
+        public List<ProductSupplier> GetEntities()
+        {
+            throw new NotImplementedException();
+        }
+        public bool DeleteEntity(ProductSupplier productSupplier)
+        {
+            throw new NotImplementedException();
+        }
+        public bool AddEntity(ProductSupplier entity)
+        {
+            throw new NotImplementedException();
+        }
+        public bool UpdateEntity(ProductSupplier entity)
+        {
+            throw new NotImplementedException();
+        }
+        public ProductSupplier GetEntityById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public bool DeleteEntity(Product entity)
+        IEnumerable<ProductSupplier> IDataOperations<ProductSupplier>.GetEntities()
         {
             throw new NotImplementedException();
         }
 
-        public List<Product> GetEntities()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Product GetEntityById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool UpdateEntity(Product entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        int IDataOperations<Product>.AddEntity(Product entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerable<Product> IDataOperations<Product>.GetEntities()
+        int IDataOperations<ProductSupplier>.AddEntity(ProductSupplier entity)
         {
             throw new NotImplementedException();
         }
