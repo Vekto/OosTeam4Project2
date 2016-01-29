@@ -38,7 +38,7 @@ namespace TravelExpertsTerm2
 
             foreach (Supplier supplier in suppliersList)
             {
-                if (supplier.SupplierID.ToString().Contains(txtSearch.Text.ToUpper())) //if there is a match
+                if (supplier.SupplierId.ToString().Contains(txtSearch.Text.ToUpper())) //if there is a match
                 {
                     searchResults.Add(supplier); //add to search results
                 }
@@ -85,8 +85,8 @@ namespace TravelExpertsTerm2
                 {
                     txtSearch.Text = "";
                     Supplier supplier = new Supplier();
-                    supplier.SupplierID = Convert.ToInt32(txtSupplierID.Text);
-                    supplier.SupName = txtSupName.Text;
+                    supplier.SupplierId = Convert.ToInt32(txtSupplierID.Text);
+                    supplier.Name = txtSupName.Text;
                     try
                     {
                         if (SupplierDB.AddSupplier(supplier))
@@ -235,8 +235,8 @@ namespace TravelExpertsTerm2
             int i = 0;
             foreach (Supplier supplier in suppliersList)
             {
-                lstSuppliers.Items.Add(supplier.SupplierID.ToString());
-                lstSuppliers.Items[i].SubItems.Add(supplier.SupName);
+                lstSuppliers.Items.Add(supplier.SupplierId.ToString());
+                lstSuppliers.Items[i].SubItems.Add(supplier.Name);
                 i++;
             }
         }
