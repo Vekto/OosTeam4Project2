@@ -74,12 +74,6 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PackagesForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PackagesForm.Designer.cs">
-      <DependentUpon>PackagesForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="SupplierForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,9 +87,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PackagesForm.resx">
-      <DependentUpon>PackagesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierForm.resx">
       <DependentUpon>SupplierForm.cs</DependentUpon>
@@ -126,7 +117,12 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Icons\TravelExpertLogo.png" />
+    <None Include="Icons\Package3.png" />
     <Content Include="Icons\PackageIcon.jpg" />
+    <None Include="Icons\ProdSup.png" />
+    <None Include="Icons\Products.png" />
+    <None Include="Icons\Supplier.png" />
     <None Include="Icons\TravelPackage3.png" />
     <None Include="Icons\TravelPackage2.png" />
     <None Include="Icons\TravelPackage.png" />

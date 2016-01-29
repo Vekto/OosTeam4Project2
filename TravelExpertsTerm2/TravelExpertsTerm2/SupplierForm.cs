@@ -14,7 +14,8 @@ using TravelDatabase.EntityData;
 namespace TravelExpertsTerm2
 {
     public partial class SupplierForm : Form
-    {
+    {   
+
         public string selectedSupplierID = "";
         public string selectedSupName = "";
 
@@ -26,6 +27,7 @@ namespace TravelExpertsTerm2
         #region Events
         private void MainForm_Load(object sender, EventArgs e)
         {
+
             List<Supplier> suppliersList = SupplierDB.GetSuppliers(); //creates supplier list to pass to updateListView()
             updateListView(suppliersList);
         }
@@ -49,16 +51,19 @@ namespace TravelExpertsTerm2
        //selecting items in list view
         private void lstSuppliers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            clearForm();
-            try
+            if (lstSuppliers.SelectedItems.Count == 1)  //if occuring on item selected not item deselectd
             {
-                selectedSupplierID = lstSuppliers.Items[lstSuppliers.SelectedIndices[0]].Text.Trim(); //store selected supplier id
-                selectedSupName = lstSuppliers.Items[lstSuppliers.SelectedIndices[0]].SubItems[1].Text.Trim(); //store selected supplier name
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-                //MessageBox.Show(ex.Message);
+                clearForm();
+                try
+                {
+                    selectedSupplierID = lstSuppliers.Items[lstSuppliers.SelectedIndices[0]].Text.Trim(); //store selected supplier id
+                    selectedSupName = lstSuppliers.Items[lstSuppliers.SelectedIndices[0]].SubItems[1].Text.Trim(); //store selected supplier name
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                    //MessageBox.Show(ex.Message);
+                }
             }
         }
        
@@ -67,24 +72,27 @@ namespace TravelExpertsTerm2
         {
             int integer;
 
-            if (txtSupplierID.Text == "")
+            if (txtSupplierID.Text == "")  //if no SupplierID is entered
             {
+                //display error
                 MessageBox.Show("Please fill in all fields.");
             }
 
-            else if (txtSupName.Text == "")
+            else if (txtSupName.Text == "") //if no Supplier name is entered
             {
+                //display error message
                 MessageBox.Show("Please fill in all fields.");
             }
             else if (!Int32.TryParse(txtSupplierID.Text, out integer))//validate that SupplierID is an integer
             {
                 MessageBox.Show("Please enter a valid Supplier ID.");
             }
-            else {
-                if (btnAdd.Text == "Add")
+            else
+            {   
+                if (btnAdd.Text == "Add") 
                 {
                     txtSearch.Text = "";
-                    Supplier supplier = new Supplier();
+                    Supplier supplier = new Supplier(); 
                     supplier.SupplierID = Convert.ToInt32(txtSupplierID.Text);
                     supplier.SupName = txtSupName.Text;
                     try
@@ -114,11 +122,13 @@ namespace TravelExpertsTerm2
                 }
 
                 else if (btnAdd.Text == "Update")
-                {
+                {                    
                     if (UpdateSupplier(Convert.ToInt32(selectedSupplierID)))
                     {
                         MessageBox.Show("Record updated successfully.");
                         clearForm();
+                        selectedSupName = "";
+                        selectedSupplierID = "";
                     }
                     else
                     {
@@ -130,10 +140,13 @@ namespace TravelExpertsTerm2
 
         private void btnAddNewSupplier_Click(object sender, EventArgs e)
         {
+            txtSupplierID.Enabled = true;
             txtSearch.Text = "";
             clearForm();
             pnlAddUpdate.Visible = true;
             btnAdd.Text = "Add";
+            this.lstSuppliers.SelectedIndices.Clear();
+            selectedSupName = "";
             selectedSupplierID = "";
         }
 
@@ -142,7 +155,7 @@ namespace TravelExpertsTerm2
             clearForm();
             if (lstSuppliers.SelectedItems.Count == 1)
             {
-                selectedSupplierID = lstSuppliers.Items[lstSuppliers.SelectedIndices[0]].Text.Trim(); //store selected supplier id
+                selectedSupplierID = lstSuppliers.Items[lstSuppliers.SelectedIndices[0]].Text.Trim(); //store selected supplier id                
 
                 if (SupplierDB.CheckDependency(Convert.ToInt32(selectedSupplierID)))
                 {
@@ -170,6 +183,11 @@ namespace TravelExpertsTerm2
                     else if (result == DialogResult.No) //if user confirms they do not want to delete, display cancel message
                     {
                         MessageBox.Show("Delete cancelled");
+                        this.lstSuppliers.SelectedIndices.Clear();
+                        selectedSupName = "";
+                        selectedSupplierID = "";
+
+                        clearForm();
                     }
                 }
             }
@@ -183,15 +201,17 @@ namespace TravelExpertsTerm2
         #region Methods
         public void clearForm()
         {
+
             txtSupplierID.Text = "";
-            txtSupName.Text = "";            
+            txtSupName.Text = "";
         }
 
         public bool UpdateSupplier(int supplierID) //refreshes supplier list with updated supplier
         {
             //validate on the form
-            string connectionString = "Data Source=ELF5OOSD212989\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
-            SqlConnection connection = new SqlConnection(connectionString);
+            //string connectionString = "Data Source=localhost\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
+            //SqlConnection connection = new SqlConnection(connectionString);
+            SqlConnection connection = TravelExpertsDB.GetConnection();
 
             string updateStatement = "UPDATE Suppliers " +
                                      "SET SupplierID = @NewSupplierID, " +
@@ -245,6 +265,7 @@ namespace TravelExpertsTerm2
         private void btnCancel_Click(object sender, EventArgs e)
         {
             clearForm();
+            this.lstSuppliers.SelectedIndices.Clear();
             pnlAddUpdate.Visible = false;
             selectedSupplierID = "";
             //selectedSupName = "";
@@ -252,6 +273,7 @@ namespace TravelExpertsTerm2
 
         private void btnUpdateSelected_Click(object sender, EventArgs e)
         {
+            txtSupplierID.Enabled = false;
             if (selectedSupplierID=="")// check that user selected supplier
             {
                 MessageBox.Show("Please select a suppiler");
@@ -266,6 +288,21 @@ namespace TravelExpertsTerm2
                 txtSupName.Text = selectedSupName;
                 txtSupName.Focus();
             }
+        }
+
+        private void txtSearch_Click(object sender, EventArgs e)
+        {
+            this.lstSuppliers.SelectedIndices.Clear();
+            selectedSupplierID = "";
+            selectedSupName = "";
+
+        }
+
+        private void txtSupplierID_Click(object sender, EventArgs e)
+        {
+            this.lstSuppliers.SelectedIndices.Clear();
+            selectedSupplierID = "";
+            selectedSupName = "";
         }
     }//END OF FORM 
 }//END OF NAMESPACE

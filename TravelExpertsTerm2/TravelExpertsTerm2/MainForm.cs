@@ -27,7 +27,9 @@ namespace TravelExpertsTerm2
         {
 
             ChildTest form = new ChildTest();
-            //form.MdiParent = this;
+            resetViewWindow();
+            panel2.Controls.Clear();
+            form.MdiParent = this;
             form.TopLevel = false;
             panel2.Controls.Add(form);
             form.Dock = DockStyle.Fill;
@@ -43,13 +45,21 @@ namespace TravelExpertsTerm2
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            
+            resetViewWindow();
+            panel2.Controls.Clear();
             SupplierForm form = new SupplierForm();
             //form.MdiParent = this;
             form.TopLevel = false;
             panel2.Controls.Add(form);
-            form.Dock = DockStyle.Fill;
+            
+           Dock = DockStyle.Fill;
             form.Show();
+        }
+
+        private void resetViewWindow()
+        {
+            foreach (Form f in panel2.Controls)
+            { f.Close(); }
         }
     }
 }
