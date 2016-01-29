@@ -26,7 +26,7 @@ namespace TravelExpertsTerm2
         private void metroTile1_Click(object sender, EventArgs e)
         {
 
-            ChildTest form = new ChildTest();
+            PackagesForm form = new PackagesForm();
             resetViewWindow();
             panel2.Controls.Clear();
             form.MdiParent = this;
