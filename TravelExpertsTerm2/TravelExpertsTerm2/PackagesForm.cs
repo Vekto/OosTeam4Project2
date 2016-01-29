@@ -147,8 +147,9 @@ namespace TravelExpertsTerm2
         {
             if (_EditMode) // clicked Save
             {
+                // does not parse/validate the ID property, but that shouldn't ever matter
                 var package = ParsePackage();
-                // TODO: Validate business object here, show error & return if invalid
+                if (!ValidateAndDisplayErrors(package, "Please fix the following:")) return;
 
                 if (_CreateNew)
                 {
@@ -287,9 +288,21 @@ namespace TravelExpertsTerm2
             }
         }
 
+        #endregion
+
+        // TODO: Maybe move these to a shared utility class for use on other forms
+        #region Static Utility Methods
+
+        private static bool ValidateAndDisplayErrors([NotNull] IValidatable obj, string header = null)
+        {
+            var validationResult = obj.ValidateSelf();
+            if (!validationResult.IsValid) Error(validationResult.FormattedErrorMessageList(header));
+            return validationResult.IsValid;
+        }
+
         private static void Error([NotNull] string message)
         {
-            MessageBox.Show(message, @"Error", 
+            MessageBox.Show(message, @"Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Error,
                 MessageBoxDefaultButton.Button1);
         }

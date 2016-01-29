@@ -52,8 +52,8 @@ namespace TravelDatabase.EntityData
                 while (reader.Read())  //while there is data
                 {
                     Supplier supplier = new Supplier();
-                    supplier.SupplierID = (int)reader["SupplierID"];
-                    supplier.SupName = (string)reader["SupName"];
+                    supplier.SupplierId = (int)reader["SupplierID"];
+                    supplier.Name = (string)reader["SupName"];
                     suppliersList.Add(supplier); //add supplier object to list
                 }
             }
@@ -149,8 +149,8 @@ namespace TravelDatabase.EntityData
                     "(SupplierID, SupName) " +
                     "Values(@SupplierID, @SupName)";
                 SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-                insertCommand.Parameters.AddWithValue("@SupplierID", supplier.SupplierID);
-                insertCommand.Parameters.AddWithValue("@SupName", supplier.SupName);
+                insertCommand.Parameters.AddWithValue("@SupplierID", supplier.SupplierId);
+                insertCommand.Parameters.AddWithValue("@SupName", supplier.Name);
                 connection.Open();
 
                 int nr = insertCommand.ExecuteNonQuery(); //counts how many new rows were inserted
