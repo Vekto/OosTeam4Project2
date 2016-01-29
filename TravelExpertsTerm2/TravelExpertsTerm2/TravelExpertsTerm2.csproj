@@ -69,10 +69,10 @@
       <DependentUpon>ChildTest.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
-      <SubType>Form</SubType>
+	      <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    	<DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SupplierForm.cs">
       <SubType>Form</SubType>
@@ -117,11 +117,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="Resources\TravelExpertLogo.png" />
-    <None Include="Icons\Supplier.png" />
-    <None Include="Icons\Products.png" />
-    <None Include="Icons\ProdSup.png" />
-    <None Include="Icons\Package3.png" />
     <Content Include="Icons\PackageIcon.jpg" />
     <None Include="Icons\TravelPackage3.png" />
     <None Include="Icons\TravelPackage2.png" />

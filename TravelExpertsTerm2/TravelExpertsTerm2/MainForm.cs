@@ -25,8 +25,7 @@ namespace TravelExpertsTerm2
 
         private void metroTile1_Click(object sender, EventArgs e)
         {
-            resetViewWindow();
-            panel2.Controls.Clear();
+
             ChildTest form = new ChildTest();
             
             form.MdiParent = this;
@@ -45,8 +44,7 @@ namespace TravelExpertsTerm2
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            resetViewWindow();
-            panel2.Controls.Clear();
+            
             SupplierForm form = new SupplierForm();
             //form.MdiParent = this;
             form.TopLevel = false;
@@ -55,12 +53,5 @@ namespace TravelExpertsTerm2
            Dock = DockStyle.Fill;
             form.Show();
         }
-        
-        private void resetViewWindow()
-        {
-            foreach (Form f in panel2.Controls)
-            { f.Close(); }
-        }
-
     }
 }

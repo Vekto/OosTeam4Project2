@@ -32,14 +32,13 @@ namespace TravelExpertsTerm2
         {
             this.components = new System.ComponentModel.Container();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.btnProdSup = new MetroFramework.Controls.MetroButton();
-            this.btnPackages = new MetroFramework.Controls.MetroButton();
-            this.btnProducts = new MetroFramework.Controls.MetroButton();
-            this.BtnSuppliers = new MetroFramework.Controls.MetroButton();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.metroTile3 = new MetroFramework.Controls.MetroTile();
+            this.metroTile2 = new MetroFramework.Controls.MetroTile();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             this.SuspendLayout();
@@ -51,10 +50,10 @@ namespace TravelExpertsTerm2
             this.metroPanel1.AutoScroll = true;
             this.metroPanel1.BackColor = System.Drawing.Color.White;
             this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.metroPanel1.Controls.Add(this.btnProdSup);
-            this.metroPanel1.Controls.Add(this.btnPackages);
-            this.metroPanel1.Controls.Add(this.btnProducts);
-            this.metroPanel1.Controls.Add(this.BtnSuppliers);
+            this.metroPanel1.Controls.Add(this.metroButton1);
+            this.metroPanel1.Controls.Add(this.metroTile3);
+            this.metroPanel1.Controls.Add(this.metroTile2);
+            this.metroPanel1.Controls.Add(this.metroTile1);
             this.metroPanel1.HorizontalScrollbar = true;
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
@@ -62,7 +61,7 @@ namespace TravelExpertsTerm2
             this.metroPanel1.Location = new System.Drawing.Point(30, 83);
             this.metroPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(187, 690);
+            this.metroPanel1.Size = new System.Drawing.Size(187, 673);
             this.metroPanel1.Style = MetroFramework.MetroColorStyle.Silver;
             this.metroPanel1.TabIndex = 4;
             this.metroPanel1.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -72,83 +71,66 @@ namespace TravelExpertsTerm2
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 15;
             // 
-            // btnProdSup
+            // metroButton1
             // 
-            this.btnProdSup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(153)))));
-            this.btnProdSup.BackgroundImage = global::TravelExpertsTerm2.Properties.Resources.ProdSup;
-            this.btnProdSup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnProdSup.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.btnProdSup.ForeColor = System.Drawing.Color.Black;
-            this.btnProdSup.Highlight = true;
-            this.btnProdSup.Location = new System.Drawing.Point(18, 184);
-            this.btnProdSup.Name = "btnProdSup";
-            this.btnProdSup.Size = new System.Drawing.Size(146, 146);
-            this.btnProdSup.Style = MetroFramework.MetroColorStyle.Magenta;
-            this.btnProdSup.TabIndex = 8;
-            this.btnProdSup.Text = "Product Suppliers";
-            this.btnProdSup.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnProdSup.UseCustomForeColor = true;
-            this.btnProdSup.UseSelectable = true;
-            this.btnProdSup.UseStyleColors = true;
+            this.metroButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(65)))), ((int)(((byte)(163)))));
+            this.metroButton1.BackgroundImage = global::TravelExpertsTerm2.Properties.Resources.TravelPackage3;
+            this.metroButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.metroButton1.Highlight = true;
+            this.metroButton1.Location = new System.Drawing.Point(19, 517);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(146, 125);
+            this.metroButton1.Style = MetroFramework.MetroColorStyle.White;
+            this.metroButton1.TabIndex = 5;
+            this.metroButton1.Text = "Products";
+            this.metroButton1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.metroButton1.UseCustomBackColor = true;
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.UseStyleColors = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
-            // btnPackages
+            // metroTile3
             // 
-            this.btnPackages.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            this.btnPackages.BackgroundImage = global::TravelExpertsTerm2.Properties.Resources.Package3;
-            this.btnPackages.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnPackages.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.btnPackages.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.btnPackages.Highlight = true;
-            this.btnPackages.Location = new System.Drawing.Point(18, 13);
-            this.btnPackages.Name = "btnPackages";
-            this.btnPackages.Size = new System.Drawing.Size(146, 146);
-            this.btnPackages.Style = MetroFramework.MetroColorStyle.Brown;
-            this.btnPackages.TabIndex = 7;
-            this.btnPackages.Text = "Packages";
-            this.btnPackages.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnPackages.UseCustomForeColor = true;
-            this.btnPackages.UseSelectable = true;
-            this.btnPackages.UseStyleColors = true;
-            this.btnPackages.Click += new System.EventHandler(this.metroTile1_Click);
+            this.metroTile3.ActiveControl = null;
+            this.metroTile3.Location = new System.Drawing.Point(19, 349);
+            this.metroTile3.Margin = new System.Windows.Forms.Padding(4);
+            this.metroTile3.Name = "metroTile3";
+            this.metroTile3.Size = new System.Drawing.Size(146, 137);
+            this.metroTile3.Style = MetroFramework.MetroColorStyle.Purple;
+            this.metroTile3.TabIndex = 4;
+            this.metroTile3.Text = "metroTile3";
+            this.metroTile3.UseSelectable = true;
             // 
-            // btnProducts
+            // metroTile2
             // 
-            this.btnProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(17)))), ((int)(((byte)(65)))));
-            this.btnProducts.BackgroundImage = global::TravelExpertsTerm2.Properties.Resources.Products;
-            this.btnProducts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnProducts.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.btnProducts.ForeColor = System.Drawing.Color.Black;
-            this.btnProducts.Highlight = true;
-            this.btnProducts.Location = new System.Drawing.Point(18, 353);
-            this.btnProducts.Name = "btnProducts";
-            this.btnProducts.Size = new System.Drawing.Size(146, 146);
-            this.btnProducts.Style = MetroFramework.MetroColorStyle.Blue;
-            this.btnProducts.TabIndex = 6;
-            this.btnProducts.Text = "Products";
-            this.btnProducts.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnProducts.UseCustomForeColor = true;
-            this.btnProducts.UseSelectable = true;
-            this.btnProducts.UseStyleColors = true;
+            this.metroTile2.ActiveControl = null;
+            this.metroTile2.Location = new System.Drawing.Point(19, 200);
+            this.metroTile2.Margin = new System.Windows.Forms.Padding(4);
+            this.metroTile2.Name = "metroTile2";
+            this.metroTile2.Size = new System.Drawing.Size(147, 124);
+            this.metroTile2.Style = MetroFramework.MetroColorStyle.Purple;
+            this.metroTile2.TabIndex = 3;
+            this.metroTile2.Text = "metroTile2";
+            this.metroTile2.UseSelectable = true;
             // 
-            // BtnSuppliers
+            // metroTile1
             // 
-            this.BtnSuppliers.BackColor = System.Drawing.Color.DarkOrange;
-            this.BtnSuppliers.BackgroundImage = global::TravelExpertsTerm2.Properties.Resources.Supplier;
-            this.BtnSuppliers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BtnSuppliers.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.BtnSuppliers.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.BtnSuppliers.Highlight = true;
-            this.BtnSuppliers.Location = new System.Drawing.Point(18, 533);
-            this.BtnSuppliers.Name = "BtnSuppliers";
-            this.BtnSuppliers.Size = new System.Drawing.Size(146, 146);
-            this.BtnSuppliers.Style = MetroFramework.MetroColorStyle.Brown;
-            this.BtnSuppliers.TabIndex = 5;
-            this.BtnSuppliers.Text = "Suppliers";
-            this.BtnSuppliers.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnSuppliers.UseCustomForeColor = true;
-            this.BtnSuppliers.UseSelectable = true;
-            this.BtnSuppliers.UseStyleColors = true;
-            this.BtnSuppliers.Click += new System.EventHandler(this.metroButton1_Click);
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.BackColor = System.Drawing.Color.White;
+            this.metroTile1.Location = new System.Drawing.Point(18, 23);
+            this.metroTile1.Margin = new System.Windows.Forms.Padding(4);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(147, 138);
+            this.metroTile1.Style = MetroFramework.MetroColorStyle.Orange;
+            this.metroTile1.TabIndex = 2;
+            this.metroTile1.Text = "Travel Packages";
+            this.metroTile1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTile1.TileImage = global::TravelExpertsTerm2.Properties.Resources.TravelPackage3;
+            this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTile1.UseSelectable = true;
+            this.metroTile1.UseTileImage = true;
+            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
             // 
             // metroStyleManager1
             // 
@@ -160,12 +142,10 @@ namespace TravelExpertsTerm2
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.BackColor = System.Drawing.Color.Silver;
             this.panel2.Location = new System.Drawing.Point(217, 83);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1160, 690);
+            this.panel2.Size = new System.Drawing.Size(970, 672);
             this.panel2.TabIndex = 8;
             // 
             // panel1
@@ -176,17 +156,8 @@ namespace TravelExpertsTerm2
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
             this.panel1.Location = new System.Drawing.Point(-1, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(24, 808);
+            this.panel1.Size = new System.Drawing.Size(24, 794);
             this.panel1.TabIndex = 7;
-            // 
-            // panel3
-            // 
-            this.panel3.BackgroundImage = global::TravelExpertsTerm2.Properties.Resources.TravelExpertLogo;
-            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Location = new System.Drawing.Point(25, 7);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(295, 75);
-            this.panel3.TabIndex = 9;
             // 
             // MainForm
             // 
@@ -194,8 +165,7 @@ namespace TravelExpertsTerm2
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(1400, 800);
-            this.Controls.Add(this.panel3);
+            this.ClientSize = new System.Drawing.Size(1210, 786);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.metroPanel1);
@@ -221,13 +191,12 @@ namespace TravelExpertsTerm2
 
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Components.MetroStyleManager metroStyleManager1;
+        private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroTile metroTile3;
+        private MetroFramework.Controls.MetroTile metroTile2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
-        private MetroFramework.Controls.MetroButton BtnSuppliers;
-        private MetroFramework.Controls.MetroButton btnProducts;
-        private MetroFramework.Controls.MetroButton btnPackages;
-        private MetroFramework.Controls.MetroButton btnProdSup;
-        private System.Windows.Forms.Panel panel3;
+        private MetroFramework.Controls.MetroButton metroButton1;
     }
 }
 
