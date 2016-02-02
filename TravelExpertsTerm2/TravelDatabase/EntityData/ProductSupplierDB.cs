@@ -79,7 +79,7 @@ namespace TravelDatabase.EntityData
                 if (Reader.Read())
                 {   // we have  a customer
                     ProductSupplier productSupplier = new ProductSupplier();
-                    productSupplier.ProductSupplierId = (int)Reader["ProducSupplierId"];
+                    productSupplier.ProductSupplierId = (int)Reader["ProductSupplierId"];
                     tempSupId = (int)Reader["SupplierId"];
                     tempProdId = (int)Reader["ProductId"];
 
@@ -105,7 +105,7 @@ namespace TravelDatabase.EntityData
         }
 
         // adds new customer record and returns the customer ID
-        public static int AddCustomer(ProductSupplier productSupplier)
+        public static int AddProductSupplier(Product product, Supplier supplier)
         {
             SqlConnection connection = TravelExpertsDB.GetConnection();
             string insertStatement =
@@ -113,8 +113,8 @@ namespace TravelDatabase.EntityData
                 "(ProductId, SupplierId) " +
                 "Values(@ProductId, @SupplierId)";
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            insertCommand.Parameters.AddWithValue("@ProductId", productSupplier.Product.ProductId);
-            insertCommand.Parameters.AddWithValue("@SupplierId", productSupplier.Supplier.SupplierId);
+            insertCommand.Parameters.AddWithValue("@ProductId", product.ProductId);
+            insertCommand.Parameters.AddWithValue("@SupplierId", supplier.SupplierId);
 
             try
             {
@@ -147,28 +147,24 @@ namespace TravelDatabase.EntityData
 
 
         //DELETE
-        public static bool DeleteCustomer(ProductSupplier productSupplier)
+        public static string DeleteProductSupplier(int productSupplierId)
         {
-            if (CheckDependency(productSupplier.ProductSupplierId))
+            if (!CheckDependency(productSupplierId))
             {
                 SqlConnection connection = TravelExpertsDB.GetConnection();
                 string deleteStatement =
                     "DELETE FROM Products_Suppliers " +
-                    "WHERE ProductSupplierId = @ProductSupplierId " +
-                    "  AND SupplierId = @SupplierId " +
-                    "  AND ProductId = @ProductId ";
+                    "WHERE ProductSupplierId = @ProductSupplierId ";
                 SqlCommand deleteCommand = new SqlCommand(deleteStatement, connection);
-                deleteCommand.Parameters.AddWithValue("@ProductSupplierId", productSupplier.ProductSupplierId);
-                deleteCommand.Parameters.AddWithValue("@ProductId", productSupplier.Product.ProductId);
-                deleteCommand.Parameters.AddWithValue("@SupplierId", productSupplier.Supplier.SupplierId);
+                deleteCommand.Parameters.AddWithValue("@ProductSupplierId",productSupplierId);
                 try
                 {
                     connection.Open();
                     int count = deleteCommand.ExecuteNonQuery();
                     if (count > 0)
-                        return true;
+                        return "Delete Successful";
                     else
-                        return false;
+                        return "An error has occured during deletion, ensure you're connected to the server";
                 }
                 catch (SqlException ex)
                 {
@@ -180,7 +176,7 @@ namespace TravelDatabase.EntityData
                 }
                 
             }
-            return false;
+            return "This ProductSupplier exists in packages, you must remove it from all packages prior to deletion";
         }
 
         public static bool CheckDependency(int productSupplierId)
