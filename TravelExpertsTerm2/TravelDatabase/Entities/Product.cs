@@ -20,6 +20,11 @@ namespace TravelDatabase
         [CanBeNull]
         public string Name { get; [NotNull] set; }
 
+        public override string ToString()
+        {
+            return Name;
+        }
+
         #region IValidatable
 
         // This is static so that it's only ever initialized once, which saves a small amount

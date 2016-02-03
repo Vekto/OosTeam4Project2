@@ -16,6 +16,11 @@ namespace TravelDatabase
         //public int SupplierId { get; set; }
         //public string Name { get; set; }
 
+        public override string ToString()
+        {
+            return Name;
+        }
+
         #region IValidatable
 
         // This is static so that it's only ever initialized once, which saves a small amount
