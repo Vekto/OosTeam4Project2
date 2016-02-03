@@ -1,4 +1,5 @@
-﻿using System;
+﻿// ReSharper disable All
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,8 +27,9 @@ namespace TravelExpertsTerm2
         private void metroTile1_Click(object sender, EventArgs e)
         {
 
-            ChildTest form = new ChildTest();
-            
+            PackagesForm form = new PackagesForm();
+            resetViewWindow();
+            panel2.Controls.Clear();
             form.MdiParent = this;
             form.TopLevel = false;
             panel2.Controls.Add(form);
@@ -44,7 +46,8 @@ namespace TravelExpertsTerm2
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            
+            resetViewWindow();
+            panel2.Controls.Clear();
             SupplierForm form = new SupplierForm();
             //form.MdiParent = this;
             form.TopLevel = false;
@@ -52,6 +55,12 @@ namespace TravelExpertsTerm2
             
            Dock = DockStyle.Fill;
             form.Show();
+        }
+
+        private void resetViewWindow()
+        {
+            foreach (Form f in panel2.Controls)
+            { f.Close(); }
         }
     }
 }

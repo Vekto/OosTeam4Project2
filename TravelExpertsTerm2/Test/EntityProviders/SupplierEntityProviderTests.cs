@@ -112,9 +112,10 @@ namespace Test.EntityProviders
 
         #region Test Data
 
+        // ReSharper disable once MemberCanBePrivate.Global
         public static IEnumerable<object[]> AllSuppliersParams => AllSuppliers.Select(s => new object[] {s});
 
-        private static List<Supplier> AllSuppliers { get; }
+        private static IEnumerable<Supplier> AllSuppliers { get; }
             = new List<Supplier>
             {
                 new Supplier {SupplierId = 69, Name = "NEW CONCEPTS - CANADA"},

@@ -157,7 +157,7 @@ namespace Test.EntityProviders
 
         int IEqualityComparer<Product>.GetHashCode(Product obj)
         {
-            return obj.Name.GetHashCode() * 17 + obj.ProductId.GetHashCode();
+            return obj.Name?.GetHashCode() ?? 0 * 17 + obj.ProductId.GetHashCode();
         }
 
         #endregion

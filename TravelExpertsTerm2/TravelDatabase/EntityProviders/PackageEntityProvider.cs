@@ -4,7 +4,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
+using System.Linq;
 using JetBrains.Annotations;
 
 namespace TravelDatabase.EntityProviders
@@ -13,6 +16,7 @@ namespace TravelDatabase.EntityProviders
     [PublicAPI]
     public sealed class PackageEntityProvider : EntityProviderBase<Package>
     {
+        // TODO: EntityProviders need a clean up, need to use new diagnostic helper function things
 
         #region Constructors
 
@@ -34,7 +38,7 @@ namespace TravelDatabase.EntityProviders
                 var packages = new List<Package>();
 
                 conn.Open();
-                using (var reader = new SqlCommand($"SELECT * FROM {TableName}", conn).ExecuteReader())
+                using (var reader = CreateSqlCommand($"SELECT * FROM {TableName}", conn).ExecuteReader())
                 {
                     while (reader.Read()) packages.Add(ParsePackage(reader));
                 }
@@ -54,7 +58,7 @@ namespace TravelDatabase.EntityProviders
             {
                 Package package;
                 conn.Open();
-                using (var reader = new SqlCommand($"SELECT * FROM {TableName} WHERE PackageId={id}", conn).ExecuteReader())
+                using (var reader = CreateSqlCommand($"SELECT * FROM {TableName} WHERE PackageId={id}", conn).ExecuteReader())
                 {
                     if (!reader.Read()) return null;
                     package = ParsePackage(reader);
@@ -74,7 +78,7 @@ namespace TravelDatabase.EntityProviders
         protected override Package Get(SqlConnection conn, int id)
         {
             Package package;
-            using (var reader = new SqlCommand($"SELECT * FROM {TableName} WHERE PackageId={id}", conn).ExecuteReader())
+            using (var reader = CreateSqlCommand($"SELECT * FROM {TableName} WHERE PackageId={id}", conn).ExecuteReader())
             {
                 if (!reader.Read()) return null;
                 package = ParsePackage(reader);
@@ -86,7 +90,7 @@ namespace TravelDatabase.EntityProviders
         {
             var packages = new List<Package>();
 
-            using (var reader = new SqlCommand($"SELECT * FROM {TableName}", conn).ExecuteReader())
+            using (var reader = CreateSqlCommand($"SELECT * FROM {TableName}", conn).ExecuteReader())
             {
                 while (reader.Read()) packages.Add(ParsePackage(reader));
             }
@@ -97,30 +101,98 @@ namespace TravelDatabase.EntityProviders
         protected override int Add(SqlConnection conn, Package entity)
         {
             var sql = $"INSERT INTO {TableName} VALUES ('{entity.Name}','{entity.StartDate}','{entity.EndDate}','{entity.Description}',{entity.BasePrice},{entity.AgencyCommission})";
-            var rowsAffected = new SqlCommand(sql, conn).ExecuteNonQuery();
-
-            // ReSharper disable once ConvertIfStatementToReturnStatement
+            var rowsAffected = ExecuteNonQuery(sql, conn);
             if (rowsAffected < 1) return int.MinValue; // return negative if the command failed
-            return Database.GetLastAssignedId(conn, TableName); // return the id of the item just added
+
+            var packageId = Database.GetLastAssignedId(conn, TableName); // id of the item just added
+
+            // If the package has ProductSuppliers, relate them (in Packages_Products_Suppliers)
+            if (entity.ProductSuppliers.Count > 0) ReplaceProductSupplierRelations(conn, entity, packageId);
+            return packageId; // return the id of the item just added
         }
 
         protected override bool Delete(SqlConnection conn, Package entity)
         {
-            new SqlCommand($"DELETE FROM Packages_Products_Suppliers WHERE PackageId={entity.PackageId}", conn).ExecuteNonQuery();
+            // replace related Packages_Products_Suppliers entries from an empty list (removes them)
+            entity.ProductSuppliers.Clear();
+            ReplaceProductSupplierRelations(conn, entity);
+
+            //new SqlCommand($"DELETE FROM Packages_Products_Suppliers WHERE PackageId={entity.PackageId}", conn).ExecuteNonQuery();
             return DeleteById(entity.PackageId, "PackageId", conn);
         }
 
 
         protected override bool Update(SqlConnection conn, Package entity)
         {
-            return new SqlCommand(
+            //var existingIds = GetProductSupplierIdsRelatedToPackage(conn, entity.PackageId);
+
+            ReplaceProductSupplierRelations(conn, entity);
+            return ExecuteNonQuery(
                 $"UPDATE {TableName} SET PkgName='{entity.Name}',PkgStartDate='{entity.StartDate}',PkgEndDate='{entity.EndDate}',PkgDesc='{entity.Description}',PkgBasePrice={entity.BasePrice},PkgAgencyCommission={entity.AgencyCommission} WHERE PackageId={entity.PackageId}",
-                conn).ExecuteNonQuery() > 0;
+                conn) > 0;
         }
 
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// Deletes relations in Packages_Products_Suppliers relating to a particular package, and add them again.
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="entity"></param>
+        /// <param name="packageId">Package ID to use, if different from the one in <paramref name="entity"/></param>
+        /// <returns>Rows affected</returns>
+        private int ReplaceProductSupplierRelations(
+            SqlConnection conn, 
+            Package entity,
+            int packageId = int.MinValue)
+        {
+            // Build a sequence of commands to relate products to suppliers in Packages_Products_Suppliers
+            if (packageId == int.MinValue) packageId = entity.PackageId;
+            var sqlLines = entity.ProductSuppliers
+                .Select(
+                    ps => $"INSERT INTO Packages_Products_Suppliers VALUES ({packageId}, {ps.ProductSupplierId})")
+                .ToArray();
+
+            var sql = $"DELETE FROM Packages_Products_Suppliers WHERE PackageId={packageId}";
+            if (sqlLines.Length > 0) sql += "; " + string.Join("; ", sqlLines);
+
+            var affected = ExecuteNonQuery(sql, conn);
+            Debug.Assert(sqlLines.Length <= affected,
+                $"The number of rows affected ({affected}) is less than the number of INSERT commands ({sqlLines.Length}).");
+
+            return affected;
+        }
+
+        //private int[] GetProductSupplierIdsRelatedToPackage(SqlConnection conn, int packageId)
+        //{
+        //    // Select ProductSupplier IDs linked to a particular Package in Packages_Products_Suppliers
+        //    // (This query returns a count of the IDs in the first row, followed by the IDs.)
+        //    var sql = "WITH ps_ids AS (SELECT ps.ProductSupplierId" +
+        //              " FROM Packages_Products_Suppliers pps, Products_Suppliers ps" +
+        //              " WHERE pps.ProductSupplierId = ps.ProductSupplierId" +
+        //              $" AND pps.PackageId = {packageId})" +
+        //              " SELECT COUNT(ProductSupplierId)AS 'CountThenIds' FROM ps_ids" +
+        //              " UNION SELECT ProductSupplierId AS 'CountThenIds' FROM ps_ids";
+
+        //    using (var reader = CreateSqlCommand(sql, conn).ExecuteReader())
+        //    {
+        //        if (!reader.Read()) throw new Exception("Cannot retrieve SQL result.");
+        //        var resultCount = reader.GetInt32(0); // read result count
+        //        var result = new int[resultCount]; // init array
+
+        //        // read IDs into the array
+        //        for (var i = 0; i < resultCount; i++)
+        //        {
+        //            if (!reader.Read()) throw new Exception("Cannot retrieve SQL result.");
+        //            result[i] = reader.GetInt32(0);
+        //        }
+
+        //        if (reader.Read()) Debug.Fail("Not all SQL results were read");
+        //        return result;
+        //    }
+        //}
 
         private IEnumerable<ProductSupplier> GetProductSuppliersRelatedToId(SqlConnection conn, int packageId)
         {

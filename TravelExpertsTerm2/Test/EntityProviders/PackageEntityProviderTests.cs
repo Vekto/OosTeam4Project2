@@ -449,10 +449,10 @@ namespace Test.EntityProviders
         {
             // Prices are not used because floating-point inequality doesn't imply object inequality
             return obj.PackageId.GetHashCode() * 17
-                   + obj.Name.GetHashCode() * 17
+                   + obj.Name?.GetHashCode() ?? 0 * 17
                    + obj.StartDate.GetHashCode() * 17
                    + obj.EndDate.GetHashCode() * 17
-                   + obj.Description.GetHashCode() * 17
+                   + obj.Description?.GetHashCode() ?? 0 * 17
                    + obj.ProductSuppliers.Count.GetHashCode();
 
             // use the hash of every product supplier as well
