@@ -30,7 +30,7 @@ namespace TravelExpertsTerm2
             PackagesForm form = new PackagesForm();
             resetViewWindow();
             panel2.Controls.Clear();
-            form.MdiParent = this;
+           // form.MdiParent = this;
             form.TopLevel = false;
             panel2.Controls.Add(form);
             form.Dock = DockStyle.Fill;
@@ -61,6 +61,18 @@ namespace TravelExpertsTerm2
         {
             foreach (Form f in panel2.Controls)
             { f.Close(); }
+        }
+
+        private void BtnProdSup_Click(object sender, EventArgs e)
+        {
+            resetViewWindow();
+            panel2.Controls.Clear();
+            ProductSupplierForm form = new ProductSupplierForm();
+            //form.MdiParent = this;
+            form.TopLevel = false;
+            panel2.Controls.Add(form);
+            Dock = DockStyle.Fill;
+            form.Show();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿// ReSharper disable All
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -43,7 +44,7 @@ namespace TravelDatabase.EntityData
             List<Supplier> suppliersList = new List<Supplier>(); //create emtpy list
             string connectionString = "Data Source=localhost\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
             SqlConnection connection = new SqlConnection(connectionString);
-            string selectStatement = "SELECT * FROM Suppliers ORDER BY SupplierID";
+            string selectStatement = "SELECT * FROM Suppliers ORDER BY SupplierId";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
 
             try
@@ -53,7 +54,7 @@ namespace TravelDatabase.EntityData
                 while (reader.Read())  //while there is data
                 {
                     Supplier supplier = new Supplier();
-                    supplier.SupplierId = (int)reader["SupplierID"];
+                    supplier.SupplierId = (int)reader["SupplierId"];
                     supplier.Name = (string)reader["SupName"];
                     suppliersList.Add(supplier); //add supplier object to list
                 }
@@ -173,10 +174,46 @@ namespace TravelDatabase.EntityData
                 connection.Close();
             }
         }//END OF ADD METHOD
-        
+
+
+        public static Supplier GetSupplierByID(int SupplierID)
+        {
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+            string selectStatement =
+                "SELECT SupplierId, SupName " +
+                "FROM Suppliers " +
+                "WHERE SupplierId = @SupplierId";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@SupplierId", SupplierID);
+            try
+            {
+                connection.Open();
+                SqlDataReader custReader = selectCommand.ExecuteReader
+                    (CommandBehavior.SingleRow); // selecting by PK value
+                if (custReader.Read())
+                {   // we have  a customer
+                    Supplier supplier = new Supplier();
+                    supplier.SupplierId = (int)custReader["SupplierID"];
+                    supplier.Name = (string)custReader["SupName"];
+                    return supplier;
+                }
+                else // no customer
+                {
+                    return null;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
         #endregion
 
-       
+
 
     } //END OF SUPPLIER DB
 }//END OF NAMESPACE

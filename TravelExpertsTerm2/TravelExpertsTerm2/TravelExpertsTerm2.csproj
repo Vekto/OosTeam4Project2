@@ -84,6 +84,12 @@
     <Compile Include="PackagesForm.Designer.cs">
       <DependentUpon>PackagesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProductSupplierForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductSupplierForm.Designer.cs">
+      <DependentUpon>ProductSupplierForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SupplierForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     <EmbeddedResource Include="PackagesForm.resx">
       <DependentUpon>PackagesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProductSupplierForm.resx">
+      <DependentUpon>ProductSupplierForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SupplierForm.resx">
       <DependentUpon>SupplierForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,7 +123,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -128,7 +139,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Icons\TravelExpertLogo.png" />
     <None Include="Icons\Package3.png" />
