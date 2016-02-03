@@ -84,6 +84,12 @@
     <Compile Include="PackagesForm.Designer.cs">
       <DependentUpon>PackagesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductForm.Designer.cs">
+      <DependentUpon>ProductForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProductSupplierForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PackagesForm.resx">
       <DependentUpon>PackagesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductForm.resx">
+      <DependentUpon>ProductForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductSupplierForm.resx">
       <DependentUpon>ProductSupplierForm.cs</DependentUpon>

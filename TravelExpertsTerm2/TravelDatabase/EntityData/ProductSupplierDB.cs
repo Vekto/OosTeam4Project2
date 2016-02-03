@@ -47,7 +47,7 @@ namespace TravelDatabase.EntityData
             connection.Close();
             foreach (ProductSupplier ProdSup in ProdSupList)
             {
-                ProdSup.Product = ProductDB.GetProductByID(ProdSup.Product.ProductId);
+                ProdSup.Product = ProductDB.GetEntityById(ProdSup.Product.ProductId);
                 ProdSup.Supplier = SupplierDB.GetSupplierByID(ProdSup.Supplier.SupplierId);
             }
         }
@@ -85,7 +85,7 @@ namespace TravelDatabase.EntityData
 
                     connection.Close();
                     productSupplier.Supplier = SupplierDB.GetSupplierByID(tempSupId);
-                    productSupplier.Product = ProductDB.GetProductByID(tempSupId);
+                    productSupplier.Product = ProductDB.GetEntityById(tempSupId);
 
                     return productSupplier;
                 }

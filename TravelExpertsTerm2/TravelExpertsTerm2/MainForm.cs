@@ -74,5 +74,18 @@ namespace TravelExpertsTerm2
             Dock = DockStyle.Fill;
             form.Show();
         }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            resetViewWindow();
+            panel2.Controls.Clear();
+            ProductForm form = new ProductForm();
+            //form.MdiParent = this;
+            form.TopLevel = false;
+            panel2.Controls.Add(form);
+
+            Dock = DockStyle.Fill;
+            form.Show();
+        }
     }
 }
