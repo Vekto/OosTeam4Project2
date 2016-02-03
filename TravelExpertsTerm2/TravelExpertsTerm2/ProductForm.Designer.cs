@@ -166,7 +166,7 @@
             this.cProductName});
             this.lsvProduct.Location = new System.Drawing.Point(406, 27);
             this.lsvProduct.Name = "lsvProduct";
-            this.lsvProduct.Size = new System.Drawing.Size(341, 150);
+            this.lsvProduct.Size = new System.Drawing.Size(349, 233);
             this.lsvProduct.TabIndex = 7;
             this.lsvProduct.UseCompatibleStateImageBehavior = false;
             this.lsvProduct.View = System.Windows.Forms.View.Details;
