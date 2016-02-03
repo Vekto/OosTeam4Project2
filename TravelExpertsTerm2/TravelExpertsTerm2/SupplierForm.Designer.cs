@@ -93,7 +93,7 @@
             this.txtSearch.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtSearch.SelectedText = "";
             this.txtSearch.Size = new System.Drawing.Size(182, 23);
-            this.txtSearch.TabIndex = 11;
+            this.txtSearch.TabIndex = 1;
             this.txtSearch.UseSelectable = true;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             this.txtSearch.Click += new System.EventHandler(this.txtSearch_Click);
@@ -103,7 +103,7 @@
             this.btnAddNewSupplier.Location = new System.Drawing.Point(58, 121);
             this.btnAddNewSupplier.Name = "btnAddNewSupplier";
             this.btnAddNewSupplier.Size = new System.Drawing.Size(184, 28);
-            this.btnAddNewSupplier.TabIndex = 12;
+            this.btnAddNewSupplier.TabIndex = 2;
             this.btnAddNewSupplier.Text = "&Add New Supplier";
             this.btnAddNewSupplier.UseSelectable = true;
             this.btnAddNewSupplier.Click += new System.EventHandler(this.btnAddNewSupplier_Click);
@@ -113,7 +113,7 @@
             this.btnUpdateSelected.Location = new System.Drawing.Point(60, 157);
             this.btnUpdateSelected.Name = "btnUpdateSelected";
             this.btnUpdateSelected.Size = new System.Drawing.Size(182, 28);
-            this.btnUpdateSelected.TabIndex = 13;
+            this.btnUpdateSelected.TabIndex = 3;
             this.btnUpdateSelected.Text = "&Update Selected";
             this.btnUpdateSelected.UseSelectable = true;
             this.btnUpdateSelected.Click += new System.EventHandler(this.btnUpdateSelected_Click);
@@ -123,7 +123,7 @@
             this.btnDeleteSelected.Location = new System.Drawing.Point(58, 191);
             this.btnDeleteSelected.Name = "btnDeleteSelected";
             this.btnDeleteSelected.Size = new System.Drawing.Size(182, 28);
-            this.btnDeleteSelected.TabIndex = 14;
+            this.btnDeleteSelected.TabIndex = 4;
             this.btnDeleteSelected.Text = "&Delete Selected";
             this.btnDeleteSelected.UseSelectable = true;
             this.btnDeleteSelected.Click += new System.EventHandler(this.btnDeleteSelected_Click);
@@ -143,7 +143,7 @@
             this.pnlAddUpdate.Location = new System.Drawing.Point(45, 244);
             this.pnlAddUpdate.Name = "pnlAddUpdate";
             this.pnlAddUpdate.Size = new System.Drawing.Size(299, 144);
-            this.pnlAddUpdate.TabIndex = 15;
+            this.pnlAddUpdate.TabIndex = 5;
             this.pnlAddUpdate.VerticalScrollbarBarColor = true;
             this.pnlAddUpdate.VerticalScrollbarHighlightOnWheel = false;
             this.pnlAddUpdate.VerticalScrollbarSize = 10;
@@ -169,7 +169,7 @@
             this.txtSupName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtSupName.SelectedText = "";
             this.txtSupName.Size = new System.Drawing.Size(156, 23);
-            this.txtSupName.TabIndex = 16;
+            this.txtSupName.TabIndex = 7;
             this.txtSupName.UseSelectable = true;
             // 
             // lblSupplierID
@@ -193,7 +193,7 @@
             this.txtSupplierID.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtSupplierID.SelectedText = "";
             this.txtSupplierID.Size = new System.Drawing.Size(156, 23);
-            this.txtSupplierID.TabIndex = 16;
+            this.txtSupplierID.TabIndex = 6;
             this.txtSupplierID.UseSelectable = true;
             this.txtSupplierID.Click += new System.EventHandler(this.txtSupplierID_Click);
             // 
@@ -202,7 +202,7 @@
             this.btnAdd.Location = new System.Drawing.Point(128, 88);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 15;
+            this.btnAdd.TabIndex = 8;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseSelectable = true;
             this.btnAdd.Click += new System.EventHandler(this.btnSave_Click);
@@ -212,7 +212,7 @@
             this.btnCancel1.Location = new System.Drawing.Point(209, 88);
             this.btnCancel1.Name = "btnCancel1";
             this.btnCancel1.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel1.TabIndex = 16;
+            this.btnCancel1.TabIndex = 9;
             this.btnCancel1.Text = "Cancel";
             this.btnCancel1.UseSelectable = true;
             this.btnCancel1.Click += new System.EventHandler(this.btnCancel_Click);

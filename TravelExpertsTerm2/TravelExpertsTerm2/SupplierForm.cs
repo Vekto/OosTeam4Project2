@@ -14,7 +14,8 @@ using TravelDatabase.EntityData;
 namespace TravelExpertsTerm2
 {
     public partial class SupplierForm : Form
-    {
+    {   
+
         public string selectedSupplierID = "";
         public string selectedSupName = "";
 
@@ -71,24 +72,27 @@ namespace TravelExpertsTerm2
         {
             int integer;
 
-            if (txtSupplierID.Text == "")
+            if (txtSupplierID.Text == "")  //if no SupplierID is entered
             {
+                //display error
                 MessageBox.Show("Please fill in all fields.");
             }
 
-            else if (txtSupName.Text == "")
+            else if (txtSupName.Text == "") //if no Supplier name is entered
             {
+                //display error message
                 MessageBox.Show("Please fill in all fields.");
             }
             else if (!Int32.TryParse(txtSupplierID.Text, out integer))//validate that SupplierID is an integer
             {
                 MessageBox.Show("Please enter a valid Supplier ID.");
             }
-            else {
-                if (btnAdd.Text == "Add")
+            else
+            {   
+                if (btnAdd.Text == "Add") 
                 {
                     txtSearch.Text = "";
-                    Supplier supplier = new Supplier();
+                    Supplier supplier = new Supplier(); 
                     supplier.SupplierID = Convert.ToInt32(txtSupplierID.Text);
                     supplier.SupName = txtSupName.Text;
                     try
@@ -205,8 +209,9 @@ namespace TravelExpertsTerm2
         public bool UpdateSupplier(int supplierID) //refreshes supplier list with updated supplier
         {
             //validate on the form
-            string connectionString = "Data Source=ELF5OOSD212989\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
-            SqlConnection connection = new SqlConnection(connectionString);
+            //string connectionString = "Data Source=localhost\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
+            //SqlConnection connection = new SqlConnection(connectionString);
+            SqlConnection connection = TravelExpertsDB.GetConnection();
 
             string updateStatement = "UPDATE Suppliers " +
                                      "SET SupplierID = @NewSupplierID, " +
