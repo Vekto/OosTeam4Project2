@@ -54,18 +54,18 @@ namespace TravelExpertsTerm2
         {
             if (lstSuppliers.SelectedItems.Count == 1)  //if occuring on item selected not item deselectd
             {
-            clearForm();
-            try
-            {
-                selectedSupplierID = lstSuppliers.Items[lstSuppliers.SelectedIndices[0]].Text.Trim(); //store selected supplier id
-                selectedSupName = lstSuppliers.Items[lstSuppliers.SelectedIndices[0]].SubItems[1].Text.Trim(); //store selected supplier name
-            }
+                clearForm();
+                try
+                {
+                    selectedSupplierID = lstSuppliers.Items[lstSuppliers.SelectedIndices[0]].Text.Trim(); //store selected supplier id
+                    selectedSupName = lstSuppliers.Items[lstSuppliers.SelectedIndices[0]].SubItems[1].Text.Trim(); //store selected supplier name
+                }
                 catch (Exception ex)
-            {
-                throw ex;
-                //MessageBox.Show(ex.Message);
+                {
+                    throw ex;
+                    //MessageBox.Show(ex.Message);
+                }
             }
-        }
         }
        
         //Call add function
@@ -123,7 +123,7 @@ namespace TravelExpertsTerm2
                 }
 
                 else if (btnAdd.Text == "Update")
-                {
+                {                    
                     if (UpdateSupplier(Convert.ToInt32(selectedSupplierID)))
                     {
                         MessageBox.Show("Record updated successfully.");
@@ -156,7 +156,7 @@ namespace TravelExpertsTerm2
             clearForm();
             if (lstSuppliers.SelectedItems.Count == 1)
             {
-                selectedSupplierID = lstSuppliers.Items[lstSuppliers.SelectedIndices[0]].Text.Trim(); //store selected supplier id
+                selectedSupplierID = lstSuppliers.Items[lstSuppliers.SelectedIndices[0]].Text.Trim(); //store selected supplier id                
 
                 if (SupplierDB.CheckDependency(Convert.ToInt32(selectedSupplierID)))
                 {
@@ -204,7 +204,7 @@ namespace TravelExpertsTerm2
         {
 
             txtSupplierID.Text = "";
-            txtSupName.Text = "";            
+            txtSupName.Text = "";
         }
 
         public bool UpdateSupplier(int supplierID) //refreshes supplier list with updated supplier
