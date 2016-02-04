@@ -41,6 +41,29 @@ namespace TravelExpertsTerm2
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
+        // method to load the listview
+        private void LoadListView()
+        {
+
+            List<Product> products = new List<Product>();
+            try
+            {
+                products = ProductDB.GetProducts();
+                cboProducts.DataSource = products;
+                foreach (Product prodt in products)
+                {
+                    ListViewItem prodiItem = new ListViewItem(prodt.ProductId.ToString());
+
+                    prodiItem.SubItems.Add(prodt.Name);
+                    lsvProduct.Items.Add(prodiItem);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
         // method to accept form inputs
         private void acceptRecord(Product product)
         {
@@ -52,6 +75,7 @@ namespace TravelExpertsTerm2
         private void ProductForm_Load(object sender, EventArgs e)
         {
            this.LoadComboxProducts();
+            LoadListView();
         }
         // Combobox selected Value change method. to trigger event of the comboBox selection 
         private void cboProducts_SelectedValueChanged(object sender, EventArgs e)
@@ -60,9 +84,9 @@ namespace TravelExpertsTerm2
             lsvProduct.FullRowSelect = true;
             lsvProduct.GridLines = true;
             //adding product Item to the listview
-            ListViewItem prodItem = new ListViewItem(cboProducts.SelectedValue.ToString());
-            prodItem.SubItems.Add(cboProducts.GetItemText(cboProducts.SelectedItem));
-            lsvProduct.Items.Add(prodItem);
+            //ListViewItem prodItem = new ListViewItem(cboProducts.SelectedValue.ToString());
+            //prodItem.SubItems.Add(cboProducts.GetItemText(cboProducts.SelectedItem));
+            //lsvProduct.Items.Add(prodItem);
         }
         // method to make the panel product visible to allow for entry data
         private void btnProduct_Click(object sender, EventArgs e)
@@ -104,6 +128,7 @@ namespace TravelExpertsTerm2
                         prod.Name = txtProductName.Text;
                         ProductDB.AddEntity(prod);
                         LoadComboxProducts();
+                        LoadListView();
                         MessageBox.Show("New Product Added Successfully");
                     }
                 }
@@ -131,6 +156,7 @@ namespace TravelExpertsTerm2
                     {
                         prod = newProduct;
                         LoadComboxProducts();
+                        LoadListView();
                         MessageBox.Show("Product record Updated successfully", "Update Record");
                     }
                 }
@@ -186,6 +212,7 @@ namespace TravelExpertsTerm2
                 {
                     ProductDB.DeleteEntity(prod);
                     LoadComboxProducts();
+                    LoadListView();
                     MessageBox.Show("record deleted successfully");
                 }
             }
