@@ -21,7 +21,7 @@ namespace TravelDatabase.EntityData
        */
         public static SqlConnection GetConnection()
         {
-            string connectionString = "Data Source=localhost\\MYSERVER;Initial Catalog=TravelExperts;Integrated Security=True";
+            string connectionString = "Data Source=localhost\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
             SqlConnection connection = new SqlConnection(connectionString);
             return connection;
         }

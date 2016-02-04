@@ -1,4 +1,6 @@
-﻿namespace TravelExpertsTerm2
+﻿using System.Windows.Forms;
+
+namespace TravelExpertsTerm2
 {
     partial class PackagesForm
     {
@@ -28,257 +30,375 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.PackageSelectorComboBox = new System.Windows.Forms.ComboBox();
-            this.NameTextBox = new System.Windows.Forms.TextBox();
-            this.DescriptionTextBox = new System.Windows.Forms.TextBox();
-            this.BasePriceTextBox = new System.Windows.Forms.TextBox();
-            this.AgencyCommissionTextBox = new System.Windows.Forms.TextBox();
             this.StartDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.EndDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.TotalLabel = new System.Windows.Forms.Label();
-            this.EditCancelButton = new System.Windows.Forms.Button();
-            this.NewSaveButton = new System.Windows.Forms.Button();
-            this.DeleteButton = new System.Windows.Forms.Button();
             this.LinkedProductSuppliersListBox = new System.Windows.Forms.ListBox();
             this.OtherProductSuppliersListBox = new System.Windows.Forms.ListBox();
-            this.OtherProductSuppliersLabel = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.PackageSelectorComboBox = new MetroFramework.Controls.MetroComboBox();
+            this.NameTextBox = new MetroFramework.Controls.MetroTextBox();
+            this.DescriptionTextBox = new MetroFramework.Controls.MetroTextBox();
+            this.BasePriceTextBox = new MetroFramework.Controls.MetroTextBox();
+            this.AgencyCommissionTextBox = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.TotalLabel = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.DeleteButton = new MetroFramework.Controls.MetroButton();
+            this.EditCancelButton = new MetroFramework.Controls.MetroButton();
+            this.NewSaveButton = new MetroFramework.Controls.MetroButton();
+            this.btnAddSupplier = new MetroFramework.Controls.MetroButton();
+            this.btnRemoveSupplier = new MetroFramework.Controls.MetroButton();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.OtherProductSuppliersLabel = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.SuspendLayout();
-            // 
-            // PackageSelectorComboBox
-            // 
-            this.PackageSelectorComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.PackageSelectorComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.PackageSelectorComboBox.FormattingEnabled = true;
-            this.PackageSelectorComboBox.Location = new System.Drawing.Point(181, 130);
-            this.PackageSelectorComboBox.MaxDropDownItems = 16;
-            this.PackageSelectorComboBox.Name = "PackageSelectorComboBox";
-            this.PackageSelectorComboBox.Size = new System.Drawing.Size(200, 24);
-            this.PackageSelectorComboBox.TabIndex = 0;
-            this.PackageSelectorComboBox.SelectedIndexChanged += new System.EventHandler(this.PackageSelectorComboBox_SelectedIndexChanged);
-            // 
-            // NameTextBox
-            // 
-            this.NameTextBox.Location = new System.Drawing.Point(181, 184);
-            this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(200, 22);
-            this.NameTextBox.TabIndex = 1;
-            // 
-            // DescriptionTextBox
-            // 
-            this.DescriptionTextBox.Location = new System.Drawing.Point(181, 268);
-            this.DescriptionTextBox.Multiline = true;
-            this.DescriptionTextBox.Name = "DescriptionTextBox";
-            this.DescriptionTextBox.Size = new System.Drawing.Size(200, 88);
-            this.DescriptionTextBox.TabIndex = 4;
-            // 
-            // BasePriceTextBox
-            // 
-            this.BasePriceTextBox.Location = new System.Drawing.Point(181, 362);
-            this.BasePriceTextBox.Name = "BasePriceTextBox";
-            this.BasePriceTextBox.Size = new System.Drawing.Size(200, 22);
-            this.BasePriceTextBox.TabIndex = 5;
-            // 
-            // AgencyCommissionTextBox
-            // 
-            this.AgencyCommissionTextBox.Location = new System.Drawing.Point(181, 390);
-            this.AgencyCommissionTextBox.Name = "AgencyCommissionTextBox";
-            this.AgencyCommissionTextBox.Size = new System.Drawing.Size(200, 22);
-            this.AgencyCommissionTextBox.TabIndex = 6;
             // 
             // StartDateTimePicker
             // 
-            this.StartDateTimePicker.Location = new System.Drawing.Point(181, 212);
+            this.StartDateTimePicker.Font = new System.Drawing.Font("Segoe UI Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StartDateTimePicker.Location = new System.Drawing.Point(136, 127);
             this.StartDateTimePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.StartDateTimePicker.Name = "StartDateTimePicker";
-            this.StartDateTimePicker.Size = new System.Drawing.Size(200, 22);
+            this.StartDateTimePicker.Size = new System.Drawing.Size(200, 25);
             this.StartDateTimePicker.TabIndex = 7;
             // 
             // EndDateTimePicker
             // 
-            this.EndDateTimePicker.Location = new System.Drawing.Point(181, 240);
+            this.EndDateTimePicker.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.EndDateTimePicker.Font = new System.Drawing.Font("Segoe UI Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EndDateTimePicker.Location = new System.Drawing.Point(136, 155);
             this.EndDateTimePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.EndDateTimePicker.Name = "EndDateTimePicker";
-            this.EndDateTimePicker.Size = new System.Drawing.Size(200, 22);
+            this.EndDateTimePicker.Size = new System.Drawing.Size(200, 25);
             this.EndDateTimePicker.TabIndex = 8;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(130, 187);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 17);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Name";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(103, 217);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 17);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Start Date";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(108, 245);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 17);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "End Date";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(96, 271);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 17);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Description";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(135, 365);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 17);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Price";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(41, 393);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(134, 17);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Agency Commission";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(135, 421);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(40, 17);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Total";
-            // 
-            // TotalLabel
-            // 
-            this.TotalLabel.AutoSize = true;
-            this.TotalLabel.Location = new System.Drawing.Point(178, 421);
-            this.TotalLabel.Name = "TotalLabel";
-            this.TotalLabel.Size = new System.Drawing.Size(40, 17);
-            this.TotalLabel.TabIndex = 16;
-            this.TotalLabel.Text = "Total";
-            // 
-            // EditCancelButton
-            // 
-            this.EditCancelButton.Location = new System.Drawing.Point(225, 465);
-            this.EditCancelButton.Name = "EditCancelButton";
-            this.EditCancelButton.Size = new System.Drawing.Size(75, 23);
-            this.EditCancelButton.TabIndex = 17;
-            this.EditCancelButton.Text = "Edit/Cancel";
-            this.EditCancelButton.UseVisualStyleBackColor = true;
-            this.EditCancelButton.Click += new System.EventHandler(this.EditCancelButton_Click);
-            // 
-            // NewSaveButton
-            // 
-            this.NewSaveButton.Location = new System.Drawing.Point(306, 465);
-            this.NewSaveButton.Name = "NewSaveButton";
-            this.NewSaveButton.Size = new System.Drawing.Size(75, 23);
-            this.NewSaveButton.TabIndex = 18;
-            this.NewSaveButton.Text = "New/Save";
-            this.NewSaveButton.UseVisualStyleBackColor = true;
-            this.NewSaveButton.Click += new System.EventHandler(this.NewSaveButton_Click);
-            // 
-            // DeleteButton
-            // 
-            this.DeleteButton.Location = new System.Drawing.Point(44, 465);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(75, 23);
-            this.DeleteButton.TabIndex = 19;
-            this.DeleteButton.Text = "Delete";
-            this.DeleteButton.UseVisualStyleBackColor = true;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // LinkedProductSuppliersListBox
             // 
+            this.LinkedProductSuppliersListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.LinkedProductSuppliersListBox.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LinkedProductSuppliersListBox.FormattingEnabled = true;
-            this.LinkedProductSuppliersListBox.ItemHeight = 16;
-            this.LinkedProductSuppliersListBox.Location = new System.Drawing.Point(453, 114);
+            this.LinkedProductSuppliersListBox.ItemHeight = 17;
+            this.LinkedProductSuppliersListBox.Location = new System.Drawing.Point(364, 60);
             this.LinkedProductSuppliersListBox.Name = "LinkedProductSuppliersListBox";
-            this.LinkedProductSuppliersListBox.Size = new System.Drawing.Size(266, 148);
+            this.LinkedProductSuppliersListBox.Size = new System.Drawing.Size(204, 259);
             this.LinkedProductSuppliersListBox.Sorted = true;
             this.LinkedProductSuppliersListBox.TabIndex = 20;
             this.LinkedProductSuppliersListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.LinkedProductSuppliersListBox_MouseDoubleClick);
             // 
             // OtherProductSuppliersListBox
             // 
+            this.OtherProductSuppliersListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.OtherProductSuppliersListBox.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OtherProductSuppliersListBox.FormattingEnabled = true;
-            this.OtherProductSuppliersListBox.ItemHeight = 16;
-            this.OtherProductSuppliersListBox.Location = new System.Drawing.Point(453, 290);
+            this.OtherProductSuppliersListBox.ItemHeight = 17;
+            this.OtherProductSuppliersListBox.Location = new System.Drawing.Point(659, 60);
             this.OtherProductSuppliersListBox.Name = "OtherProductSuppliersListBox";
-            this.OtherProductSuppliersListBox.Size = new System.Drawing.Size(266, 196);
+            this.OtherProductSuppliersListBox.Size = new System.Drawing.Size(204, 259);
             this.OtherProductSuppliersListBox.Sorted = true;
             this.OtherProductSuppliersListBox.TabIndex = 21;
             this.OtherProductSuppliersListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.OtherProductSuppliersListBox_MouseDoubleClick);
             // 
+            // PackageSelectorComboBox
+            // 
+            this.PackageSelectorComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.PackageSelectorComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.PackageSelectorComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.PackageSelectorComboBox.FormattingEnabled = true;
+            this.PackageSelectorComboBox.ItemHeight = 24;
+            this.PackageSelectorComboBox.Location = new System.Drawing.Point(136, 60);
+            this.PackageSelectorComboBox.Name = "PackageSelectorComboBox";
+            this.PackageSelectorComboBox.Size = new System.Drawing.Size(200, 30);
+            this.PackageSelectorComboBox.Style = MetroFramework.MetroColorStyle.Orange;
+            this.PackageSelectorComboBox.TabIndex = 24;
+            this.PackageSelectorComboBox.UseCustomBackColor = true;
+            this.PackageSelectorComboBox.UseSelectable = true;
+            this.PackageSelectorComboBox.UseStyleColors = true;
+            this.PackageSelectorComboBox.SelectedIndexChanged += new System.EventHandler(this.PackageSelectorComboBox_SelectedIndexChanged);
+            // 
+            // NameTextBox
+            // 
+            this.NameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.NameTextBox.Enabled = false;
+            this.NameTextBox.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.NameTextBox.Lines = new string[0];
+            this.NameTextBox.Location = new System.Drawing.Point(136, 96);
+            this.NameTextBox.MaxLength = 32767;
+            this.NameTextBox.Name = "NameTextBox";
+            this.NameTextBox.PasswordChar = '\0';
+            this.NameTextBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.NameTextBox.SelectedText = "";
+            this.NameTextBox.Size = new System.Drawing.Size(200, 23);
+            this.NameTextBox.TabIndex = 25;
+            this.NameTextBox.UseCustomBackColor = true;
+            this.NameTextBox.UseSelectable = true;
+            // 
+            // DescriptionTextBox
+            // 
+            this.DescriptionTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.DescriptionTextBox.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.DescriptionTextBox.Lines = new string[0];
+            this.DescriptionTextBox.Location = new System.Drawing.Point(136, 179);
+            this.DescriptionTextBox.MaxLength = 32767;
+            this.DescriptionTextBox.Multiline = true;
+            this.DescriptionTextBox.Name = "DescriptionTextBox";
+            this.DescriptionTextBox.PasswordChar = '\0';
+            this.DescriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.DescriptionTextBox.SelectedText = "";
+            this.DescriptionTextBox.Size = new System.Drawing.Size(200, 92);
+            this.DescriptionTextBox.Style = MetroFramework.MetroColorStyle.Orange;
+            this.DescriptionTextBox.TabIndex = 26;
+            this.DescriptionTextBox.UseCustomBackColor = true;
+            this.DescriptionTextBox.UseSelectable = true;
+            // 
+            // BasePriceTextBox
+            // 
+            this.BasePriceTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.BasePriceTextBox.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.BasePriceTextBox.Lines = new string[0];
+            this.BasePriceTextBox.Location = new System.Drawing.Point(136, 276);
+            this.BasePriceTextBox.MaxLength = 32767;
+            this.BasePriceTextBox.Name = "BasePriceTextBox";
+            this.BasePriceTextBox.PasswordChar = '\0';
+            this.BasePriceTextBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.BasePriceTextBox.SelectedText = "";
+            this.BasePriceTextBox.Size = new System.Drawing.Size(200, 23);
+            this.BasePriceTextBox.Style = MetroFramework.MetroColorStyle.Orange;
+            this.BasePriceTextBox.TabIndex = 27;
+            this.BasePriceTextBox.UseCustomBackColor = true;
+            this.BasePriceTextBox.UseSelectable = true;
+            // 
+            // AgencyCommissionTextBox
+            // 
+            this.AgencyCommissionTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.AgencyCommissionTextBox.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.AgencyCommissionTextBox.Lines = new string[0];
+            this.AgencyCommissionTextBox.Location = new System.Drawing.Point(136, 304);
+            this.AgencyCommissionTextBox.MaxLength = 32767;
+            this.AgencyCommissionTextBox.Name = "AgencyCommissionTextBox";
+            this.AgencyCommissionTextBox.PasswordChar = '\0';
+            this.AgencyCommissionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.AgencyCommissionTextBox.SelectedText = "";
+            this.AgencyCommissionTextBox.Size = new System.Drawing.Size(200, 23);
+            this.AgencyCommissionTextBox.TabIndex = 28;
+            this.AgencyCommissionTextBox.UseCustomBackColor = true;
+            this.AgencyCommissionTextBox.UseSelectable = true;
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(80, 96);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(50, 20);
+            this.metroLabel1.TabIndex = 29;
+            this.metroLabel1.Text = "Name:";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(58, 129);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(72, 20);
+            this.metroLabel2.TabIndex = 30;
+            this.metroLabel2.Text = "Start Date:";
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.Location = new System.Drawing.Point(61, 155);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(69, 20);
+            this.metroLabel3.TabIndex = 31;
+            this.metroLabel3.Text = "End Date:";
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(48, 185);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(82, 20);
+            this.metroLabel4.TabIndex = 32;
+            this.metroLabel4.Text = "Description:";
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.Location = new System.Drawing.Point(87, 279);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(43, 20);
+            this.metroLabel5.TabIndex = 33;
+            this.metroLabel5.Text = "Price:";
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.Location = new System.Drawing.Point(26, 307);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(138, 20);
+            this.metroLabel6.TabIndex = 34;
+            this.metroLabel6.Text = "Agency Commission:";
+            // 
+            // TotalLabel
+            // 
+            this.TotalLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.TotalLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.TotalLabel.Location = new System.Drawing.Point(136, 346);
+            this.TotalLabel.Name = "TotalLabel";
+            this.TotalLabel.Size = new System.Drawing.Size(117, 23);
+            this.TotalLabel.TabIndex = 35;
+            this.TotalLabel.Text = "total";
+            this.TotalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.Location = new System.Drawing.Point(88, 346);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(42, 20);
+            this.metroLabel7.TabIndex = 36;
+            this.metroLabel7.Text = "Total:";
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.DeleteButton.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.DeleteButton.Location = new System.Drawing.Point(281, 393);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteButton.Style = MetroFramework.MetroColorStyle.Orange;
+            this.DeleteButton.TabIndex = 37;
+            this.DeleteButton.Text = "Delete";
+            this.DeleteButton.UseCustomBackColor = true;
+            this.DeleteButton.UseSelectable = true;
+            this.DeleteButton.UseStyleColors = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // EditCancelButton
+            // 
+            this.EditCancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.EditCancelButton.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.EditCancelButton.Location = new System.Drawing.Point(136, 393);
+            this.EditCancelButton.Name = "EditCancelButton";
+            this.EditCancelButton.Size = new System.Drawing.Size(85, 23);
+            this.EditCancelButton.Style = MetroFramework.MetroColorStyle.Orange;
+            this.EditCancelButton.TabIndex = 38;
+            this.EditCancelButton.Text = "Edit/Cancel";
+            this.EditCancelButton.UseCustomBackColor = true;
+            this.EditCancelButton.UseSelectable = true;
+            this.EditCancelButton.UseStyleColors = true;
+            this.EditCancelButton.Click += new System.EventHandler(this.EditCancelButton_Click);
+            // 
+            // NewSaveButton
+            // 
+            this.NewSaveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.NewSaveButton.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.NewSaveButton.Location = new System.Drawing.Point(26, 393);
+            this.NewSaveButton.Name = "NewSaveButton";
+            this.NewSaveButton.Size = new System.Drawing.Size(96, 23);
+            this.NewSaveButton.Style = MetroFramework.MetroColorStyle.Orange;
+            this.NewSaveButton.TabIndex = 39;
+            this.NewSaveButton.Text = "New/Save";
+            this.NewSaveButton.UseCustomBackColor = true;
+            this.NewSaveButton.UseSelectable = true;
+            this.NewSaveButton.UseStyleColors = true;
+            this.NewSaveButton.Click += new System.EventHandler(this.NewSaveButton_Click);
+            // 
+            // btnAddSupplier
+            // 
+            this.btnAddSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btnAddSupplier.Enabled = false;
+            this.btnAddSupplier.Location = new System.Drawing.Point(577, 75);
+            this.btnAddSupplier.Name = "btnAddSupplier";
+            this.btnAddSupplier.Size = new System.Drawing.Size(75, 26);
+            this.btnAddSupplier.Style = MetroFramework.MetroColorStyle.Orange;
+            this.btnAddSupplier.TabIndex = 40;
+            this.btnAddSupplier.Text = "<-Add";
+            this.btnAddSupplier.UseCustomBackColor = true;
+            this.btnAddSupplier.UseSelectable = true;
+            this.btnAddSupplier.UseStyleColors = true;
+            this.btnAddSupplier.Visible = false;
+            this.btnAddSupplier.Click += new System.EventHandler(this.btnAddSupplier_Click);
+            // 
+            // btnRemoveSupplier
+            // 
+            this.btnRemoveSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btnRemoveSupplier.Enabled = false;
+            this.btnRemoveSupplier.Location = new System.Drawing.Point(577, 273);
+            this.btnRemoveSupplier.Name = "btnRemoveSupplier";
+            this.btnRemoveSupplier.Size = new System.Drawing.Size(75, 26);
+            this.btnRemoveSupplier.Style = MetroFramework.MetroColorStyle.Orange;
+            this.btnRemoveSupplier.TabIndex = 41;
+            this.btnRemoveSupplier.Text = "Remove ->";
+            this.btnRemoveSupplier.UseCustomBackColor = true;
+            this.btnRemoveSupplier.UseSelectable = true;
+            this.btnRemoveSupplier.UseStyleColors = true;
+            this.btnRemoveSupplier.Visible = false;
+            this.btnRemoveSupplier.Click += new System.EventHandler(this.btnRemoveSupplier_Click);
+            // 
+            // metroLabel8
+            // 
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel8.Location = new System.Drawing.Point(401, 36);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(125, 20);
+            this.metroLabel8.TabIndex = 42;
+            this.metroLabel8.Text = "Product Suppliers";
+            // 
             // OtherProductSuppliersLabel
             // 
             this.OtherProductSuppliersLabel.AutoSize = true;
-            this.OtherProductSuppliersLabel.Location = new System.Drawing.Point(508, 270);
+            this.OtherProductSuppliersLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.OtherProductSuppliersLabel.Location = new System.Drawing.Point(680, 38);
             this.OtherProductSuppliersLabel.Name = "OtherProductSuppliersLabel";
-            this.OtherProductSuppliersLabel.Size = new System.Drawing.Size(149, 17);
-            this.OtherProductSuppliersLabel.TabIndex = 22;
+            this.OtherProductSuppliersLabel.Size = new System.Drawing.Size(166, 20);
+            this.OtherProductSuppliersLabel.TabIndex = 43;
             this.OtherProductSuppliersLabel.Text = "<< Click-Click-Click  >>";
             // 
-            // label9
+            // metroLabel10
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(498, 94);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(137, 17);
-            this.label9.TabIndex = 23;
-            this.label9.Text = "Product Suppliers";
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel10.Location = new System.Drawing.Point(178, 37);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(120, 20);
+            this.metroLabel10.TabIndex = 44;
+            this.metroLabel10.Text = "Select a Package";
             // 
             // PackagesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(867, 618);
-            this.Controls.Add(this.label9);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(882, 618);
+            this.Controls.Add(this.metroLabel10);
             this.Controls.Add(this.OtherProductSuppliersLabel);
-            this.Controls.Add(this.OtherProductSuppliersListBox);
-            this.Controls.Add(this.LinkedProductSuppliersListBox);
-            this.Controls.Add(this.DeleteButton);
+            this.Controls.Add(this.metroLabel8);
+            this.Controls.Add(this.btnRemoveSupplier);
+            this.Controls.Add(this.btnAddSupplier);
             this.Controls.Add(this.NewSaveButton);
             this.Controls.Add(this.EditCancelButton);
+            this.Controls.Add(this.DeleteButton);
+            this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.TotalLabel);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.EndDateTimePicker);
-            this.Controls.Add(this.StartDateTimePicker);
+            this.Controls.Add(this.metroLabel6);
+            this.Controls.Add(this.metroLabel5);
+            this.Controls.Add(this.metroLabel4);
+            this.Controls.Add(this.metroLabel3);
+            this.Controls.Add(this.metroLabel2);
+            this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.AgencyCommissionTextBox);
             this.Controls.Add(this.BasePriceTextBox);
             this.Controls.Add(this.DescriptionTextBox);
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.PackageSelectorComboBox);
+            this.Controls.Add(this.OtherProductSuppliersListBox);
+            this.Controls.Add(this.LinkedProductSuppliersListBox);
+            this.Controls.Add(this.EndDateTimePicker);
+            this.Controls.Add(this.StartDateTimePicker);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PackagesForm";
             this.Text = "PackagesPrototype";
@@ -289,28 +409,30 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox PackageSelectorComboBox;
-        private System.Windows.Forms.TextBox NameTextBox;
-        private System.Windows.Forms.TextBox DescriptionTextBox;
-        private System.Windows.Forms.TextBox BasePriceTextBox;
-        private System.Windows.Forms.TextBox AgencyCommissionTextBox;
         private System.Windows.Forms.DateTimePicker StartDateTimePicker;
         private System.Windows.Forms.DateTimePicker EndDateTimePicker;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label TotalLabel;
-        private System.Windows.Forms.Button EditCancelButton;
-        private System.Windows.Forms.Button NewSaveButton;
-        private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.ListBox LinkedProductSuppliersListBox;
         private System.Windows.Forms.ListBox OtherProductSuppliersListBox;
-        private System.Windows.Forms.Label OtherProductSuppliersLabel;
-        private System.Windows.Forms.Label label9;
+        private MetroFramework.Controls.MetroComboBox PackageSelectorComboBox;
+        private MetroFramework.Controls.MetroTextBox NameTextBox;
+        private MetroFramework.Controls.MetroTextBox DescriptionTextBox;
+        private MetroFramework.Controls.MetroTextBox BasePriceTextBox;
+        private MetroFramework.Controls.MetroTextBox AgencyCommissionTextBox;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroLabel TotalLabel;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private MetroFramework.Controls.MetroButton DeleteButton;
+        private MetroFramework.Controls.MetroButton EditCancelButton;
+        private MetroFramework.Controls.MetroButton NewSaveButton;
+        private MetroFramework.Controls.MetroButton btnAddSupplier;
+        private MetroFramework.Controls.MetroButton btnRemoveSupplier;
+        private MetroFramework.Controls.MetroLabel metroLabel8;
+        private MetroFramework.Controls.MetroLabel OtherProductSuppliersLabel;
+        private MetroFramework.Controls.MetroLabel metroLabel10;
     }
 }

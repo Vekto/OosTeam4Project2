@@ -255,18 +255,24 @@ namespace TravelExpertsTerm2
 
         private void SetReadonlyFields(bool @readonly)
         {
-            NameTextBox.ReadOnly = @readonly;
-            DescriptionTextBox.ReadOnly = @readonly;
-            BasePriceTextBox.ReadOnly = @readonly;
-            AgencyCommissionTextBox.ReadOnly = @readonly;
+            NameTextBox.Enabled = !@readonly;
+            DescriptionTextBox.Enabled = !@readonly;
+            BasePriceTextBox.Enabled = !@readonly;
+            AgencyCommissionTextBox.Enabled = !@readonly;
             StartDateTimePicker.Enabled = !@readonly;
             EndDateTimePicker.Enabled = !@readonly;
+            btnAddSupplier.Enabled = !@readonly;
+            btnRemoveSupplier.Enabled = !@readonly;
+
+
 
             LinkedProductSuppliersListBox.SelectionMode = @readonly ? SelectionMode.None : SelectionMode.One;
-            LinkedProductSuppliersListBox.BackColor = @readonly ? Color.LightGray : Color.White;
+            LinkedProductSuppliersListBox.BackColor = @readonly ? Color.FromArgb(250,250,250) : Color.White;
             OtherProductSuppliersListBox.Enabled = !@readonly;
             OtherProductSuppliersListBox.Visible = !@readonly;
             OtherProductSuppliersLabel.Visible = !@readonly;
+            btnAddSupplier.Visible = !@readonly;
+            btnRemoveSupplier.Visible = !@readonly;
         }
 
         private void SetEditMode(bool enabled)
@@ -291,6 +297,23 @@ namespace TravelExpertsTerm2
             }
         }
 
+        private void btnAddSupplier_Click(object sender, EventArgs e)
+        {
+            var productSupplier = (ProductSupplier)OtherProductSuppliersListBox.SelectedItem;
+            if (productSupplier == null) return;
+
+            _OtherProductSuppliers.Remove(productSupplier);
+            _LinkedProductSuppliers.Add(productSupplier);
+        }
+
+        private void btnRemoveSupplier_Click(object sender, EventArgs e)
+        {
+            var productSupplier = (ProductSupplier)LinkedProductSuppliersListBox.SelectedItem;
+            if (productSupplier == null) return;
+
+            _LinkedProductSuppliers.Remove(productSupplier);
+            _OtherProductSuppliers.Add(productSupplier);
+        }
         #endregion
 
         // TODO: Maybe move these to a shared utility class for use on other forms
@@ -340,6 +363,7 @@ namespace TravelExpertsTerm2
         }
 
         #endregion
+
 
     }
 }
