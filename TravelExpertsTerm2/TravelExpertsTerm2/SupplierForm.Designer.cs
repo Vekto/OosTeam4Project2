@@ -93,7 +93,7 @@
             this.btnAddNewSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.btnAddNewSupplier.Location = new System.Drawing.Point(58, 121);
             this.btnAddNewSupplier.Name = "btnAddNewSupplier";
-            this.btnAddNewSupplier.Size = new System.Drawing.Size(184, 28);
+            this.btnAddNewSupplier.Size = new System.Drawing.Size(182, 28);
             this.btnAddNewSupplier.Style = MetroFramework.MetroColorStyle.Orange;
             this.btnAddNewSupplier.TabIndex = 2;
             this.btnAddNewSupplier.Text = "&Add New Supplier";
@@ -105,7 +105,7 @@
             // btnUpdateSelected
             // 
             this.btnUpdateSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btnUpdateSelected.Location = new System.Drawing.Point(60, 157);
+            this.btnUpdateSelected.Location = new System.Drawing.Point(58, 157);
             this.btnUpdateSelected.Name = "btnUpdateSelected";
             this.btnUpdateSelected.Size = new System.Drawing.Size(182, 28);
             this.btnUpdateSelected.Style = MetroFramework.MetroColorStyle.Orange;
@@ -119,7 +119,7 @@
             // btnDeleteSelected
             // 
             this.btnDeleteSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btnDeleteSelected.Location = new System.Drawing.Point(60, 191);
+            this.btnDeleteSelected.Location = new System.Drawing.Point(58, 191);
             this.btnDeleteSelected.Name = "btnDeleteSelected";
             this.btnDeleteSelected.Size = new System.Drawing.Size(182, 28);
             this.btnDeleteSelected.Style = MetroFramework.MetroColorStyle.Orange;
@@ -241,7 +241,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(731, 430);
+            this.ClientSize = new System.Drawing.Size(731, 403);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.pnlAddUpdate);
             this.Controls.Add(this.btnDeleteSelected);
@@ -251,7 +251,7 @@
             this.Controls.Add(this.lstSuppliers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SupplierForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.pnlAddUpdate.ResumeLayout(false);
