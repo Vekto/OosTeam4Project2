@@ -54,10 +54,10 @@
             this.SupplierID,
             this.SupName});
             this.lstSuppliers.FullRowSelect = true;
-            this.lstSuppliers.Location = new System.Drawing.Point(360, 23);
+            this.lstSuppliers.Location = new System.Drawing.Point(360, 26);
             this.lstSuppliers.MultiSelect = false;
             this.lstSuppliers.Name = "lstSuppliers";
-            this.lstSuppliers.Size = new System.Drawing.Size(311, 365);
+            this.lstSuppliers.Size = new System.Drawing.Size(361, 365);
             this.lstSuppliers.TabIndex = 0;
             this.lstSuppliers.UseCompatibleStateImageBehavior = false;
             this.lstSuppliers.View = System.Windows.Forms.View.Details;
@@ -66,12 +66,12 @@
             // SupplierID
             // 
             this.SupplierID.Text = "Supplier ID";
-            this.SupplierID.Width = 81;
+            this.SupplierID.Width = 120;
             // 
             // SupName
             // 
             this.SupName.Text = "Supplier Name";
-            this.SupName.Width = 300;
+            this.SupName.Width = 350;
             // 
             // txtSearch
             // 
@@ -241,7 +241,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(731, 403);
+            this.ClientSize = new System.Drawing.Size(756, 403);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.pnlAddUpdate);
             this.Controls.Add(this.btnDeleteSelected);

@@ -51,9 +51,9 @@
             this.lsvProduct.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.cProductId,
             this.cProductName});
-            this.lsvProduct.Location = new System.Drawing.Point(355, 24);
+            this.lsvProduct.Location = new System.Drawing.Point(355, 12);
             this.lsvProduct.Name = "lsvProduct";
-            this.lsvProduct.Size = new System.Drawing.Size(341, 150);
+            this.lsvProduct.Size = new System.Drawing.Size(265, 150);
             this.lsvProduct.TabIndex = 7;
             this.lsvProduct.UseCompatibleStateImageBehavior = false;
             this.lsvProduct.View = System.Windows.Forms.View.Details;
@@ -106,7 +106,7 @@
             // btnUpdateProduct
             // 
             this.btnUpdateProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btnUpdateProduct.Location = new System.Drawing.Point(143, 95);
+            this.btnUpdateProduct.Location = new System.Drawing.Point(143, 103);
             this.btnUpdateProduct.Name = "btnUpdateProduct";
             this.btnUpdateProduct.Size = new System.Drawing.Size(192, 23);
             this.btnUpdateProduct.Style = MetroFramework.MetroColorStyle.Orange;
@@ -120,7 +120,7 @@
             // btnDeleteProduct
             // 
             this.btnDeleteProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btnDeleteProduct.Location = new System.Drawing.Point(143, 124);
+            this.btnDeleteProduct.Location = new System.Drawing.Point(143, 139);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
             this.btnDeleteProduct.Size = new System.Drawing.Size(192, 23);
             this.btnDeleteProduct.Style = MetroFramework.MetroColorStyle.Orange;
