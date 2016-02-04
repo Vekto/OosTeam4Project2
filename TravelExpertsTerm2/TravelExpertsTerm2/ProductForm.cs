@@ -44,16 +44,19 @@ namespace TravelExpertsTerm2
         // method to load the listview
         private void LoadListView()
         {
+            lsvProduct.Items.Clear();
 
-            List<Product> products = new List<Product>();
+
+            List<Product> sortedProducts = new List<Product>();
             try
             {
-                products = ProductDB.GetProducts();
-                cboProducts.DataSource = products;
-                foreach (Product prodt in products)
-                {
-                    ListViewItem prodiItem = new ListViewItem(prodt.ProductId.ToString());
+                List<Product> products = ProductDB.GetProducts();
+                sortedProducts = products.OrderBy(x => x.ProductId).ToList();
 
+                foreach (Product prodt in sortedProducts)
+                {
+
+                    ListViewItem prodiItem = new ListViewItem(prodt.ProductId.ToString());
                     prodiItem.SubItems.Add(prodt.Name);
                     lsvProduct.Items.Add(prodiItem);
 
@@ -80,7 +83,7 @@ namespace TravelExpertsTerm2
         // Combobox selected Value change method. to trigger event of the comboBox selection 
         private void cboProducts_SelectedValueChanged(object sender, EventArgs e)
         {
-            lsvProduct.Items.Clear();
+            //lsvProduct.Items.Clear();
             lsvProduct.FullRowSelect = true;
             lsvProduct.GridLines = true;
             //adding product Item to the listview
@@ -92,7 +95,6 @@ namespace TravelExpertsTerm2
         private void btnProduct_Click(object sender, EventArgs e)
         {
             pnlProduct.Visible = true;
-            lsvProduct.Visible = false;
             btnSave.Text = "Add";
             txtProductId.Text = "";
             txtProductName.Text = "";
@@ -181,7 +183,6 @@ namespace TravelExpertsTerm2
         private void btnUpdateProduct_Click(object sender, EventArgs e)
         {
             btnSave.Text = "Update";
-            lsvProduct.Visible = false;
             pnlProduct.Visible = true;
             lblSelectProd.Visible = false;
             cboProducts.Visible = false;
