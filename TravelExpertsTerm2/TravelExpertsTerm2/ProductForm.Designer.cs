@@ -164,7 +164,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(135, 134);
+            this.btnSave.Location = new System.Drawing.Point(165, 133);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 13;
@@ -205,6 +205,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(863, 524);
             this.Controls.Add(this.pnlProduct);
@@ -216,6 +217,7 @@
             this.Controls.Add(this.lsvProduct);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ProductForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "ProductForm";
             this.Load += new System.EventHandler(this.ProductForm_Load);
             this.pnlProduct.ResumeLayout(false);

@@ -32,7 +32,6 @@
             this.lstSuppliers = new System.Windows.Forms.ListView();
             this.SupplierID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SupName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label2 = new System.Windows.Forms.Label();
             this.txtSearch = new MetroFramework.Controls.MetroTextBox();
             this.btnAddNewSupplier = new MetroFramework.Controls.MetroButton();
             this.btnUpdateSelected = new MetroFramework.Controls.MetroButton();
@@ -45,6 +44,7 @@
             this.txtSupplierID = new MetroFramework.Controls.MetroTextBox();
             this.btnAdd = new MetroFramework.Controls.MetroButton();
             this.btnCancel1 = new MetroFramework.Controls.MetroButton();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.pnlAddUpdate.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,16 +73,6 @@
             this.SupName.Text = "Supplier Name";
             this.SupName.Width = 300;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(57, 47);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(180, 17);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Enter Supplier ID to Search";
-            // 
             // txtSearch
             // 
             this.txtSearch.Lines = new string[0];
@@ -100,32 +90,44 @@
             // 
             // btnAddNewSupplier
             // 
+            this.btnAddNewSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.btnAddNewSupplier.Location = new System.Drawing.Point(58, 121);
             this.btnAddNewSupplier.Name = "btnAddNewSupplier";
             this.btnAddNewSupplier.Size = new System.Drawing.Size(184, 28);
+            this.btnAddNewSupplier.Style = MetroFramework.MetroColorStyle.Orange;
             this.btnAddNewSupplier.TabIndex = 2;
             this.btnAddNewSupplier.Text = "&Add New Supplier";
+            this.btnAddNewSupplier.UseCustomBackColor = true;
             this.btnAddNewSupplier.UseSelectable = true;
+            this.btnAddNewSupplier.UseStyleColors = true;
             this.btnAddNewSupplier.Click += new System.EventHandler(this.btnAddNewSupplier_Click);
             // 
             // btnUpdateSelected
             // 
+            this.btnUpdateSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.btnUpdateSelected.Location = new System.Drawing.Point(60, 157);
             this.btnUpdateSelected.Name = "btnUpdateSelected";
             this.btnUpdateSelected.Size = new System.Drawing.Size(182, 28);
+            this.btnUpdateSelected.Style = MetroFramework.MetroColorStyle.Orange;
             this.btnUpdateSelected.TabIndex = 3;
             this.btnUpdateSelected.Text = "&Update Selected";
+            this.btnUpdateSelected.UseCustomBackColor = true;
             this.btnUpdateSelected.UseSelectable = true;
+            this.btnUpdateSelected.UseStyleColors = true;
             this.btnUpdateSelected.Click += new System.EventHandler(this.btnUpdateSelected_Click);
             // 
             // btnDeleteSelected
             // 
+            this.btnDeleteSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.btnDeleteSelected.Location = new System.Drawing.Point(60, 191);
             this.btnDeleteSelected.Name = "btnDeleteSelected";
             this.btnDeleteSelected.Size = new System.Drawing.Size(182, 28);
+            this.btnDeleteSelected.Style = MetroFramework.MetroColorStyle.Orange;
             this.btnDeleteSelected.TabIndex = 4;
             this.btnDeleteSelected.Text = "&Delete Selected";
+            this.btnDeleteSelected.UseCustomBackColor = true;
             this.btnDeleteSelected.UseSelectable = true;
+            this.btnDeleteSelected.UseStyleColors = true;
             this.btnDeleteSelected.Click += new System.EventHandler(this.btnDeleteSelected_Click);
             // 
             // pnlAddUpdate
@@ -199,23 +201,40 @@
             // 
             // btnAdd
             // 
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.btnAdd.Location = new System.Drawing.Point(128, 88);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Style = MetroFramework.MetroColorStyle.Orange;
             this.btnAdd.TabIndex = 8;
             this.btnAdd.Text = "Add";
+            this.btnAdd.UseCustomBackColor = true;
             this.btnAdd.UseSelectable = true;
+            this.btnAdd.UseStyleColors = true;
             this.btnAdd.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel1
             // 
+            this.btnCancel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.btnCancel1.Location = new System.Drawing.Point(209, 88);
             this.btnCancel1.Name = "btnCancel1";
             this.btnCancel1.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel1.Style = MetroFramework.MetroColorStyle.Orange;
             this.btnCancel1.TabIndex = 9;
             this.btnCancel1.Text = "Cancel";
+            this.btnCancel1.UseCustomBackColor = true;
             this.btnCancel1.UseSelectable = true;
+            this.btnCancel1.UseStyleColors = true;
             this.btnCancel1.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(64, 44);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(175, 20);
+            this.metroLabel1.TabIndex = 8;
+            this.metroLabel1.Text = "Enter Supplier ID to Search";
             // 
             // SupplierForm
             // 
@@ -223,15 +242,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(731, 430);
+            this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.pnlAddUpdate);
             this.Controls.Add(this.btnDeleteSelected);
             this.Controls.Add(this.btnUpdateSelected);
             this.Controls.Add(this.btnAddNewSupplier);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.lstSuppliers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SupplierForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.pnlAddUpdate.ResumeLayout(false);
@@ -246,7 +266,6 @@
         private System.Windows.Forms.ListView lstSuppliers;
         private System.Windows.Forms.ColumnHeader SupplierID;
         private System.Windows.Forms.ColumnHeader SupName;
-        private System.Windows.Forms.Label label2;
         private MetroFramework.Controls.MetroTextBox txtSearch;
         private MetroFramework.Controls.MetroButton btnAddNewSupplier;
         private MetroFramework.Controls.MetroButton btnUpdateSelected;
@@ -259,6 +278,7 @@
         private MetroFramework.Controls.MetroTextBox txtSupName;
         private MetroFramework.Controls.MetroLabel lblSupName;
         private MetroFramework.Controls.MetroLabel lblSupplierID;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
     }
 }
 

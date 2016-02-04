@@ -26,14 +26,14 @@ namespace TravelExpertsTerm2
 
         private void metroTile1_Click(object sender, EventArgs e)
         {
-
-            PackagesForm form = new PackagesForm();
             resetViewWindow();
             panel2.Controls.Clear();
-           // form.MdiParent = this;
+            PackagesForm form = new PackagesForm();
+            
+          // form.MdiParent = this;
             form.TopLevel = false;
             panel2.Controls.Add(form);
-            //form.Dock = DockStyle.Fill;
+            form.Dock = DockStyle.Fill;
             form.Show();
         }
 
@@ -49,11 +49,10 @@ namespace TravelExpertsTerm2
             resetViewWindow();
             panel2.Controls.Clear();
             SupplierForm form = new SupplierForm();
-            //form.MdiParent = this;
+           // form.MdiParent = this;
             form.TopLevel = false;
-            panel2.Controls.Add(form);
-            
-          // Dock = DockStyle.Fill;
+            panel2.Controls.Add(form);   
+            Dock = DockStyle.Fill;
             form.Show();
         }
 
@@ -68,10 +67,10 @@ namespace TravelExpertsTerm2
             resetViewWindow();
             panel2.Controls.Clear();
             ProductSupplierForm form = new ProductSupplierForm();
-            //form.MdiParent = this;
+           // form.MdiParent = this;
             form.TopLevel = false;
             panel2.Controls.Add(form);
-           // Dock = DockStyle.Fill;
+            Dock = DockStyle.Fill;
             form.Show();
         }
 
@@ -80,11 +79,11 @@ namespace TravelExpertsTerm2
             resetViewWindow();
             panel2.Controls.Clear();
             ProductForm form = new ProductForm();
-            //form.MdiParent = this;
+            // form.MdiParent = this;
+            form.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
             form.TopLevel = false;
             panel2.Controls.Add(form);
-
-           // Dock = DockStyle.Fill;
+            Dock = DockStyle.Fill;
             form.Show();
         }
     }
