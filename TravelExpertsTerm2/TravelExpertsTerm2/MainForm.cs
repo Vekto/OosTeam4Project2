@@ -35,6 +35,8 @@ namespace TravelExpertsTerm2
             panel2.Controls.Add(form);
             form.Dock = DockStyle.Fill;
             form.Show();
+            btnPackages.BackColor=Color.White;
+;
         }
 
         private void MainForm_Resize(object sender, EventArgs e)
@@ -54,12 +56,17 @@ namespace TravelExpertsTerm2
             panel2.Controls.Add(form);   
             Dock = DockStyle.Fill;
             form.Show();
+            btnSuppliers.BackColor = Color.White;
         }
 
         private void resetViewWindow()
         {
             foreach (Form f in panel2.Controls)
             { f.Close(); }
+            btnPackages.BackColor = Color.FromArgb(0, 174, 219);
+            BtnProdSup.BackColor = Color.FromArgb(124, 65, 153);
+            btnProducts.BackColor = Color.FromArgb(209, 17, 65);
+            btnSuppliers.BackColor = Color.Orange;
         }
 
         private void BtnProdSup_Click(object sender, EventArgs e)
@@ -72,6 +79,9 @@ namespace TravelExpertsTerm2
             panel2.Controls.Add(form);
             Dock = DockStyle.Fill;
             form.Show();
+
+            BtnProdSup.BackColor = Color.White;
+
         }
 
         private void metroButton2_Click(object sender, EventArgs e)
@@ -85,6 +95,9 @@ namespace TravelExpertsTerm2
             panel2.Controls.Add(form);
             Dock = DockStyle.Fill;
             form.Show();
+            btnProducts.BackColor = Color.White;
+
+
         }
     }
 }
