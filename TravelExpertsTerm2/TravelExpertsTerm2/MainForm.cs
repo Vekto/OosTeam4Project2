@@ -33,7 +33,7 @@ namespace TravelExpertsTerm2
            // form.MdiParent = this;
             form.TopLevel = false;
             panel2.Controls.Add(form);
-            form.Dock = DockStyle.Fill;
+            //form.Dock = DockStyle.Fill;
             form.Show();
         }
 
@@ -53,7 +53,7 @@ namespace TravelExpertsTerm2
             form.TopLevel = false;
             panel2.Controls.Add(form);
             
-           Dock = DockStyle.Fill;
+          // Dock = DockStyle.Fill;
             form.Show();
         }
 
@@ -71,7 +71,7 @@ namespace TravelExpertsTerm2
             //form.MdiParent = this;
             form.TopLevel = false;
             panel2.Controls.Add(form);
-            Dock = DockStyle.Fill;
+           // Dock = DockStyle.Fill;
             form.Show();
         }
 
@@ -84,7 +84,7 @@ namespace TravelExpertsTerm2
             form.TopLevel = false;
             panel2.Controls.Add(form);
 
-            Dock = DockStyle.Fill;
+           // Dock = DockStyle.Fill;
             form.Show();
         }
     }
