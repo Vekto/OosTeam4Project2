@@ -31,7 +31,7 @@
             this.lsvProduct = new System.Windows.Forms.ListView();
             this.cProductId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cProductName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lblSelectProd1 = new MetroFramework.Controls.MetroLabel();
+            this.lblSelectProd = new MetroFramework.Controls.MetroLabel();
             this.cboProducts = new MetroFramework.Controls.MetroComboBox();
             this.btnProduct = new MetroFramework.Controls.MetroButton();
             this.btnUpdateProduct = new MetroFramework.Controls.MetroButton();
@@ -51,7 +51,7 @@
             this.lsvProduct.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.cProductId,
             this.cProductName});
-            this.lsvProduct.Location = new System.Drawing.Point(406, 27);
+            this.lsvProduct.Location = new System.Drawing.Point(359, 12);
             this.lsvProduct.Name = "lsvProduct";
             this.lsvProduct.Size = new System.Drawing.Size(341, 150);
             this.lsvProduct.TabIndex = 7;
@@ -68,20 +68,20 @@
             this.cProductName.Text = "Product Name";
             this.cProductName.Width = 176;
             // 
-            // lblSelectProd1
+            // lblSelectProd
             // 
-            this.lblSelectProd1.AutoSize = true;
-            this.lblSelectProd1.Location = new System.Drawing.Point(25, 27);
-            this.lblSelectProd1.Name = "lblSelectProd1";
-            this.lblSelectProd1.Size = new System.Drawing.Size(101, 20);
-            this.lblSelectProd1.TabIndex = 8;
-            this.lblSelectProd1.Text = "Select Product:";
+            this.lblSelectProd.AutoSize = true;
+            this.lblSelectProd.Location = new System.Drawing.Point(5, 12);
+            this.lblSelectProd.Name = "lblSelectProd";
+            this.lblSelectProd.Size = new System.Drawing.Size(101, 20);
+            this.lblSelectProd.TabIndex = 8;
+            this.lblSelectProd.Text = "Select Product:";
             // 
             // cboProducts
             // 
             this.cboProducts.FormattingEnabled = true;
             this.cboProducts.ItemHeight = 24;
-            this.cboProducts.Location = new System.Drawing.Point(163, 27);
+            this.cboProducts.Location = new System.Drawing.Point(143, 12);
             this.cboProducts.Name = "cboProducts";
             this.cboProducts.Size = new System.Drawing.Size(192, 30);
             this.cboProducts.TabIndex = 9;
@@ -90,7 +90,7 @@
             // 
             // btnProduct
             // 
-            this.btnProduct.Location = new System.Drawing.Point(163, 81);
+            this.btnProduct.Location = new System.Drawing.Point(143, 66);
             this.btnProduct.Name = "btnProduct";
             this.btnProduct.Size = new System.Drawing.Size(192, 23);
             this.btnProduct.TabIndex = 10;
@@ -100,7 +100,7 @@
             // 
             // btnUpdateProduct
             // 
-            this.btnUpdateProduct.Location = new System.Drawing.Point(163, 110);
+            this.btnUpdateProduct.Location = new System.Drawing.Point(143, 95);
             this.btnUpdateProduct.Name = "btnUpdateProduct";
             this.btnUpdateProduct.Size = new System.Drawing.Size(192, 23);
             this.btnUpdateProduct.TabIndex = 11;
@@ -110,7 +110,7 @@
             // 
             // btnDeleteProduct
             // 
-            this.btnDeleteProduct.Location = new System.Drawing.Point(163, 139);
+            this.btnDeleteProduct.Location = new System.Drawing.Point(143, 124);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
             this.btnDeleteProduct.Size = new System.Drawing.Size(192, 23);
             this.btnDeleteProduct.TabIndex = 12;
@@ -193,7 +193,7 @@
             this.pnlProduct.HorizontalScrollbarBarColor = true;
             this.pnlProduct.HorizontalScrollbarHighlightOnWheel = false;
             this.pnlProduct.HorizontalScrollbarSize = 10;
-            this.pnlProduct.Location = new System.Drawing.Point(53, 222);
+            this.pnlProduct.Location = new System.Drawing.Point(12, 216);
             this.pnlProduct.Name = "pnlProduct";
             this.pnlProduct.Size = new System.Drawing.Size(355, 218);
             this.pnlProduct.TabIndex = 15;
@@ -212,7 +212,7 @@
             this.Controls.Add(this.btnUpdateProduct);
             this.Controls.Add(this.btnProduct);
             this.Controls.Add(this.cboProducts);
-            this.Controls.Add(this.lblSelectProd1);
+            this.Controls.Add(this.lblSelectProd);
             this.Controls.Add(this.lsvProduct);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ProductForm";
@@ -229,7 +229,7 @@
         private System.Windows.Forms.ListView lsvProduct;
         private System.Windows.Forms.ColumnHeader cProductId;
         private System.Windows.Forms.ColumnHeader cProductName;
-        private MetroFramework.Controls.MetroLabel lblSelectProd1;
+        private MetroFramework.Controls.MetroLabel lblSelectProd;
         private MetroFramework.Controls.MetroComboBox cboProducts;
         private MetroFramework.Controls.MetroButton btnProduct;
         private MetroFramework.Controls.MetroButton btnUpdateProduct;
