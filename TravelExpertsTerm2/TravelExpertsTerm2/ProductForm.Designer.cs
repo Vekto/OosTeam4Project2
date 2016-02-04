@@ -57,6 +57,7 @@
             this.lsvProduct.TabIndex = 7;
             this.lsvProduct.UseCompatibleStateImageBehavior = false;
             this.lsvProduct.View = System.Windows.Forms.View.Details;
+            this.lsvProduct.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lsvProduct_ItemSelectionChanged);
             // 
             // cProductId
             // 

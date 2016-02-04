@@ -239,5 +239,14 @@ namespace TravelExpertsTerm2
             
 
         }
+
+
+
+        private void lsvProduct_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (e.IsSelected)
+                e.Item.Selected = false;
+
+        }
     }
 }
