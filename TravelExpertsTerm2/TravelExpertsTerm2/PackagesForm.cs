@@ -270,7 +270,7 @@ namespace TravelExpertsTerm2
             LinkedProductSuppliersListBox.BackColor = @readonly ? Color.FromArgb(250,250,250) : Color.White;
             OtherProductSuppliersListBox.Enabled = !@readonly;
             OtherProductSuppliersListBox.Visible = !@readonly;
-            OtherProductSuppliersLabel.Visible = !@readonly;
+            //OtherProductSuppliersLabel.Visible = !@readonly;
             btnAddSupplier.Visible = !@readonly;
             btnRemoveSupplier.Visible = !@readonly;
         }

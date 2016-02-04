@@ -53,14 +53,13 @@ namespace TravelExpertsTerm2
             this.btnAddSupplier = new MetroFramework.Controls.MetroButton();
             this.btnRemoveSupplier = new MetroFramework.Controls.MetroButton();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.OtherProductSuppliersLabel = new MetroFramework.Controls.MetroLabel();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.SuspendLayout();
             // 
             // StartDateTimePicker
             // 
             this.StartDateTimePicker.Font = new System.Drawing.Font("Segoe UI Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StartDateTimePicker.Location = new System.Drawing.Point(136, 127);
+            this.StartDateTimePicker.Location = new System.Drawing.Point(125, 127);
             this.StartDateTimePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.StartDateTimePicker.Name = "StartDateTimePicker";
             this.StartDateTimePicker.Size = new System.Drawing.Size(200, 25);
@@ -70,7 +69,7 @@ namespace TravelExpertsTerm2
             // 
             this.EndDateTimePicker.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.EndDateTimePicker.Font = new System.Drawing.Font("Segoe UI Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EndDateTimePicker.Location = new System.Drawing.Point(136, 155);
+            this.EndDateTimePicker.Location = new System.Drawing.Point(125, 155);
             this.EndDateTimePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.EndDateTimePicker.Name = "EndDateTimePicker";
             this.EndDateTimePicker.Size = new System.Drawing.Size(200, 25);
@@ -82,7 +81,7 @@ namespace TravelExpertsTerm2
             this.LinkedProductSuppliersListBox.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LinkedProductSuppliersListBox.FormattingEnabled = true;
             this.LinkedProductSuppliersListBox.ItemHeight = 17;
-            this.LinkedProductSuppliersListBox.Location = new System.Drawing.Point(364, 60);
+            this.LinkedProductSuppliersListBox.Location = new System.Drawing.Point(353, 60);
             this.LinkedProductSuppliersListBox.Name = "LinkedProductSuppliersListBox";
             this.LinkedProductSuppliersListBox.Size = new System.Drawing.Size(204, 259);
             this.LinkedProductSuppliersListBox.Sorted = true;
@@ -95,7 +94,7 @@ namespace TravelExpertsTerm2
             this.OtherProductSuppliersListBox.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OtherProductSuppliersListBox.FormattingEnabled = true;
             this.OtherProductSuppliersListBox.ItemHeight = 17;
-            this.OtherProductSuppliersListBox.Location = new System.Drawing.Point(659, 60);
+            this.OtherProductSuppliersListBox.Location = new System.Drawing.Point(648, 60);
             this.OtherProductSuppliersListBox.Name = "OtherProductSuppliersListBox";
             this.OtherProductSuppliersListBox.Size = new System.Drawing.Size(204, 259);
             this.OtherProductSuppliersListBox.Sorted = true;
@@ -109,7 +108,7 @@ namespace TravelExpertsTerm2
             this.PackageSelectorComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.PackageSelectorComboBox.FormattingEnabled = true;
             this.PackageSelectorComboBox.ItemHeight = 24;
-            this.PackageSelectorComboBox.Location = new System.Drawing.Point(136, 60);
+            this.PackageSelectorComboBox.Location = new System.Drawing.Point(125, 60);
             this.PackageSelectorComboBox.Name = "PackageSelectorComboBox";
             this.PackageSelectorComboBox.Size = new System.Drawing.Size(200, 30);
             this.PackageSelectorComboBox.Style = MetroFramework.MetroColorStyle.Orange;
@@ -125,7 +124,7 @@ namespace TravelExpertsTerm2
             this.NameTextBox.Enabled = false;
             this.NameTextBox.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.NameTextBox.Lines = new string[0];
-            this.NameTextBox.Location = new System.Drawing.Point(136, 96);
+            this.NameTextBox.Location = new System.Drawing.Point(125, 96);
             this.NameTextBox.MaxLength = 32767;
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.PasswordChar = '\0';
@@ -141,7 +140,7 @@ namespace TravelExpertsTerm2
             this.DescriptionTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.DescriptionTextBox.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.DescriptionTextBox.Lines = new string[0];
-            this.DescriptionTextBox.Location = new System.Drawing.Point(136, 179);
+            this.DescriptionTextBox.Location = new System.Drawing.Point(125, 179);
             this.DescriptionTextBox.MaxLength = 32767;
             this.DescriptionTextBox.Multiline = true;
             this.DescriptionTextBox.Name = "DescriptionTextBox";
@@ -159,7 +158,7 @@ namespace TravelExpertsTerm2
             this.BasePriceTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.BasePriceTextBox.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.BasePriceTextBox.Lines = new string[0];
-            this.BasePriceTextBox.Location = new System.Drawing.Point(136, 276);
+            this.BasePriceTextBox.Location = new System.Drawing.Point(125, 276);
             this.BasePriceTextBox.MaxLength = 32767;
             this.BasePriceTextBox.Name = "BasePriceTextBox";
             this.BasePriceTextBox.PasswordChar = '\0';
@@ -176,7 +175,7 @@ namespace TravelExpertsTerm2
             this.AgencyCommissionTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.AgencyCommissionTextBox.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.AgencyCommissionTextBox.Lines = new string[0];
-            this.AgencyCommissionTextBox.Location = new System.Drawing.Point(136, 304);
+            this.AgencyCommissionTextBox.Location = new System.Drawing.Point(125, 304);
             this.AgencyCommissionTextBox.MaxLength = 32767;
             this.AgencyCommissionTextBox.Name = "AgencyCommissionTextBox";
             this.AgencyCommissionTextBox.PasswordChar = '\0';
@@ -190,7 +189,7 @@ namespace TravelExpertsTerm2
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(80, 96);
+            this.metroLabel1.Location = new System.Drawing.Point(69, 96);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(50, 20);
             this.metroLabel1.TabIndex = 29;
@@ -199,7 +198,7 @@ namespace TravelExpertsTerm2
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(58, 129);
+            this.metroLabel2.Location = new System.Drawing.Point(47, 129);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(72, 20);
             this.metroLabel2.TabIndex = 30;
@@ -208,7 +207,7 @@ namespace TravelExpertsTerm2
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(61, 155);
+            this.metroLabel3.Location = new System.Drawing.Point(50, 155);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(69, 20);
             this.metroLabel3.TabIndex = 31;
@@ -217,7 +216,7 @@ namespace TravelExpertsTerm2
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(48, 185);
+            this.metroLabel4.Location = new System.Drawing.Point(37, 185);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(82, 20);
             this.metroLabel4.TabIndex = 32;
@@ -226,7 +225,7 @@ namespace TravelExpertsTerm2
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(87, 279);
+            this.metroLabel5.Location = new System.Drawing.Point(76, 279);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(43, 20);
             this.metroLabel5.TabIndex = 33;
@@ -235,7 +234,7 @@ namespace TravelExpertsTerm2
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(26, 307);
+            this.metroLabel6.Location = new System.Drawing.Point(15, 307);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(138, 20);
             this.metroLabel6.TabIndex = 34;
@@ -245,7 +244,7 @@ namespace TravelExpertsTerm2
             // 
             this.TotalLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.TotalLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.TotalLabel.Location = new System.Drawing.Point(136, 346);
+            this.TotalLabel.Location = new System.Drawing.Point(125, 346);
             this.TotalLabel.Name = "TotalLabel";
             this.TotalLabel.Size = new System.Drawing.Size(117, 23);
             this.TotalLabel.TabIndex = 35;
@@ -255,7 +254,7 @@ namespace TravelExpertsTerm2
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(88, 346);
+            this.metroLabel7.Location = new System.Drawing.Point(77, 346);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(42, 20);
             this.metroLabel7.TabIndex = 36;
@@ -265,7 +264,7 @@ namespace TravelExpertsTerm2
             // 
             this.DeleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.DeleteButton.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.DeleteButton.Location = new System.Drawing.Point(281, 393);
+            this.DeleteButton.Location = new System.Drawing.Point(270, 393);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(75, 23);
             this.DeleteButton.Style = MetroFramework.MetroColorStyle.Orange;
@@ -280,7 +279,7 @@ namespace TravelExpertsTerm2
             // 
             this.EditCancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.EditCancelButton.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.EditCancelButton.Location = new System.Drawing.Point(136, 393);
+            this.EditCancelButton.Location = new System.Drawing.Point(125, 393);
             this.EditCancelButton.Name = "EditCancelButton";
             this.EditCancelButton.Size = new System.Drawing.Size(85, 23);
             this.EditCancelButton.Style = MetroFramework.MetroColorStyle.Orange;
@@ -295,7 +294,7 @@ namespace TravelExpertsTerm2
             // 
             this.NewSaveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.NewSaveButton.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.NewSaveButton.Location = new System.Drawing.Point(26, 393);
+            this.NewSaveButton.Location = new System.Drawing.Point(15, 393);
             this.NewSaveButton.Name = "NewSaveButton";
             this.NewSaveButton.Size = new System.Drawing.Size(96, 23);
             this.NewSaveButton.Style = MetroFramework.MetroColorStyle.Orange;
@@ -310,7 +309,7 @@ namespace TravelExpertsTerm2
             // 
             this.btnAddSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.btnAddSupplier.Enabled = false;
-            this.btnAddSupplier.Location = new System.Drawing.Point(577, 75);
+            this.btnAddSupplier.Location = new System.Drawing.Point(566, 75);
             this.btnAddSupplier.Name = "btnAddSupplier";
             this.btnAddSupplier.Size = new System.Drawing.Size(75, 26);
             this.btnAddSupplier.Style = MetroFramework.MetroColorStyle.Orange;
@@ -326,7 +325,7 @@ namespace TravelExpertsTerm2
             // 
             this.btnRemoveSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.btnRemoveSupplier.Enabled = false;
-            this.btnRemoveSupplier.Location = new System.Drawing.Point(577, 273);
+            this.btnRemoveSupplier.Location = new System.Drawing.Point(566, 273);
             this.btnRemoveSupplier.Name = "btnRemoveSupplier";
             this.btnRemoveSupplier.Size = new System.Drawing.Size(75, 26);
             this.btnRemoveSupplier.Style = MetroFramework.MetroColorStyle.Orange;
@@ -348,16 +347,6 @@ namespace TravelExpertsTerm2
             this.metroLabel8.TabIndex = 42;
             this.metroLabel8.Text = "Product Suppliers";
             // 
-            // OtherProductSuppliersLabel
-            // 
-            this.OtherProductSuppliersLabel.AutoSize = true;
-            this.OtherProductSuppliersLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.OtherProductSuppliersLabel.Location = new System.Drawing.Point(680, 38);
-            this.OtherProductSuppliersLabel.Name = "OtherProductSuppliersLabel";
-            this.OtherProductSuppliersLabel.Size = new System.Drawing.Size(166, 20);
-            this.OtherProductSuppliersLabel.TabIndex = 43;
-            this.OtherProductSuppliersLabel.Text = "<< Click-Click-Click  >>";
-            // 
             // metroLabel10
             // 
             this.metroLabel10.AutoSize = true;
@@ -375,7 +364,6 @@ namespace TravelExpertsTerm2
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(882, 618);
             this.Controls.Add(this.metroLabel10);
-            this.Controls.Add(this.OtherProductSuppliersLabel);
             this.Controls.Add(this.metroLabel8);
             this.Controls.Add(this.btnRemoveSupplier);
             this.Controls.Add(this.btnAddSupplier);
@@ -432,7 +420,6 @@ namespace TravelExpertsTerm2
         private MetroFramework.Controls.MetroButton btnAddSupplier;
         private MetroFramework.Controls.MetroButton btnRemoveSupplier;
         private MetroFramework.Controls.MetroLabel metroLabel8;
-        private MetroFramework.Controls.MetroLabel OtherProductSuppliersLabel;
         private MetroFramework.Controls.MetroLabel metroLabel10;
     }
 }
