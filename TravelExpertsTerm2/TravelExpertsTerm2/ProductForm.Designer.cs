@@ -28,136 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cboProducts = new System.Windows.Forms.ComboBox();
-            this.btnProduct = new System.Windows.Forms.Button();
-            this.pnlProduct = new System.Windows.Forms.Panel();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.txtProductName = new System.Windows.Forms.TextBox();
-            this.lblProductName = new System.Windows.Forms.Label();
-            this.txtProductId = new System.Windows.Forms.TextBox();
-            this.lblProductId = new System.Windows.Forms.Label();
-            this.lblSelectProd = new System.Windows.Forms.Label();
-            this.btnUpdateProduct = new System.Windows.Forms.Button();
-            this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.lsvProduct = new System.Windows.Forms.ListView();
             this.cProductId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cProductName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblSelectProd1 = new MetroFramework.Controls.MetroLabel();
+            this.cboProducts = new MetroFramework.Controls.MetroComboBox();
+            this.btnProduct = new MetroFramework.Controls.MetroButton();
+            this.btnUpdateProduct = new MetroFramework.Controls.MetroButton();
+            this.btnDeleteProduct = new MetroFramework.Controls.MetroButton();
+            this.lblProductId = new MetroFramework.Controls.MetroLabel();
+            this.lblProductName1 = new MetroFramework.Controls.MetroLabel();
+            this.txtProductId = new MetroFramework.Controls.MetroTextBox();
+            this.txtProductName = new MetroFramework.Controls.MetroTextBox();
+            this.btnSave = new MetroFramework.Controls.MetroButton();
+            this.btnCancel = new MetroFramework.Controls.MetroButton();
+            this.pnlProduct = new MetroFramework.Controls.MetroPanel();
             this.pnlProduct.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // cboProducts
-            // 
-            this.cboProducts.FormattingEnabled = true;
-            this.cboProducts.Location = new System.Drawing.Point(163, 27);
-            this.cboProducts.Name = "cboProducts";
-            this.cboProducts.Size = new System.Drawing.Size(201, 24);
-            this.cboProducts.TabIndex = 1;
-            this.cboProducts.SelectedValueChanged += new System.EventHandler(this.cboProducts_SelectedValueChanged);
-            // 
-            // btnProduct
-            // 
-            this.btnProduct.Location = new System.Drawing.Point(163, 71);
-            this.btnProduct.Name = "btnProduct";
-            this.btnProduct.Size = new System.Drawing.Size(192, 33);
-            this.btnProduct.TabIndex = 2;
-            this.btnProduct.Text = "Create New Product";
-            this.btnProduct.UseVisualStyleBackColor = true;
-            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
-            // 
-            // pnlProduct
-            // 
-            this.pnlProduct.Controls.Add(this.btnCancel);
-            this.pnlProduct.Controls.Add(this.btnSave);
-            this.pnlProduct.Controls.Add(this.txtProductName);
-            this.pnlProduct.Controls.Add(this.lblProductName);
-            this.pnlProduct.Controls.Add(this.txtProductId);
-            this.pnlProduct.Controls.Add(this.lblProductId);
-            this.pnlProduct.Location = new System.Drawing.Point(25, 189);
-            this.pnlProduct.Name = "pnlProduct";
-            this.pnlProduct.Size = new System.Drawing.Size(339, 186);
-            this.pnlProduct.TabIndex = 3;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(190, 135);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(97, 23);
-            this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(30, 135);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(104, 23);
-            this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // txtProductName
-            // 
-            this.txtProductName.Location = new System.Drawing.Point(126, 63);
-            this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(161, 22);
-            this.txtProductName.TabIndex = 3;
-            // 
-            // lblProductName
-            // 
-            this.lblProductName.AutoSize = true;
-            this.lblProductName.Location = new System.Drawing.Point(14, 69);
-            this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(106, 17);
-            this.lblProductName.TabIndex = 2;
-            this.lblProductName.Text = "Product Name :";
-            // 
-            // txtProductId
-            // 
-            this.txtProductId.Location = new System.Drawing.Point(126, 17);
-            this.txtProductId.Name = "txtProductId";
-            this.txtProductId.Size = new System.Drawing.Size(161, 22);
-            this.txtProductId.TabIndex = 1;
-            // 
-            // lblProductId
-            // 
-            this.lblProductId.AutoSize = true;
-            this.lblProductId.Location = new System.Drawing.Point(14, 22);
-            this.lblProductId.Name = "lblProductId";
-            this.lblProductId.Size = new System.Drawing.Size(80, 17);
-            this.lblProductId.TabIndex = 0;
-            this.lblProductId.Text = "Product Id :";
-            // 
-            // lblSelectProd
-            // 
-            this.lblSelectProd.AutoSize = true;
-            this.lblSelectProd.Location = new System.Drawing.Point(22, 27);
-            this.lblSelectProd.Name = "lblSelectProd";
-            this.lblSelectProd.Size = new System.Drawing.Size(108, 17);
-            this.lblSelectProd.TabIndex = 4;
-            this.lblSelectProd.Text = "Select Product :";
-            // 
-            // btnUpdateProduct
-            // 
-            this.btnUpdateProduct.Location = new System.Drawing.Point(163, 110);
-            this.btnUpdateProduct.Name = "btnUpdateProduct";
-            this.btnUpdateProduct.Size = new System.Drawing.Size(192, 32);
-            this.btnUpdateProduct.TabIndex = 5;
-            this.btnUpdateProduct.Text = "Update Product ";
-            this.btnUpdateProduct.UseVisualStyleBackColor = true;
-            this.btnUpdateProduct.Click += new System.EventHandler(this.btnUpdateProduct_Click);
-            // 
-            // btnDeleteProduct
-            // 
-            this.btnDeleteProduct.Location = new System.Drawing.Point(163, 148);
-            this.btnDeleteProduct.Name = "btnDeleteProduct";
-            this.btnDeleteProduct.Size = new System.Drawing.Size(192, 29);
-            this.btnDeleteProduct.TabIndex = 6;
-            this.btnDeleteProduct.Text = "Delete Product";
-            this.btnDeleteProduct.UseVisualStyleBackColor = true;
-            this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
             // 
             // lsvProduct
             // 
@@ -181,19 +68,152 @@
             this.cProductName.Text = "Product Name";
             this.cProductName.Width = 176;
             // 
+            // lblSelectProd1
+            // 
+            this.lblSelectProd1.AutoSize = true;
+            this.lblSelectProd1.Location = new System.Drawing.Point(25, 27);
+            this.lblSelectProd1.Name = "lblSelectProd1";
+            this.lblSelectProd1.Size = new System.Drawing.Size(101, 20);
+            this.lblSelectProd1.TabIndex = 8;
+            this.lblSelectProd1.Text = "Select Product:";
+            // 
+            // cboProducts
+            // 
+            this.cboProducts.FormattingEnabled = true;
+            this.cboProducts.ItemHeight = 24;
+            this.cboProducts.Location = new System.Drawing.Point(163, 27);
+            this.cboProducts.Name = "cboProducts";
+            this.cboProducts.Size = new System.Drawing.Size(192, 30);
+            this.cboProducts.TabIndex = 9;
+            this.cboProducts.UseSelectable = true;
+            this.cboProducts.SelectedValueChanged += new System.EventHandler(this.cboProducts_SelectedValueChanged);
+            // 
+            // btnProduct
+            // 
+            this.btnProduct.Location = new System.Drawing.Point(163, 81);
+            this.btnProduct.Name = "btnProduct";
+            this.btnProduct.Size = new System.Drawing.Size(192, 23);
+            this.btnProduct.TabIndex = 10;
+            this.btnProduct.Text = "Create New Product";
+            this.btnProduct.UseSelectable = true;
+            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
+            // 
+            // btnUpdateProduct
+            // 
+            this.btnUpdateProduct.Location = new System.Drawing.Point(163, 110);
+            this.btnUpdateProduct.Name = "btnUpdateProduct";
+            this.btnUpdateProduct.Size = new System.Drawing.Size(192, 23);
+            this.btnUpdateProduct.TabIndex = 11;
+            this.btnUpdateProduct.Text = "Update Product";
+            this.btnUpdateProduct.UseSelectable = true;
+            this.btnUpdateProduct.Click += new System.EventHandler(this.btnUpdateProduct_Click);
+            // 
+            // btnDeleteProduct
+            // 
+            this.btnDeleteProduct.Location = new System.Drawing.Point(163, 139);
+            this.btnDeleteProduct.Name = "btnDeleteProduct";
+            this.btnDeleteProduct.Size = new System.Drawing.Size(192, 23);
+            this.btnDeleteProduct.TabIndex = 12;
+            this.btnDeleteProduct.Text = "Delete Product";
+            this.btnDeleteProduct.UseSelectable = true;
+            this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
+            // 
+            // lblProductId
+            // 
+            this.lblProductId.AutoSize = true;
+            this.lblProductId.Location = new System.Drawing.Point(43, 36);
+            this.lblProductId.Name = "lblProductId";
+            this.lblProductId.Size = new System.Drawing.Size(77, 20);
+            this.lblProductId.TabIndex = 13;
+            this.lblProductId.Text = "Product ID:";
+            // 
+            // lblProductName1
+            // 
+            this.lblProductName1.AutoSize = true;
+            this.lblProductName1.Location = new System.Drawing.Point(18, 82);
+            this.lblProductName1.Name = "lblProductName1";
+            this.lblProductName1.Size = new System.Drawing.Size(102, 20);
+            this.lblProductName1.TabIndex = 14;
+            this.lblProductName1.Text = "Product Name:";
+            // 
+            // txtProductId
+            // 
+            this.txtProductId.Lines = new string[0];
+            this.txtProductId.Location = new System.Drawing.Point(135, 33);
+            this.txtProductId.MaxLength = 32767;
+            this.txtProductId.Name = "txtProductId";
+            this.txtProductId.PasswordChar = '\0';
+            this.txtProductId.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtProductId.SelectedText = "";
+            this.txtProductId.Size = new System.Drawing.Size(192, 23);
+            this.txtProductId.TabIndex = 13;
+            this.txtProductId.UseSelectable = true;
+            // 
+            // txtProductName
+            // 
+            this.txtProductName.Lines = new string[0];
+            this.txtProductName.Location = new System.Drawing.Point(135, 82);
+            this.txtProductName.MaxLength = 32767;
+            this.txtProductName.Name = "txtProductName";
+            this.txtProductName.PasswordChar = '\0';
+            this.txtProductName.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtProductName.SelectedText = "";
+            this.txtProductName.Size = new System.Drawing.Size(192, 23);
+            this.txtProductName.TabIndex = 14;
+            this.txtProductName.UseSelectable = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(135, 134);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 13;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseSelectable = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(252, 134);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 13;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseSelectable = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // pnlProduct
+            // 
+            this.pnlProduct.Controls.Add(this.btnCancel);
+            this.pnlProduct.Controls.Add(this.txtProductId);
+            this.pnlProduct.Controls.Add(this.btnSave);
+            this.pnlProduct.Controls.Add(this.lblProductId);
+            this.pnlProduct.Controls.Add(this.lblProductName1);
+            this.pnlProduct.Controls.Add(this.txtProductName);
+            this.pnlProduct.HorizontalScrollbarBarColor = true;
+            this.pnlProduct.HorizontalScrollbarHighlightOnWheel = false;
+            this.pnlProduct.HorizontalScrollbarSize = 10;
+            this.pnlProduct.Location = new System.Drawing.Point(53, 222);
+            this.pnlProduct.Name = "pnlProduct";
+            this.pnlProduct.Size = new System.Drawing.Size(355, 218);
+            this.pnlProduct.TabIndex = 15;
+            this.pnlProduct.VerticalScrollbarBarColor = true;
+            this.pnlProduct.VerticalScrollbarHighlightOnWheel = false;
+            this.pnlProduct.VerticalScrollbarSize = 10;
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(863, 562);
-            this.Controls.Add(this.lsvProduct);
+            this.ClientSize = new System.Drawing.Size(863, 524);
+            this.Controls.Add(this.pnlProduct);
             this.Controls.Add(this.btnDeleteProduct);
             this.Controls.Add(this.btnUpdateProduct);
-            this.Controls.Add(this.lblSelectProd);
-            this.Controls.Add(this.pnlProduct);
             this.Controls.Add(this.btnProduct);
             this.Controls.Add(this.cboProducts);
+            this.Controls.Add(this.lblSelectProd1);
+            this.Controls.Add(this.lsvProduct);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ProductForm";
             this.Text = "ProductForm";
@@ -206,20 +226,20 @@
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox cboProducts;
-        private System.Windows.Forms.Button btnProduct;
-        private System.Windows.Forms.Panel pnlProduct;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox txtProductName;
-        private System.Windows.Forms.Label lblProductName;
-        private System.Windows.Forms.TextBox txtProductId;
-        private System.Windows.Forms.Label lblProductId;
-        private System.Windows.Forms.Label lblSelectProd;
-        private System.Windows.Forms.Button btnUpdateProduct;
-        private System.Windows.Forms.Button btnDeleteProduct;
         private System.Windows.Forms.ListView lsvProduct;
         private System.Windows.Forms.ColumnHeader cProductId;
         private System.Windows.Forms.ColumnHeader cProductName;
+        private MetroFramework.Controls.MetroLabel lblSelectProd1;
+        private MetroFramework.Controls.MetroComboBox cboProducts;
+        private MetroFramework.Controls.MetroButton btnProduct;
+        private MetroFramework.Controls.MetroButton btnUpdateProduct;
+        private MetroFramework.Controls.MetroButton btnDeleteProduct;
+        private MetroFramework.Controls.MetroLabel lblProductId;
+        private MetroFramework.Controls.MetroLabel lblProductName1;
+        private MetroFramework.Controls.MetroTextBox txtProductId;
+        private MetroFramework.Controls.MetroTextBox txtProductName;
+        private MetroFramework.Controls.MetroButton btnSave;
+        private MetroFramework.Controls.MetroButton btnCancel;
+        private MetroFramework.Controls.MetroPanel pnlProduct;
     }
 }

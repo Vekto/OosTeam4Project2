@@ -21,7 +21,7 @@ namespace TravelExpertsTerm2
         {
             InitializeComponent();
             //hiding the Product Panel as the form intializes
-            pnlProduct.Visible = false;
+            pnlProduct1.Visible = false;
             lsvProduct.Visible = true;
 
         }
@@ -32,9 +32,9 @@ namespace TravelExpertsTerm2
             try
             {
                 products = ProductDB.GetProducts();
-                cboProducts.DataSource = products;
-                cboProducts.DisplayMember = "Name";
-                cboProducts.ValueMember = "ProductId";
+                cboProducts1.DataSource = products;
+                cboProducts1.DisplayMember = "Name";
+                cboProducts1.ValueMember = "ProductId";
             }
             catch (Exception ex)
             {
@@ -44,8 +44,8 @@ namespace TravelExpertsTerm2
         // method to accept form inputs
         private void acceptRecord(Product product)
         {
-            product.ProductId = Convert.ToInt32(txtProductId.Text);
-            product.Name = txtProductName.Text;
+            product.ProductId = Convert.ToInt32(txtProductId1.Text);
+            product.Name = txtProductName1.Text;
         }
 
         // method load invent
@@ -60,48 +60,48 @@ namespace TravelExpertsTerm2
             lsvProduct.FullRowSelect = true;
             lsvProduct.GridLines = true;
             //adding product Item to the listview
-            ListViewItem prodItem = new ListViewItem(cboProducts.SelectedValue.ToString());
-            prodItem.SubItems.Add(cboProducts.GetItemText(cboProducts.SelectedItem));
+            ListViewItem prodItem = new ListViewItem(cboProducts1.SelectedValue.ToString());
+            prodItem.SubItems.Add(cboProducts1.GetItemText(cboProducts1.SelectedItem));
             lsvProduct.Items.Add(prodItem);
         }
         // method to make the panel product visible to allow for entry data
         private void btnProduct_Click(object sender, EventArgs e)
         {
-            pnlProduct.Visible = true;
+            pnlProduct1.Visible = true;
             lsvProduct.Visible = false;
-            btnSave.Text = "Add";
-            txtProductId.Text = "";
-            txtProductName.Text = "";
-            txtProductId.Enabled = true;
+            btnSave1.Text = "Add";
+            txtProductId1.Text = "";
+            txtProductName1.Text = "";
+            txtProductId1.Enabled = true;
         }
         // method to insert and update records to the database
         private void btnSave_Click(object sender, EventArgs e)
         {
             int num;
-            if (btnSave.Text == "Add")
+            if (btnSave1.Text == "Add")
             {
                 try
                 {
-                    if (txtProductId.Text == "")
+                    if (txtProductId1.Text == "")
                     {
                         MessageBox.Show("Please Enter Product Id", "Product Id");
-                        txtProductId.Focus();
+                        txtProductId1.Focus();
                     }
-                    else if (!Int32.TryParse(txtProductId.Text, out num) && num <= 0)
+                    else if (!Int32.TryParse(txtProductId1.Text, out num) && num <= 0)
                     {
                         MessageBox.Show("Please Enter a valid Number", "Entry_Error");
-                        txtProductId.Focus();
+                        txtProductId1.Focus();
                     }
-                    else if (txtProductName.Text == "")
+                    else if (txtProductName1.Text == "")
                     {
                         MessageBox.Show("Please Enter Product Name", "Product Name");
-                        txtProductName.Focus();
+                        txtProductName1.Focus();
                     }
                     else
                     {
                         prod = new Product();
-                        prod.ProductId = Convert.ToInt32(txtProductId.Text);
-                        prod.Name = txtProductName.Text;
+                        prod.ProductId = Convert.ToInt32(txtProductId1.Text);
+                        prod.Name = txtProductName1.Text;
                         ProductDB.AddEntity(prod);
                         LoadComboxProducts();
                         MessageBox.Show("New Product Added Successfully");
@@ -114,7 +114,7 @@ namespace TravelExpertsTerm2
                 }
             }
             // update record
-            else if (btnSave.Text == "Update")
+            else if (btnSave1.Text == "Update")
             {
 
                 Product newProduct = new Product();
@@ -143,30 +143,30 @@ namespace TravelExpertsTerm2
         // method to hide the product panel
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            pnlProduct.Visible = false;
+            pnlProduct1.Visible = false;
             lsvProduct.Visible = true;
             lblSelectProd.Visible = true;
-            cboProducts.Visible = true;
-            btnDeleteProduct.Enabled = true;
-            btnProduct.Enabled = true;
-            txtProductId.Enabled = true;
+            cboProducts1.Visible = true;
+            btnDeleteProduct1.Enabled = true;
+            b1tnProduct.Enabled = true;
+            txtProductId1.Enabled = true;
         }
         // method to make the product panel visible 
         private void btnUpdateProduct_Click(object sender, EventArgs e)
         {
-            btnSave.Text = "Update";
+            btnSave1.Text = "Update";
             lsvProduct.Visible = false;
-            pnlProduct.Visible = true;
+            pnlProduct1.Visible = true;
             lblSelectProd.Visible = false;
-            cboProducts.Visible = false;
-            btnDeleteProduct.Enabled = false;
-            btnProduct.Enabled = false;
-            txtProductId.Text = cboProducts.SelectedValue.ToString();
-            txtProductName.Text = cboProducts.GetItemText(cboProducts.SelectedItem);
-            txtProductId.Enabled = false;
+            cboProducts1.Visible = false;
+            btnDeleteProduct1.Enabled = false;
+            b1tnProduct.Enabled = false;
+            txtProductId1.Text = cboProducts1.SelectedValue.ToString();
+            txtProductName1.Text = cboProducts1.GetItemText(cboProducts1.SelectedItem);
+            txtProductId1.Enabled = false;
             prod = new Product();
-            prod.ProductId = Convert.ToInt32(txtProductId.Text);
-            prod.Name = txtProductName.Text;
+            prod.ProductId = Convert.ToInt32(txtProductId1.Text);
+            prod.Name = txtProductName1.Text;
             acceptRecord(prod);
         }
         // method to delete record
@@ -177,7 +177,7 @@ namespace TravelExpertsTerm2
             if (deleteDialogResult == DialogResult.Yes)
             {
                 Product prod = new Product();
-                prod.ProductId = Convert.ToInt32(cboProducts.SelectedValue.ToString());
+                prod.ProductId = Convert.ToInt32(cboProducts1.SelectedValue.ToString());
                 if (ProductDB.checkIfItExist(prod))
                 {
                     MessageBox.Show("You cannot delete this record please select another record to delete","Delete Record");
