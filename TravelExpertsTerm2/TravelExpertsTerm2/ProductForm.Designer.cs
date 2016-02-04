@@ -51,7 +51,7 @@
             this.lsvProduct.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.cProductId,
             this.cProductName});
-            this.lsvProduct.Location = new System.Drawing.Point(359, 12);
+            this.lsvProduct.Location = new System.Drawing.Point(355, 24);
             this.lsvProduct.Name = "lsvProduct";
             this.lsvProduct.Size = new System.Drawing.Size(341, 150);
             this.lsvProduct.TabIndex = 7;

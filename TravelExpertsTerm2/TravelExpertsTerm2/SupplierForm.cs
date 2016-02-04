@@ -174,6 +174,9 @@ namespace TravelExpertsTerm2
                             MessageBox.Show("Delete successful!");
                             updateListView(SupplierDB.GetSuppliers());
                             clearForm();
+                            this.lstSuppliers.SelectedIndices.Clear();
+                            selectedSupName = "";
+                            selectedSupplierID = "";
                         }
                         else
                         {
