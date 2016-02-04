@@ -90,32 +90,44 @@
             // 
             // btnProduct
             // 
+            this.btnProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.btnProduct.Location = new System.Drawing.Point(143, 66);
             this.btnProduct.Name = "btnProduct";
             this.btnProduct.Size = new System.Drawing.Size(192, 23);
+            this.btnProduct.Style = MetroFramework.MetroColorStyle.Orange;
             this.btnProduct.TabIndex = 10;
             this.btnProduct.Text = "Create New Product";
+            this.btnProduct.UseCustomBackColor = true;
             this.btnProduct.UseSelectable = true;
+            this.btnProduct.UseStyleColors = true;
             this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
             // btnUpdateProduct
             // 
+            this.btnUpdateProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.btnUpdateProduct.Location = new System.Drawing.Point(143, 95);
             this.btnUpdateProduct.Name = "btnUpdateProduct";
             this.btnUpdateProduct.Size = new System.Drawing.Size(192, 23);
+            this.btnUpdateProduct.Style = MetroFramework.MetroColorStyle.Orange;
             this.btnUpdateProduct.TabIndex = 11;
             this.btnUpdateProduct.Text = "Update Product";
+            this.btnUpdateProduct.UseCustomBackColor = true;
             this.btnUpdateProduct.UseSelectable = true;
+            this.btnUpdateProduct.UseStyleColors = true;
             this.btnUpdateProduct.Click += new System.EventHandler(this.btnUpdateProduct_Click);
             // 
             // btnDeleteProduct
             // 
+            this.btnDeleteProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.btnDeleteProduct.Location = new System.Drawing.Point(143, 124);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
             this.btnDeleteProduct.Size = new System.Drawing.Size(192, 23);
+            this.btnDeleteProduct.Style = MetroFramework.MetroColorStyle.Orange;
             this.btnDeleteProduct.TabIndex = 12;
             this.btnDeleteProduct.Text = "Delete Product";
+            this.btnDeleteProduct.UseCustomBackColor = true;
             this.btnDeleteProduct.UseSelectable = true;
+            this.btnDeleteProduct.UseStyleColors = true;
             this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
             // 
             // lblProductId
@@ -164,22 +176,30 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(135, 134);
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btnSave.Location = new System.Drawing.Point(165, 133);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Style = MetroFramework.MetroColorStyle.Orange;
             this.btnSave.TabIndex = 13;
             this.btnSave.Text = "Save";
+            this.btnSave.UseCustomBackColor = true;
             this.btnSave.UseSelectable = true;
+            this.btnSave.UseStyleColors = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.btnCancel.Location = new System.Drawing.Point(252, 134);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Style = MetroFramework.MetroColorStyle.Orange;
             this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseCustomBackColor = true;
             this.btnCancel.UseSelectable = true;
+            this.btnCancel.UseStyleColors = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // pnlProduct
@@ -205,8 +225,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(863, 524);
+            this.ClientSize = new System.Drawing.Size(863, 448);
             this.Controls.Add(this.pnlProduct);
             this.Controls.Add(this.btnDeleteProduct);
             this.Controls.Add(this.btnUpdateProduct);
@@ -216,6 +237,7 @@
             this.Controls.Add(this.lsvProduct);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ProductForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "ProductForm";
             this.Load += new System.EventHandler(this.ProductForm_Load);
             this.pnlProduct.ResumeLayout(false);

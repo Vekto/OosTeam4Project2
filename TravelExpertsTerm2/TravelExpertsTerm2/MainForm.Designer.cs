@@ -209,6 +209,7 @@ namespace TravelExpertsTerm2
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(30, 83, 30, 28);
+            this.Resizable = false;
             this.ShadowType = MetroFramework.Forms.MetroFormShadowType.AeroShadow;
             this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Text = "Travel Experts";

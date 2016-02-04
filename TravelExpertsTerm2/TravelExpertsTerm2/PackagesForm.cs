@@ -273,6 +273,7 @@ namespace TravelExpertsTerm2
             //OtherProductSuppliersLabel.Visible = !@readonly;
             btnAddSupplier.Visible = !@readonly;
             btnRemoveSupplier.Visible = !@readonly;
+            TotalLabel.Visible = @readonly;
         }
 
         private void SetEditMode(bool enabled)
