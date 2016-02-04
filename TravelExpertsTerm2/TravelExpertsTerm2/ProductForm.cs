@@ -131,7 +131,15 @@ namespace TravelExpertsTerm2
                         ProductDB.AddEntity(prod);
                         LoadComboxProducts();
                         LoadListView();
+                        pnlProduct.Visible = false;
+                        lsvProduct.Visible = true;
+                        lblSelectProd.Visible = true;
+                        cboProducts.Visible = true;
+                        btnDeleteProduct.Enabled = true;
+                        btnProduct.Enabled = true;
+                        txtProductId.Enabled = true;
                         MessageBox.Show("New Product Added Successfully");
+                       
                     }
                 }
                 catch (SqlException ex)
@@ -159,6 +167,13 @@ namespace TravelExpertsTerm2
                         prod = newProduct;
                         LoadComboxProducts();
                         LoadListView();
+                        pnlProduct.Visible = false;
+                        lsvProduct.Visible = true;
+                        lblSelectProd.Visible = true;
+                        cboProducts.Visible = true;
+                        btnDeleteProduct.Enabled = true;
+                        btnProduct.Enabled = true;
+                        txtProductId.Enabled = true;
                         MessageBox.Show("Product record Updated successfully", "Update Record");
                     }
                 }

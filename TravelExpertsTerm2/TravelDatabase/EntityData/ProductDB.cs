@@ -51,7 +51,7 @@ namespace TravelDatabase.EntityData
             }
             catch (SqlException ex)
             {
-                throw new DataException("You can't add a duplicated record with thesame ProductId", ex);
+                throw ex;               
             }
             finally
             {
