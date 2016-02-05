@@ -130,6 +130,7 @@ namespace TravelExpertsTerm2
                 _Packages.Remove(SelectedPackage);
                 ShowPackage(SelectedPackage);
             }
+            PackageSelectorComboBox.Focus();
         }
 
         private void EditCancelButton_Click(object sender, EventArgs e)
@@ -138,11 +139,13 @@ namespace TravelExpertsTerm2
             {
                 SetEditMode(false);
                 ShowPackage(SelectedPackage);
+                PackageSelectorComboBox.Focus();
             }
             else // clicked Edit
             {
                 _CreateNew = false; // existing item should be updated, not created
                 SetEditMode(true);
+                NameTextBox.Focus();
             }
         }
 
@@ -168,6 +171,7 @@ namespace TravelExpertsTerm2
                     package.PackageId = id; // save actual id before adding/displaying on form
                     _Packages.Add(package);
                     SelectedPackage = package;
+                   
                 }
                 else // updating package
                 {
@@ -189,7 +193,9 @@ namespace TravelExpertsTerm2
                     // on success, replace the old object reference with the new one we just parsed
                     _Packages[_Packages.IndexOf(SelectedPackage)] = package;
                     SelectedPackage = package;
+                    NameTextBox.Focus();
                 }
+                LinkedProductSuppliersListBox.Focus();
 
                 SetEditMode(false); // turn off edit mode on success, else return
             }
@@ -198,6 +204,7 @@ namespace TravelExpertsTerm2
                 _CreateNew = true; // new item should be added to the database
                 SetEditMode(true);
                 ShowPackage(null); // make fields blank
+                NameTextBox.Focus();
             }
         }
 
@@ -305,6 +312,7 @@ namespace TravelExpertsTerm2
 
             _OtherProductSuppliers.Remove(productSupplier);
             _LinkedProductSuppliers.Add(productSupplier);
+            OtherProductSuppliersListBox.Focus();
         }
 
         private void btnRemoveSupplier_Click(object sender, EventArgs e)
@@ -314,6 +322,7 @@ namespace TravelExpertsTerm2
 
             _LinkedProductSuppliers.Remove(productSupplier);
             _OtherProductSuppliers.Add(productSupplier);
+            LinkedProductSuppliersListBox.Focus();
         }
         #endregion
 

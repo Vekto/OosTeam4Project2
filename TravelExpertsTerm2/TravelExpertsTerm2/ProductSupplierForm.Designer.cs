@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cmbProd = new MetroFramework.Controls.MetroComboBox();
             this.cmbSupplier = new MetroFramework.Controls.MetroComboBox();
             this.dgvProdSup = new System.Windows.Forms.DataGridView();
@@ -48,7 +49,7 @@
             this.cmbProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbProd.FormattingEnabled = true;
             this.cmbProd.ItemHeight = 24;
-            this.cmbProd.Location = new System.Drawing.Point(311, 414);
+            this.cmbProd.Location = new System.Drawing.Point(311, 374);
             this.cmbProd.Name = "cmbProd";
             this.cmbProd.Size = new System.Drawing.Size(229, 30);
             this.cmbProd.Style = MetroFramework.MetroColorStyle.Orange;
@@ -60,7 +61,7 @@
             // 
             this.cmbSupplier.FormattingEnabled = true;
             this.cmbSupplier.ItemHeight = 24;
-            this.cmbSupplier.Location = new System.Drawing.Point(27, 414);
+            this.cmbSupplier.Location = new System.Drawing.Point(27, 374);
             this.cmbSupplier.Name = "cmbSupplier";
             this.cmbSupplier.Size = new System.Drawing.Size(223, 30);
             this.cmbSupplier.TabIndex = 1;
@@ -73,38 +74,39 @@
             this.dgvProdSup.AllowUserToResizeRows = false;
             this.dgvProdSup.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProdSup.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DarkOrange;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProdSup.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkOrange;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProdSup.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProdSup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.8F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.DarkOrange;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProdSup.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkOrange;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProdSup.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProdSup.Location = new System.Drawing.Point(1, 3);
             this.dgvProdSup.MaximumSize = new System.Drawing.Size(1050, 645);
             this.dgvProdSup.MultiSelect = false;
             this.dgvProdSup.Name = "dgvProdSup";
             this.dgvProdSup.ReadOnly = true;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semilight", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvProdSup.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProdSup.RowTemplate.Height = 24;
             this.dgvProdSup.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdSup.Size = new System.Drawing.Size(836, 387);
+            this.dgvProdSup.Size = new System.Drawing.Size(836, 351);
             this.dgvProdSup.TabIndex = 2;
             // 
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btnAdd.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.btnAdd.Location = new System.Drawing.Point(599, 413);
+            this.btnAdd.Location = new System.Drawing.Point(599, 373);
             this.btnAdd.MaximumSize = new System.Drawing.Size(111, 29);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(111, 29);
@@ -119,8 +121,7 @@
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btnDelete.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.btnDelete.Location = new System.Drawing.Point(726, 413);
+            this.btnDelete.Location = new System.Drawing.Point(726, 373);
             this.btnDelete.MaximumSize = new System.Drawing.Size(111, 29);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(111, 29);
@@ -135,7 +136,7 @@
             // btnFindSupplier
             // 
             this.btnFindSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btnFindSupplier.Location = new System.Drawing.Point(78, 452);
+            this.btnFindSupplier.Location = new System.Drawing.Point(83, 412);
             this.btnFindSupplier.Name = "btnFindSupplier";
             this.btnFindSupplier.Size = new System.Drawing.Size(132, 23);
             this.btnFindSupplier.Style = MetroFramework.MetroColorStyle.Orange;
@@ -149,7 +150,7 @@
             // btnFindProduct
             // 
             this.btnFindProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btnFindProduct.Location = new System.Drawing.Point(362, 452);
+            this.btnFindProduct.Location = new System.Drawing.Point(362, 412);
             this.btnFindProduct.Name = "btnFindProduct";
             this.btnFindProduct.Size = new System.Drawing.Size(132, 23);
             this.btnFindProduct.Style = MetroFramework.MetroColorStyle.Orange;
@@ -163,7 +164,7 @@
             // btnViewAll
             // 
             this.btnViewAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btnViewAll.Location = new System.Drawing.Point(243, 452);
+            this.btnViewAll.Location = new System.Drawing.Point(243, 412);
             this.btnViewAll.Name = "btnViewAll";
             this.btnViewAll.Size = new System.Drawing.Size(75, 23);
             this.btnViewAll.Style = MetroFramework.MetroColorStyle.Orange;
@@ -177,7 +178,7 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(104, 395);
+            this.metroLabel1.Location = new System.Drawing.Point(104, 355);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(65, 20);
             this.metroLabel1.TabIndex = 8;
@@ -186,7 +187,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(390, 396);
+            this.metroLabel2.Location = new System.Drawing.Point(390, 356);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(63, 20);
             this.metroLabel2.TabIndex = 9;

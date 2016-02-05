@@ -99,6 +99,7 @@ namespace TravelExpertsTerm2
             txtProductId.Text = "";
             txtProductName.Text = "";
             txtProductId.Enabled = true;
+            txtProductName.Focus();
         }
         // method to insert and update records to the database
         private void btnSave_Click(object sender, EventArgs e)
@@ -210,6 +211,7 @@ namespace TravelExpertsTerm2
             prod.ProductId = Convert.ToInt32(txtProductId.Text);
             prod.Name = txtProductName.Text;
             acceptRecord(prod);
+            txtProductName.Focus();
         }
         // method to delete record
         private void btnDeleteProduct_Click(object sender, EventArgs e)
@@ -223,6 +225,7 @@ namespace TravelExpertsTerm2
                 if (ProductDB.checkIfItExist(prod))
                 {
                     MessageBox.Show("You cannot delete this record please select another record to delete","Delete Record");
+                    cboProducts.Focus();
                 }
                 else
                 {

@@ -51,6 +51,7 @@
             this.lsvProduct.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.cProductId,
             this.cProductName});
+            this.lsvProduct.Font = new System.Drawing.Font("Segoe UI Semilight", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvProduct.Location = new System.Drawing.Point(355, 12);
             this.lsvProduct.Name = "lsvProduct";
             this.lsvProduct.Size = new System.Drawing.Size(265, 150);

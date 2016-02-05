@@ -72,7 +72,7 @@ namespace TravelDatabase.EntityData
 
         public static bool CheckDependency(int supplierID)
         {
-            string connectionString = "Data Source=ELF5OOSD212989\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
+            string connectionString = "Data Source=localhost\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
             SqlConnection connection = new SqlConnection(connectionString);
 
             string selectStatement = "SELECT SupplierID FROM Products_Suppliers as p WHERE p.SupplierID = @SupplierID";
@@ -105,7 +105,7 @@ namespace TravelDatabase.EntityData
 
         public static bool DeleteSupplier(int supplierID)
         {
-            string connectionString = "Data Source=ELF5OOSD212989\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
+            string connectionString = "Data Source=localhost\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
             SqlConnection connection = new SqlConnection(connectionString);
 
             string deleteStatement =
@@ -141,7 +141,7 @@ namespace TravelDatabase.EntityData
         {
             //in form, validate before doing this
             //Supplier supplier = new Supplier(); -->do on form --> passing the text objects       
-            string connectionString = "Data Source=ELF5OOSD212989\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
+            string connectionString = "Data Source=localhost\\SAIT;Initial Catalog=TravelExperts;Integrated Security=True";
             SqlConnection connection = new SqlConnection(connectionString);
             try
             {

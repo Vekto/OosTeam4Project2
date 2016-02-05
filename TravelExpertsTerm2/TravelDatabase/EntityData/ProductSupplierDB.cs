@@ -149,7 +149,7 @@ namespace TravelDatabase.EntityData
         //DELETE
         public static string DeleteProductSupplier(int productSupplierId)
         {
-            if (!CheckDependency(productSupplierId))
+            if (!CheckDependency(productSupplierId) && !CheckDependency2(productSupplierId))
             {
                 SqlConnection connection = TravelExpertsDB.GetConnection();
                 string deleteStatement =
@@ -176,7 +176,7 @@ namespace TravelDatabase.EntityData
                 }
                 
             }
-            return "This ProductSupplier exists in packages, you must remove it from all packages prior to deletion";
+            return "This ProductSupplier exists in packages or invoices, you must remove it from all packages prior to deletion";
         }
 
         public static bool CheckDependency(int productSupplierId)
@@ -186,6 +186,37 @@ namespace TravelDatabase.EntityData
             string selectStatement = "SELECT PackageId FROM Packages_Products_Suppliers  WHERE ProductSupplierId = @ProductSupplierId";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             selectCommand.Parameters.AddWithValue("@ProductSupplierID",productSupplierId);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                if (reader.Read()) //while there is data
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+        public static bool CheckDependency2(int productSupplierId)
+        {
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+
+            string selectStatement = "SELECT BookingDetailId FROM BookingDetails  WHERE ProductSupplierId = @ProductSupplierId";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@ProductSupplierID", productSupplierId);
 
             try
             {

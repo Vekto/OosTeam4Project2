@@ -77,16 +77,19 @@ namespace TravelExpertsTerm2
             {
                 //display error
                 MessageBox.Show("Please fill in all fields.");
+                txtSupplierID.Focus();
             }
 
             else if (txtSupName.Text == "") //if no Supplier name is entered
             {
                 //display error message
                 MessageBox.Show("Please fill in all fields.");
+                txtSupName.Focus();
             }
             else if (!Int32.TryParse(txtSupplierID.Text, out integer))//validate that SupplierID is an integer
             {
                 MessageBox.Show("Please enter a valid Supplier ID.");
+                txtSupName.Focus();
             }
             else
             {   
@@ -103,6 +106,7 @@ namespace TravelExpertsTerm2
                             MessageBox.Show("Supplier added successfully.");
                             updateListView(SupplierDB.GetSuppliers());
                             clearForm();
+                            pnlAddUpdate.Visible = false;
                         }
                         else
                         {
@@ -114,6 +118,7 @@ namespace TravelExpertsTerm2
                         if (ex.Message.StartsWith("Violation of PRIMARY KEY"))
                         {
                             MessageBox.Show("Supplier with this ID already exists. Enter unique ID.");
+                            txtSupplierID.Focus();
                         }
                         else
                         {
@@ -149,6 +154,7 @@ namespace TravelExpertsTerm2
             this.lstSuppliers.SelectedIndices.Clear();
             selectedSupName = "";
             selectedSupplierID = "";
+            txtSupplierID.Focus();
         }
 
         private void btnDeleteSelected_Click(object sender, EventArgs e)
@@ -198,6 +204,7 @@ namespace TravelExpertsTerm2
             else
             {
                 MessageBox.Show("Please select item to delete");
+                lstSuppliers.Focus();
             }
         }//END OF DELETE BUTTON CLICK
         #endregion
@@ -234,6 +241,7 @@ namespace TravelExpertsTerm2
                 {
                     List<Supplier> suppliersList = SupplierDB.GetSuppliers();
                     updateListView(suppliersList);
+                    pnlAddUpdate.Visible = false;
                     return true;
                 }
                 else
@@ -281,6 +289,7 @@ namespace TravelExpertsTerm2
             if (selectedSupplierID=="")// check that user selected supplier
             {
                 MessageBox.Show("Please select a suppiler");
+                lstSuppliers.Focus();
             }
             else
             {

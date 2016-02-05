@@ -78,7 +78,7 @@ namespace TravelExpertsTerm2
             // LinkedProductSuppliersListBox
             // 
             this.LinkedProductSuppliersListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.LinkedProductSuppliersListBox.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LinkedProductSuppliersListBox.Font = new System.Drawing.Font("Segoe UI Semilight", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LinkedProductSuppliersListBox.FormattingEnabled = true;
             this.LinkedProductSuppliersListBox.ItemHeight = 17;
             this.LinkedProductSuppliersListBox.Location = new System.Drawing.Point(353, 60);
@@ -91,7 +91,7 @@ namespace TravelExpertsTerm2
             // OtherProductSuppliersListBox
             // 
             this.OtherProductSuppliersListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.OtherProductSuppliersListBox.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OtherProductSuppliersListBox.Font = new System.Drawing.Font("Segoe UI Semilight", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OtherProductSuppliersListBox.FormattingEnabled = true;
             this.OtherProductSuppliersListBox.ItemHeight = 17;
             this.OtherProductSuppliersListBox.Location = new System.Drawing.Point(648, 60);
@@ -263,7 +263,6 @@ namespace TravelExpertsTerm2
             // DeleteButton
             // 
             this.DeleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.DeleteButton.FontSize = MetroFramework.MetroButtonSize.Medium;
             this.DeleteButton.Location = new System.Drawing.Point(270, 393);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(75, 23);
@@ -278,7 +277,6 @@ namespace TravelExpertsTerm2
             // EditCancelButton
             // 
             this.EditCancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.EditCancelButton.FontSize = MetroFramework.MetroButtonSize.Medium;
             this.EditCancelButton.Location = new System.Drawing.Point(125, 393);
             this.EditCancelButton.Name = "EditCancelButton";
             this.EditCancelButton.Size = new System.Drawing.Size(85, 23);
@@ -293,7 +291,6 @@ namespace TravelExpertsTerm2
             // NewSaveButton
             // 
             this.NewSaveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.NewSaveButton.FontSize = MetroFramework.MetroButtonSize.Medium;
             this.NewSaveButton.Location = new System.Drawing.Point(15, 393);
             this.NewSaveButton.Name = "NewSaveButton";
             this.NewSaveButton.Size = new System.Drawing.Size(96, 23);

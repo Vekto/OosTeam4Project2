@@ -53,6 +53,7 @@
             this.lstSuppliers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.SupplierID,
             this.SupName});
+            this.lstSuppliers.Font = new System.Drawing.Font("Segoe UI Semilight", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstSuppliers.FullRowSelect = true;
             this.lstSuppliers.Location = new System.Drawing.Point(360, 26);
             this.lstSuppliers.MultiSelect = false;
@@ -75,6 +76,7 @@
             // 
             // txtSearch
             // 
+            this.txtSearch.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.txtSearch.Lines = new string[0];
             this.txtSearch.Location = new System.Drawing.Point(60, 67);
             this.txtSearch.MaxLength = 32767;
@@ -82,7 +84,7 @@
             this.txtSearch.PasswordChar = '\0';
             this.txtSearch.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(182, 23);
+            this.txtSearch.Size = new System.Drawing.Size(182, 20);
             this.txtSearch.TabIndex = 1;
             this.txtSearch.UseSelectable = true;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
@@ -163,6 +165,7 @@
             // txtSupName
             // 
             this.txtSupName.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.txtSupName.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.txtSupName.Lines = new string[0];
             this.txtSupName.Location = new System.Drawing.Point(128, 51);
             this.txtSupName.MaxLength = 32767;
@@ -170,7 +173,7 @@
             this.txtSupName.PasswordChar = '\0';
             this.txtSupName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtSupName.SelectedText = "";
-            this.txtSupName.Size = new System.Drawing.Size(156, 23);
+            this.txtSupName.Size = new System.Drawing.Size(156, 20);
             this.txtSupName.TabIndex = 7;
             this.txtSupName.UseSelectable = true;
             // 
@@ -187,6 +190,7 @@
             // txtSupplierID
             // 
             this.txtSupplierID.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.txtSupplierID.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.txtSupplierID.Lines = new string[0];
             this.txtSupplierID.Location = new System.Drawing.Point(128, 22);
             this.txtSupplierID.MaxLength = 32767;
@@ -194,7 +198,7 @@
             this.txtSupplierID.PasswordChar = '\0';
             this.txtSupplierID.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtSupplierID.SelectedText = "";
-            this.txtSupplierID.Size = new System.Drawing.Size(156, 23);
+            this.txtSupplierID.Size = new System.Drawing.Size(156, 20);
             this.txtSupplierID.TabIndex = 6;
             this.txtSupplierID.UseSelectable = true;
             this.txtSupplierID.Click += new System.EventHandler(this.txtSupplierID_Click);

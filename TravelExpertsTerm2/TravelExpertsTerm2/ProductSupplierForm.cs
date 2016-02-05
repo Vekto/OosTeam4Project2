@@ -44,6 +44,7 @@ namespace TravelExpertsTerm2
                 where ps.Supplier.Name == name
                 select new { ID = ps.ProductSupplierId, Supplier = ps.Supplier.Name, Product = ps.Product.Name, ps.FullName };
             source.DataSource = data;
+            dgvProdSup.Focus();
         }
 
         private void btnViewAll_Click(object sender, EventArgs e)
@@ -52,6 +53,7 @@ namespace TravelExpertsTerm2
                        orderby ps.Supplier.Name
                        select new { ID = ps.ProductSupplierId, Supplier = ps.Supplier.Name, Product = ps.Product.Name, ps.FullName };
             source.DataSource = data;
+            dgvProdSup.Focus();
         }
 
         private void btnFindProduct_Click(object sender, EventArgs e)
@@ -61,6 +63,7 @@ namespace TravelExpertsTerm2
                        where ps.Product.Name == name
                        select new { ID = ps.ProductSupplierId, Supplier = ps.Supplier.Name, Product = ps.Product.Name, ps.FullName };
             source.DataSource = data;
+            dgvProdSup.Focus();
         }
 
         private bool checkDuplicate(string supName,string prodName)
@@ -85,12 +88,14 @@ namespace TravelExpertsTerm2
             if (checkDuplicate(cmbSupplier.Text,cmbProd.Text))
             {
                 MessageBox.Show("This Product Supplier Already Exists");
+                cmbSupplier.Focus();
             }
             else
             {
                 
                 ProductSupplierDB.AddProductSupplier((Product) cmbProd.SelectedItem,(Supplier)cmbSupplier.SelectedItem);
                 refreshDataSource();
+                dgvProdSup.Focus();
             }
         }
 
@@ -120,6 +125,7 @@ namespace TravelExpertsTerm2
                     string message = ProductSupplierDB.DeleteProductSupplier(id);
                     MessageBox.Show(message);
                     refreshDataSource();
+                    dgvProdSup.Focus();
                 }
             }
         }
