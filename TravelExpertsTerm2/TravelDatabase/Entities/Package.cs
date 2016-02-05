@@ -78,10 +78,16 @@ namespace TravelDatabase
                     .WithMessage($"{nameof(Description)} is not set.");
 
                 RuleFor(package => package.BasePrice)
+                    .NotEqual(decimal.MinValue)
+                    .WithMessage("Price was not understood. Please speak clearly into your computer.")
                     .GreaterThanOrEqualTo(0M)
                     .WithMessage("Price cannot be negative.");
 
                 RuleFor(package => package.AgencyCommission)
+                    .NotEqual(decimal.MinValue)
+                    .WithMessage("Commission was not understood. Please speak clearly into your computer.")
+                    .LessThanOrEqualTo(p => p.BasePrice)
+                    .WithMessage("Commission cannot be greater than the base price.")
                     .GreaterThanOrEqualTo(0M)
                     .WithMessage("Commission cannot be negative.");
 

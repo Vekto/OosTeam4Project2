@@ -13,6 +13,11 @@ namespace TravelDatabase
     [Devin]
     public static class ValadationExtensions
     {
+        static ValadationExtensions()
+        {
+            ValidatorOptions.CascadeMode = CascadeMode.StopOnFirstFailure;
+        }
+
         /// <summary>
         /// Validate this object using its default <see cref="IValidator"/>
         /// </summary>
@@ -37,7 +42,7 @@ namespace TravelDatabase
         {
             if (header != null) header += Environment.NewLine + Environment.NewLine;
             return (header ?? string.Empty) +
-                   string.Join(Environment.NewLine, obj.Errors.Select(err => err.ErrorMessage));
+                   string.Join(Environment.NewLine, obj.Errors.Select(err => "- " + err.ErrorMessage));
         }
     }
 }
