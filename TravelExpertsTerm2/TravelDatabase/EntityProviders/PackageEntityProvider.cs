@@ -100,8 +100,16 @@ namespace TravelDatabase.EntityProviders
 
         protected override int Add(SqlConnection conn, Package entity)
         {
-            var sql = $"INSERT INTO {TableName} VALUES ('{entity.Name}','{entity.StartDate}','{entity.EndDate}','{entity.Description}',{entity.BasePrice},{entity.AgencyCommission})";
-            var rowsAffected = ExecuteNonQuery(sql, conn);
+            var sql = $"INSERT INTO {TableName} VALUES (@Name, @StartDate, @EndDate, @Description, @BasePrice, @AgencyCommission)";
+            var rowsAffected = ExecuteNonQuery(sql, conn,
+                new KeyValuePair<string, object>("Name", entity.Name),
+                new KeyValuePair<string, object>("StartDate", entity.StartDate),
+                new KeyValuePair<string, object>("EndDate", entity.EndDate),
+                new KeyValuePair<string, object>("Description", entity.Description),
+                new KeyValuePair<string, object>("BasePrice", entity.BasePrice),
+                new KeyValuePair<string, object>("AgencyCommission", entity.AgencyCommission)
+                );
+
             if (rowsAffected < 1) return int.MinValue; // return negative if the command failed
 
             var packageId = Database.GetLastAssignedId(conn, TableName); // id of the item just added
