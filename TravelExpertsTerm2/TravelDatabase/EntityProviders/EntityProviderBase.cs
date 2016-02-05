@@ -164,7 +164,7 @@ namespace TravelDatabase.EntityProviders
             params KeyValuePair<string, object>[] bindingParams)
         {
             var command = CreateSqlCommand(sql, conn);
-            foreach (KeyValuePair<string, object> sqlParam in bindingParams)
+            foreach (var sqlParam in bindingParams)
                 command.Parameters.AddWithValue(sqlParam.Key, sqlParam.Value);
             return command.ExecuteNonQuery();
         }

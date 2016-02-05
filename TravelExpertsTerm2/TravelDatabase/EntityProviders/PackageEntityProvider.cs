@@ -16,7 +16,7 @@ namespace TravelDatabase.EntityProviders
     [PublicAPI]
     public sealed class PackageEntityProvider : EntityProviderBase<Package>
     {
-        // TODO: EntityProviders need a clean up, need to use new diagnostic helper function things
+        // TODO: EntityProviders need a clean up, need to use the new diagnostic helper function things
 
         #region Constructors
 
@@ -124,12 +124,19 @@ namespace TravelDatabase.EntityProviders
 
         protected override bool Update(SqlConnection conn, Package entity)
         {
-            //var existingIds = GetProductSupplierIdsRelatedToPackage(conn, entity.PackageId);
-
             ReplaceProductSupplierRelations(conn, entity);
-            return ExecuteNonQuery(
-                $"UPDATE {TableName} SET PkgName='{entity.Name}',PkgStartDate='{entity.StartDate}',PkgEndDate='{entity.EndDate}',PkgDesc='{entity.Description}',PkgBasePrice={entity.BasePrice},PkgAgencyCommission={entity.AgencyCommission} WHERE PackageId={entity.PackageId}",
-                conn) > 0;
+
+            var sql =
+                $"UPDATE {TableName} SET PkgName=@PkgName,PkgStartDate=@PkgStartDate,PkgEndDate=@PkgEndDate,PkgDesc=@PkgDesc,PkgBasePrice=@PkgBasePrice,PkgAgencyCommission=@PkgAgencyCommission WHERE PackageId=@PackageId";
+            return ExecuteNonQuery(sql, conn,
+                new KeyValuePair<string, object>("PkgName", entity.Name),
+                new KeyValuePair<string, object>("PkgStartDate", entity.StartDate),
+                new KeyValuePair<string, object>("PkgEndDate", entity.EndDate),
+                new KeyValuePair<string, object>("PkgDesc", entity.Description),
+                new KeyValuePair<string, object>("PkgBasePrice", entity.BasePrice),
+                new KeyValuePair<string, object>("PkgAgencyCommission", entity.AgencyCommission),
+                new KeyValuePair<string, object>("PackageId", entity.PackageId)
+                ) > 0;
         }
 
         #endregion
